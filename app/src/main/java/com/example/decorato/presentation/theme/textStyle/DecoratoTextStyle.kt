@@ -1,4 +1,16 @@
 package com.example.decorato.presentation.theme.textStyle
 
-class DecoratoTextStyle {
-}
+import androidx.compose.ui.text.TextStyle
+
+data class DecoratoTextStyle(
+    val headline: SizedTextStyle,
+    val title: SizedTextStyle,
+    val body: SizedTextStyle,
+    val label: SizedTextStyle,
+)
+
+data class SizedTextStyle(
+    val large: TextStyle,
+    val medium: TextStyle,
+    val small: TextStyle,
+)
