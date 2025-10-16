@@ -1,5 +1,10 @@
 package com.example.decorato.presentation.theme.colors
 
-data class DecoratoAppColors(
+import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.graphics.Color
 
+data class DecoratoAppColors(
+    val surface: Color,
 )
+
+internal val LocalDecoratoAppColors = staticCompositionLocalOf { lightThemeColors }
