@@ -11,9 +11,7 @@ class OnboardingViewModel @Inject constructor(
     private val setOnboardingCompletedUseCase: SetOnboardingCompletedUseCase,
     private val dispatcherProvider: DispatcherProvider
 ) : BaseViewModel<OnboardingUiState, OnboardingEffect>(
-    OnboardingUiState(totalPages = 4),
-    dispatcherProvider as com.example.decorato.presentation.viewModel.utils.DispatcherProvider
-), OnboardingInteractionListener {
+    OnboardingUiState(totalPages = 3), dispatcherProvider), OnboardingInteractionListener {
 
     init {
         tryToExecute({ setOnboardingCompletedUseCase(true) })

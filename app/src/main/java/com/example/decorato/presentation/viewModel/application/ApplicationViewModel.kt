@@ -1,7 +1,7 @@
 package com.example.decorato.presentation.viewModel.application
 
 import androidx.lifecycle.viewModelScope
-import com.example.decorato.domain.useCase.authentication.GetsSessionType
+import com.example.decorato.domain.useCase.authentication.GetsSessionTypeUseCase
 import com.example.decorato.presentation.viewModel.utils.dispatcher.DispatcherProvider
 import com.example.decorato.domain.useCase.preferences.GetOnboardingStatusUseCase
 import com.example.decorato.domain.utils.SessionType
@@ -14,10 +14,8 @@ import javax.inject.Inject
 class ApplicationViewModel @Inject constructor(
     private val dispatcherProvider: DispatcherProvider,
     private val getOnboardingStatusUseCase: GetOnboardingStatusUseCase,
-    private val getsSessionType: GetsSessionType,
-) : BaseViewModel<ApplicationUiState, Unit>(ApplicationUiState(),
-    dispatcherProvider as com.example.decorato.presentation.viewModel.utils.DispatcherProvider
-) {
+    private val getsSessionType: GetsSessionTypeUseCase,
+) : BaseViewModel<ApplicationUiState, Unit>(ApplicationUiState(), dispatcherProvider) {
 
     init {
         setStartDestination()

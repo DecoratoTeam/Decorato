@@ -1,9 +1,10 @@
 package com.example.decorato.domain.useCase.preferences
 
 import com.example.decorato.domain.repository.AppPreferencesRepository
+import jakarta.inject.Inject
 import kotlinx.coroutines.flow.Flow
 
-class ManageAppThemeUseCase(
+class ManageAppThemeUseCase @Inject constructor(
     private val preferencesRepository: AppPreferencesRepository,
 ) {
     suspend fun setAppTheme(isDarkTheme: Boolean) {

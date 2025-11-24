@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.decorato.domain.exceptions.DecoratoException
 import com.example.decorato.presentation.viewModel.shared.errorUiState.ErrorUiState
 import com.example.decorato.presentation.viewModel.shared.errorUiState.toErrorUiState
-import com.example.decorato.presentation.viewModel.utils.DispatcherProvider
+import com.example.decorato.presentation.viewModel.utils.dispatcher.DispatcherProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
