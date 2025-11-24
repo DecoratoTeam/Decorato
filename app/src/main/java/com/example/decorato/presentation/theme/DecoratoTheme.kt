@@ -10,6 +10,9 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import androidx.navigation.compose.rememberNavController
+import com.example.decorato.presentation.navigation.NavigationManager
+import com.example.decorato.presentation.application.LocalNavManager
 import com.example.decorato.presentation.theme.colors.LocalDecoratoAppColors
 import com.example.decorato.presentation.theme.colors.darkThemeColors
 import com.example.decorato.presentation.theme.colors.lightThemeColors
@@ -34,6 +37,7 @@ fun DecoratoTheme(
     CompositionLocalProvider(
         LocalDecoratoAppColors provides theme,
         LocalIsDarkTheme provides isDarkTheme,
+        LocalNavManager provides NavigationManager(rememberNavController())
     ) {
         content()
     }
