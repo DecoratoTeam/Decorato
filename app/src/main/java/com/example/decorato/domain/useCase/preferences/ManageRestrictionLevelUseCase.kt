@@ -3,9 +3,10 @@ package com.example.decorato.domain.useCase.preferences
 
 import com.example.decorato.domain.repository.AppPreferencesRepository
 import com.example.decorato.domain.utils.RestrictionLevel
+import jakarta.inject.Inject
 import kotlinx.coroutines.flow.Flow
 
-class ManageRestrictionLevelUseCase(
+class ManageRestrictionLevelUseCase @Inject constructor(
     private val preferencesRepository: AppPreferencesRepository
 ) {
     suspend fun setRestrictionLevel(restrictionLevel: RestrictionLevel){

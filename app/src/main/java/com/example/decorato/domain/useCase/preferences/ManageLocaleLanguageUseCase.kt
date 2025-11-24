@@ -1,11 +1,12 @@
 package com.example.decorato.domain.useCase.preferences
 
 import com.example.decorato.domain.repository.AppPreferencesRepository
+import jakarta.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 
-class ManageLocaleLanguageUseCase(
+class ManageLocaleLanguageUseCase @Inject constructor(
     private val preferencesRepository: AppPreferencesRepository,
 ) {
     suspend fun initAppLanguage(language: String) {

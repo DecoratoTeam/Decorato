@@ -7,7 +7,7 @@ import com.example.decorato.domain.useCase.authentication.GetsSessionTypeUseCase
 import com.example.decorato.domain.useCase.preferences.GetOnboardingStatusUseCase
 import com.example.decorato.domain.utils.SessionType
 import com.example.decorato.presentation.viewModel.shared.BaseViewModel
-import com.example.decorato.presentation.viewModel.utils.DispatcherProvider
+import com.example.decorato.presentation.viewModel.utils.dispatcher.DispatcherProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.util.Locale

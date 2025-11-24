@@ -4,7 +4,9 @@ import com.example.decorato.domain.repository.AppPreferencesRepository
 import com.example.decorato.domain.utils.RestrictionLevel
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class AppPreferencesRepositoryImpl @Inject constructor() : AppPreferencesRepository {
 
     override suspend fun setOnboardingCompleted(isCompleted: Boolean) {
