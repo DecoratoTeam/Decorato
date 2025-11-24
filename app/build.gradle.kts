@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
 }
@@ -70,6 +71,7 @@ dependencies {
     hiltDependencies()
     kotlinxDateTime()
     splashScreenDependency()
+    jsonSerializationDependencies()
 }
 
 private fun DependencyHandlerScope.navigationDependencies() {
@@ -124,4 +126,8 @@ private fun DependencyHandlerScope.kotlinxDateTime() {
 
 private fun DependencyHandlerScope.splashScreenDependency() {
     implementation(libs.androidx.core.splashscreen)
+}
+
+private fun DependencyHandlerScope.jsonSerializationDependencies() {
+    implementation(libs.kotlinx.serialization.json)
 }
