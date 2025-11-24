@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.onGloballyPositioned
@@ -52,9 +53,11 @@ fun OnboardingPage(
                 .background(
                     Brush.verticalGradient(
                         colors = listOf(
-                            AppTheme.color.onBoardingGradient.first().copy(alpha = 0.5f),
-                            AppTheme.color.onBoardingGradient.last()
-                        )
+                            Color.Black.copy(alpha = 0.4f),
+                            Color.Black.copy(alpha = 0.8f)
+                        ),
+                        startY = 0f,
+                        endY = Float.POSITIVE_INFINITY
                     )
                 )
         )
