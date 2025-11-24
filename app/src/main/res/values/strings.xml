@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Decorato</string>
+    <string name="app_name"></string>
 
     <!-- - OnBoarding messages  -->
     <string name="skip">Skip</string>
