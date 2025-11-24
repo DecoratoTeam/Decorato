@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -56,4 +58,70 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    navigationDependencies()
+    lifeCycleDependencies()
+    pagingDependencies()
+    kotlinExtensionsDependencies()
+    appCompactDependencies()
+    previewDependencies()
+    composeDependencies()
+    uiGraphicsDependencies()
+    hiltDependencies()
+    kotlinxDateTime()
+    splashScreenDependency()
+}
+
+private fun DependencyHandlerScope.navigationDependencies() {
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.navigation.common.android)
+}
+
+private fun DependencyHandlerScope.lifeCycleDependencies() {
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+}
+
+
+private fun DependencyHandlerScope.pagingDependencies() {
+    implementation(libs.androidx.paging.compose)
+}
+
+private fun DependencyHandlerScope.kotlinExtensionsDependencies() {
+    implementation(libs.androidx.core.ktx)
+}
+
+private fun DependencyHandlerScope.appCompactDependencies() {
+    implementation(libs.androidx.appcompat)
+}
+
+private fun DependencyHandlerScope.previewDependencies() {
+    implementation(libs.androidx.ui.tooling.preview.android)
+    debugImplementation(libs.androidx.ui.tooling)
+}
+
+private fun DependencyHandlerScope.composeDependencies() {
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.foundation)
+    implementation(libs.androidx.ui.graphics.android)
+}
+
+private fun DependencyHandlerScope.uiGraphicsDependencies() {
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+}
+
+private fun DependencyHandlerScope.hiltDependencies() {
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+    implementation (libs.androidx.hilt.navigation.compose)
+}
+
+private fun DependencyHandlerScope.kotlinxDateTime() {
+    implementation(libs.kotlinx.datetime)
+}
+
+
+private fun DependencyHandlerScope.splashScreenDependency() {
+    implementation(libs.androidx.core.splashscreen)
 }

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2492dc1b-18cc-4141-a1a7-ef4c63e59dda" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/google-services.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/data/repositoryImpl/AppPreferencesRepositoryImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/data/repositoryImpl/AuthenticationRepositoryImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/data/repositoryImpl/security/CryptoManager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/data/repositoryImpl/security/CryptoManagerImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/domain/logger/LogManager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/domain/logger/Logger.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/domain/useCase/authentication/GetsSessionType.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/domain/useCase/authentication/LoginAsGuestUseCase.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/domain/useCase/authentication/LoginWithPasswordUseCase.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/domain/useCase/authentication/LogoutUseCase.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/domain/useCase/preferences/GetOnboardingStatusUseCase.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/domain/useCase/preferences/SetOnboardingCompletedUseCase.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/domain/utils/AppVersionProvider.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/AppLogger.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/AppVersionProviderImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/DecoratoApplication.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/LoggerInitializer.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/application/DecoratoApp.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/components/PageIndicator.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/screens/onBoarding/OnboardingPage.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/screens/onBoarding/OnboardingScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/screens/onBoarding/OnboardingScreenData.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/screens/onBoarding/component/NavigationButton.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/screens/onBoarding/component/OnboardingNavigationBar.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/screens/onBoarding/component/SkipButton.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/screens/onBoarding/onboardingScreenRoute.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/viewModel/application/ApplicationUiState.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/viewModel/application/ApplicationViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/viewModel/onboarding/OnBoardingEffect.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/viewModel/onboarding/OnboardingInteractionListener.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/viewModel/onboarding/OnboardingUiState.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/viewModel/onboarding/OnboardingViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/viewModel/shared/BaseViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/viewModel/shared/errorUiState/ErrorUiState.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/viewModel/shared/errorUiState/ErrorUiStateMapper.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/viewModel/utils/ThemeAndLocalePreviews.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/viewModel/utils/dispatcher/DefaultDispatcherProvider.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/viewModel/utils/dispatcher/DispatcherProvider.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic__back_arrow.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_arrow_right.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_menu_square.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/on_boarding1.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/on_boarding2.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/on_boarding3.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/values-ar/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/appInsightsSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/appInsightsSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/decorato/di/ff.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/decorato/domain/utils/ff.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/theme/colors/DarkThemeColors.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/theme/colors/DarkThemeColors.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/theme/colors/DecoratoAppColors.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/theme/colors/DecoratoAppColors.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/theme/colors/LightThemeColors.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/decorato/presentation/theme/colors/LightThemeColors.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/../gradle/libs.versions.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Noor-Serry"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/DecoratoTeam/Decorato.git",
+    "accountId": "878b7af9-c91b-4d3c-b733-31875d077359"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="34r3rzbnK9q2nvMRjRT1gLTxMMx" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "android.gradle.sync.needed": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "develop",
+    "last_opened_file_path": "C:/Users/20101/Downloads/DecoratoProject/DecoratoProject/app"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2492dc1b-18cc-4141-a1a7-ef4c63e59dda" name="Changes" comment="" />
+      <created>1761958065465</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1761958065465</updated>
+    </task>
+    <servers />
+  </component>
+</project>
