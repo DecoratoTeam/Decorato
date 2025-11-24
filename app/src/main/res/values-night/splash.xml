@@ -5,5 +5,7 @@
         <item name="windowSplashScreenAnimatedIcon">@drawable/aflami_splash_still</item>
         <item name="windowSplashScreenBackground">#0D090B</item>
         <item name="postSplashScreenTheme">@style/Theme.Decorato</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
     </style>
 </resources>
