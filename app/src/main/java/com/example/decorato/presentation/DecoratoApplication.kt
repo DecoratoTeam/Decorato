@@ -8,5 +8,4 @@ class DecoratoApplication : Application() {
     override fun onCreate() {
         super.onCreate()
     }
-
 }
