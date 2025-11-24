@@ -1,0 +1,12 @@
+package com.example.decorato.domain.useCase.authentication
+
+import com.example.decorato.domain.repository.AuthenticationRepository
+
+
+class LogoutUseCase(
+    private val authenticationRepository: AuthenticationRepository
+) {
+    suspend operator fun invoke(){
+        authenticationRepository.logout()
+    }
+}

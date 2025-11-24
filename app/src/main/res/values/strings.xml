@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Decorato</string>
+
+    <!-- - OnBoarding messages  -->
+    <string name="skip">Skip</string>
+    <string name="onboarding1_title">Welcome to Decòrato</string>
+    <string name="onboarding1_description">Discover a magical world where AI transforms your space into a masterpiece that reflects your unique style.</string>
+    <string name="onboarding2_title">Smart Help, Always With You</string>
+    <string name="onboarding2_description">Chat with our GPT-powered assistant for smart design tips — colors, furniture, and space ideas, like a designer in your pocket.</string>
+    <string name="onboarding3_title">Join the Creative Community</string>
+    <string name="onboarding3_description">Share, explore, and get inspired — a creative community to redesign your world.</string>
+    <!-- -   -->
+
+    <!-- - Navigation  -->
+    <string name="home">Home</string>
+    <string name="generate">Generate</string>
+    <string name="community">Community</string>
+    <string name="profile">Profile</string>
+    <!-- -   -->
+
+
 </resources>

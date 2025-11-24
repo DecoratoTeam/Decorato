@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ديكورتو</string>
+
+    <!-- - OnBoarding messages  -->
+    <string name="skip">تخطي</string>
+    <string name="onboarding1_title">مرحباً بكم في ديكوراتو</string>
+    <string name="onboarding1_description">اكتشف عالماً سحرياً حيث تقوم الذكاء الاصطناعي بتحويل مساحتك إلى عمل فني يعكس أسلوبك الفريد.</string>
+    <string name="onboarding2_title">مساعدة ذكية، دائمًا معك</string>
+    <string name="onboarding2_description">تحدث مع مساعدنا المدعوم بالذكاء الاصطناعي للحصول على نصائح تصميم ذكية — من الألوان والأثاث وأفكار المساحات، وكأن لديك مصممًا في جيبك.</string>
+    <string name="onboarding3_title">انضم إلى المجتمع الإبداعي</string>
+    <string name="onboarding3_description">شارك، استكشف، واستلهم — مجتمع إبداعي لإعادة تصميم عالمك.</string>
+    <!-- -   -->
+
+    <!-- - Navigation  -->
+    <string name="home">الرئيسية</string>
+    <string name="generate">تصميم</string>
+    <string name="community">المجتمع</string>
+    <string name="profile">الملف الشخصي</string>
+    <!-- -   -->
+
+</resources>
