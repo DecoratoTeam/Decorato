@@ -1,4 +1,4 @@
-package com.example.decorato.presentation.component.bottomNavigation
+package com.example.decorato.presentation.components.bottomNavigation
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween

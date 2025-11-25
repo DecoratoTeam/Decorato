@@ -1,4 +1,4 @@
-package com.example.decorato.presentation.component.snackBar
+package com.example.decorato.presentation.components.snackBar
 
 import androidx.annotation.DrawableRes
 import com.example.decorato.R

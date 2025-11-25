@@ -7,7 +7,11 @@ sealed interface Route {
         @Serializable
         data object Home : Tab
 
+        @Serializable
+        data object Generate : Tab
 
+        @Serializable
+        data object Community : Tab
         @Serializable
         data object Profile : Tab
     }
