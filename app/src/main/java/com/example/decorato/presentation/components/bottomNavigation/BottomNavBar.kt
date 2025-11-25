@@ -1,4 +1,4 @@
-package com.example.decorato.presentation.component.bottomNavigation
+package com.example.decorato.presentation.components.bottomNavigation
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.material3.Icon
@@ -11,7 +11,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import com.example.decorato.presentation.component.bottomNavBar.NavigationBarItem
+import com.example.decorato.presentation.components.bottomNavBar.NavigationBarItem
 import com.example.decorato.presentation.navigation.Route
 import com.example.decorato.presentation.theme.AppTheme
 import com.example.decorato.presentation.theme.DecoratoTheme

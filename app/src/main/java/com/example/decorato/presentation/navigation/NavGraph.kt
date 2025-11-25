@@ -9,7 +9,7 @@ import com.example.decorato.presentation.screens.onBoarding.onboardingScreenRout
 @Composable
 fun NavGraph(
     navController: NavHostController,
-    startDestination: Route = Route.Onboarding
+    startDestination: Route = Route.Tab.Home
 ) {
     NavHost(navController = navController, startDestination = startDestination) {
         onboardingScreenRoute()

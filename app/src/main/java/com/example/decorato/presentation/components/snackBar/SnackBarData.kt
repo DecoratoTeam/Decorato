@@ -1,4 +1,4 @@
-package com.example.decorato.presentation.component.snackBar
+package com.example.decorato.presentation.components.snackBar
 
 data class SnackBarData(
     val message: String,

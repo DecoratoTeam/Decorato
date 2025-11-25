@@ -20,10 +20,10 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.decorato.presentation.component.bottomNavigation.BottomNavigation
+import com.example.decorato.presentation.components.bottomNavigation.BottomNavigation
 import com.example.decorato.presentation.navigation.NavigationManager
 import com.example.decorato.domain.utils.RestrictionLevel
-import com.example.decorato.presentation.component.snackBar.SnackBarHost
+import com.example.decorato.presentation.components.snackBar.SnackBarHost
 import com.example.decorato.presentation.navigation.NavGraph
 import com.example.decorato.presentation.theme.DecoratoTheme
 import com.example.decorato.presentation.utils.setLocale

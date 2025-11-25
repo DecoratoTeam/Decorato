@@ -1,4 +1,4 @@
-package com.example.decorato.presentation.component.bottomNavBar
+package com.example.decorato.presentation.components.bottomNavBar
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.runtime.Composable

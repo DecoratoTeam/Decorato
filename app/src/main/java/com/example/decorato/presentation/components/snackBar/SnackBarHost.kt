@@ -1,4 +1,4 @@
-package com.example.decorato.presentation.component.snackBar
+package com.example.decorato.presentation.components.snackBar
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.EaseInQuart
