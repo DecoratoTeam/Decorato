@@ -19,9 +19,9 @@ class AppLocalPreferencesDataStoreImpl @Inject constructor(
 ) : AppLocalPreferences {
 
     override suspend fun setAppLanguage(language: String) {
-        dataStore.edit { preferences ->
-            preferences[CURRENT_LANGUAGE] = language
-        }
+//        dataStore.edit { preferences ->
+//            preferences[CURRENT_LANGUAGE] = language
+//        }
     }
 
     override fun getAppLanguage(): Flow<String> {
@@ -31,9 +31,9 @@ class AppLocalPreferencesDataStoreImpl @Inject constructor(
     }
 
     override suspend fun setAppTheme(isDarkTheme: Boolean) {
-        dataStore.edit { preferences ->
-            preferences[IS_DARK_THEME] = isDarkTheme
-        }
+//        dataStore.edit { preferences ->
+//            preferences[IS_DARK_THEME] = isDarkTheme
+//        }
     }
 
     override fun getAppTheme(): Flow<Boolean> {
@@ -49,9 +49,9 @@ class AppLocalPreferencesDataStoreImpl @Inject constructor(
     }
 
     override suspend fun setRestrictionLevel(restrictionLevel: String) {
-        dataStore.edit { preferences ->
-            preferences[RESTRICTION_LEVEL] = restrictionLevel
-        }
+//        dataStore.edit { preferences ->
+//            preferences[RESTRICTION_LEVEL] = restrictionLevel
+//        }
     }
 
     override suspend fun setOnboardingCompleted(isCompleted: Boolean) {

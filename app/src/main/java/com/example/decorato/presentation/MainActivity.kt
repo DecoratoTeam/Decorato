@@ -9,17 +9,9 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
-import androidx.navigation.compose.rememberNavController
 import com.example.decorato.presentation.application.DecoratoApp
-import com.example.decorato.presentation.navigation.NavGraph
-import com.example.decorato.presentation.navigation.Route
-import com.example.decorato.presentation.theme.DecoratoTheme
 import com.example.decorato.presentation.viewModel.ApplicationViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.getValue
 
 @AndroidEntryPoint
 
