@@ -1,5 +1,6 @@
 package com.example.decorato.data.repositoryImpl
 
+import com.example.decorato.data.local.datastore.AppLocalPreferences
 import com.example.decorato.domain.repository.AppPreferencesRepository
 import com.example.decorato.domain.utils.RestrictionLevel
 import kotlinx.coroutines.flow.Flow
@@ -7,15 +8,16 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AppPreferencesRepositoryImpl @Inject constructor() : AppPreferencesRepository {
+class AppPreferencesRepositoryImpl @Inject constructor(
+    private val preferences: AppLocalPreferences,
+) : AppPreferencesRepository {
 
     override suspend fun setOnboardingCompleted(isCompleted: Boolean) {
-       // preferences.setOnboardingCompleted(isCompleted)
+        preferences.setOnboardingCompleted(isCompleted)
     }
 
     override suspend fun isOnboardingCompleted(): Boolean {
-        return true
-        //preferences.isOnboardingCompleted()
+        return preferences.isOnboardingCompleted()
     }
 
     override fun getRestrictionLevel(): Flow<RestrictionLevel> {
