@@ -72,6 +72,9 @@ dependencies {
     kotlinxDateTime()
     splashScreenDependency()
     jsonSerializationDependencies()
+    datastoreDependencies()
+    androidxRuntimeDependencies()
+    roomDependencies()
 }
 
 private fun DependencyHandlerScope.navigationDependencies() {
@@ -130,4 +133,19 @@ private fun DependencyHandlerScope.splashScreenDependency() {
 
 private fun DependencyHandlerScope.jsonSerializationDependencies() {
     implementation(libs.kotlinx.serialization.json)
+}
+
+private fun DependencyHandlerScope.datastoreDependencies() {
+    implementation(libs.androidx.datastore.preferences)
+}
+
+
+private fun DependencyHandlerScope.roomDependencies() {
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
+}
+
+fun DependencyHandlerScope.androidxRuntimeDependencies() {
+    implementation(libs.androidx.runtime)
 }
