@@ -8,23 +8,21 @@ class AuthenticationRepositoryImpl @Inject constructor(
 
 ) : AuthenticationRepository {
     override suspend fun loginWithPassword(username: String, password: String) {
-        TODO("Not yet implemented")
+
     }
 
     override suspend fun getSessionId(): String {
-        TODO("Not yet implemented")
+        return ""
     }
 
     override suspend fun setSessionType(sessionType: SessionType) {
-        TODO("Not yet implemented")
     }
 
     override suspend fun getSessionType(): SessionType? {
-        TODO("Not yet implemented")
+        return null
     }
 
     override suspend fun logout() {
-        TODO("Not yet implemented")
     }
 
 }

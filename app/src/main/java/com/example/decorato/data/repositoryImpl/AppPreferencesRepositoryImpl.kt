@@ -1,6 +1,8 @@
 package com.example.decorato.data.repositoryImpl
 
 import com.example.decorato.data.local.datastore.AppLocalPreferences
+import com.example.decorato.data.mapper.stringToRestrictionLevelEntity
+import com.example.decorato.data.mapper.toLocalDto
 import com.example.decorato.domain.repository.AppPreferencesRepository
 import com.example.decorato.domain.utils.RestrictionLevel
 import kotlinx.coroutines.flow.Flow
@@ -21,27 +23,26 @@ class AppPreferencesRepositoryImpl @Inject constructor(
     }
 
     override fun getRestrictionLevel(): Flow<RestrictionLevel> {
-        TODO("Not yet implemented")
+        return stringToRestrictionLevelEntity(preferences.getRestrictionLevel())
     }
 
     override suspend fun setRestrictionLevel(restrictionLevel: RestrictionLevel) {
-        TODO("Not yet implemented")
+        preferences.setRestrictionLevel(restrictionLevel.toLocalDto())
     }
+
+    override fun getAppLanguage(): Flow<String> = preferences.getAppLanguage()
 
     override suspend fun setAppLanguage(language: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun getAppLanguage(): Flow<String> {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun setAppTheme(isDarkTheme: Boolean) {
-        TODO("Not yet implemented")
+        preferences.setAppLanguage(language)
     }
 
     override fun getAppTheme(): Flow<Boolean> {
-        TODO("Not yet implemented")
+        return preferences.getAppTheme()
     }
+
+    override suspend fun setAppTheme(isDarkTheme: Boolean) {
+        preferences.setAppTheme(isDarkTheme)
+    }
+
 
 }
