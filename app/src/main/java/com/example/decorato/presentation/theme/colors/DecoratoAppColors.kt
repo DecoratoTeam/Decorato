@@ -30,6 +30,9 @@ data class DecoratoAppColors(
     val successSnackBarShadow: Color,
     val redAccent: Color,
     val failureSnackBarShadow: Color,
+    val primaryEnd: Color,
+    val redVariant: Color,
+    val googleText: Color,
 )
 
 internal val LocalDecoratoAppColors = staticCompositionLocalOf { lightThemeColors }

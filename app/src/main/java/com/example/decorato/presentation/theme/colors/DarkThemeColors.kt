@@ -29,4 +29,7 @@ internal val darkThemeColors = DecoratoAppColors(
     successSnackBarShadow = Color(0x1F429946),
     redAccent = Color(0xFFD94C56),
     failureSnackBarShadow = Color(0x1FBF434C),
+    primaryEnd = Color(0xFF973A66),
+    redVariant = Color(0xFFF2DFE0),
+    googleText = Color(0xFF44A148),
 )
