@@ -19,4 +19,54 @@
     <string name="profile">الملف الشخصي</string>
     <!-- -   -->
 
+    <!-- - Loading  -->
+    <string name="read_more">اقرأ المزيد</string>
+    <string name="read_less">اقرأ أقل</string>
+    <string name="loading">تحميل...</string>
+    <string name="all">الكل</string>
+    <!-- -   -->
+
+    <!-- Register Screen -->
+    <string name="create_account">إنشاء حساب</string>
+    <string name="name_label">الاسم</string>
+    <string name="name_hint">أدخل اسمك</string>
+    <string name="email_label">البريد الإلكتروني</string>
+    <string name="email_hint">أدخل بريدك الإلكتروني</string>
+    <string name="password_label">كلمة المرور</string>
+    <string name="password_hint">أدخل كلمة المرور</string>
+    <string name="sign_up">تسجيل</string>
+    <string name="or_continue_with">أو المتابعة باستخدام</string>
+    <string name="google">جوجل</string>
+    <string name="already_have_account">لديك حساب بالفعل؟ </string>
+    <string name="log_in">تسجيل الدخول</string>
+    <!-- -   -->
+
+    <!-- Registration Errors -->
+    <string name="email_already_registered">هذا البريد الإلكتروني مسجل بالفعل</string>
+    <string name="weak_password_error">كلمة المرور ضعيفة. يرجى استخدام كلمة مرور أقوى</string>
+    <string name="verification_required">يرجى التحقق من بريدك الإلكتروني</string>
+
+    <!-- Network Errors -->
+    <string name="no_internet_connection">لا يوجد اتصال بالإنترنت. يرجى التحقق من شبكتك</string>
+    <string name="server_error">خطأ في الخادم. يرجى المحاولة لاحقاً</string>
+
+    <!-- Authentication Errors -->
+    <string name="account_disabled">تم تعطيل حسابك</string>
+    <string name="invalid_credentials">اسم المستخدم أو كلمة المرور غير صحيحة</string>
+    <string name="invalid_session">انتهت صلاحية جلستك. يرجى تسجيل الدخول مرة أخرى</string>
+    <string name="access_denied">تم رفض الوصول</string>
+    <string name="access_restricted">الوصول مقيد</string>
+
+    <!-- Generic Errors -->
+    <string name="unknown_error">حدث خطأ غير معروف. يرجى المحاولة مرة أخرى</string>
+    <string name="registration_success">تم التسجيل بنجاح! </string>
+
+    <!-- Field Errors -->
+    <string name="email_error">البريد الإلكتروني غير صحيح</string>
+    <string name="password_error">كلمة المرور يجب أن تكون 6 أحرف على الأقل</string>
+    <string name="network_error">خطأ في الاتصال بالشبكة</string>
+    <string name="registration_failed">فشل التسجيل. يرجى المحاولة مرة أخرى</string>
+    <!-- -   -->
+
+
 </resources>
