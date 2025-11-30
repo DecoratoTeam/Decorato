@@ -51,8 +51,8 @@ fun OnboardingScreen(
     LaunchedEffect(Unit) {
         onboardingViewModel.effect.collectLatest { effect ->
             when (effect) {
-                is OnboardingEffect.NavigateToLoginScreen -> {
-                    navigationManager.toLogin()
+                is OnboardingEffect.NavigateToRegisterScreen -> {
+                    navigationManager.toRegister()
                 }
             }
         }

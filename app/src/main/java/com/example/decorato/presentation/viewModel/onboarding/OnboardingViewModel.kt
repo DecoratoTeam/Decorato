@@ -41,11 +41,11 @@ class OnboardingViewModel @Inject constructor(
     }
 
     override fun onSkipClicked() {
-        sendNewNavigationEffect(OnboardingEffect.NavigateToLoginScreen)
+        sendNewNavigationEffect(OnboardingEffect.NavigateToRegisterScreen)
     }
 
     override fun onGetStartedClicked() {
-        sendNewNavigationEffect(OnboardingEffect.NavigateToLoginScreen)
+        sendNewNavigationEffect(OnboardingEffect.NavigateToRegisterScreen)
     }
     
     fun setCurrentPage(newIndex: Int) {
