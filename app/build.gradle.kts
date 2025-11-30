@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.runtime)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -75,6 +76,7 @@ dependencies {
     datastoreDependencies()
     androidxRuntimeDependencies()
     roomDependencies()
+    networkDependencies()
 }
 
 private fun DependencyHandlerScope.navigationDependencies() {
@@ -148,4 +150,11 @@ private fun DependencyHandlerScope.roomDependencies() {
 
 fun DependencyHandlerScope.androidxRuntimeDependencies() {
     implementation(libs.androidx.runtime)
+}
+
+private fun DependencyHandlerScope.networkDependencies() {
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.kotlinx.serialization)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
 }
