@@ -45,7 +45,7 @@ class ApplicationViewModel @Inject constructor(
         val destination = when (sessionType) {
             SessionType.LOGGED_IN -> ApplicationUiState.StartDestinations.HOME
             SessionType.GUEST -> ApplicationUiState.StartDestinations.HOME
-            else  -> ApplicationUiState.StartDestinations.LOGIN
+            else  -> ApplicationUiState.StartDestinations.REGISTER
         }
         updateState {
             it.copy(
