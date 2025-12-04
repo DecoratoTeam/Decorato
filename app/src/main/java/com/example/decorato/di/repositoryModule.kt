@@ -18,14 +18,14 @@ abstract class RepositoryModule {
 
     @Binds
     @Singleton
-    abstract fun bindAuthenticationRepository(
+    abstract fun provideAuthenticationRepository(
         impl: AuthenticationRepositoryImpl
     ): AuthenticationRepository
 
 
     @Binds
     @Singleton
-    abstract fun bindAppPreferencesRepository(
+    abstract fun provideAppPreferencesRepository(
         impl: AppPreferencesRepositoryImpl
     ): AppPreferencesRepository
 

@@ -2,7 +2,8 @@
 <resources>
 
     <style name="Theme.Decorato.splash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">#FAF5F7</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_logo_with_name</item>
+        <item name="windowSplashScreenIconBackgroundColor">#F7F6F3</item>
         <item name="postSplashScreenTheme">@style/Theme.Decorato</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>

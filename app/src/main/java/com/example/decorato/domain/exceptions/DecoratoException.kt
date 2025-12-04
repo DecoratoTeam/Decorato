@@ -23,3 +23,7 @@ class InvalidSessionException : AuthenticationException()
 class AccessDeniedException : AuthenticationException()
 
 class AccessRestrictedException : AuthenticationException()
+
+class EmailAlreadyExistsException : AuthenticationException()
+
+class WeakPasswordException : AuthenticationException()

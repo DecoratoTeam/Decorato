@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.example.decorato.presentation.screens.onBoarding.onboardingScreenRoute
+import com.example.decorato.presentation.screens.register.registerScreenRoute
 
 
 @Composable
@@ -13,5 +14,6 @@ fun NavGraph(
 ) {
     NavHost(navController = navController, startDestination = startDestination) {
         onboardingScreenRoute()
+        registerScreenRoute()
     }
 }
