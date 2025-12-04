@@ -35,11 +35,12 @@ fun GoogleSignInButton(
             .clip(RoundedCornerShape(12.dp))
             .clickable(onClick = onClick),
         color = AppTheme.color.surfaceHigh,
-        border = BorderStroke(1.dp, AppTheme.color.stroke)
+        border = BorderStroke(1.dp, AppTheme.color.stroke),
+        shape = RoundedCornerShape(12.dp)
     ) {
         Row(
             modifier = Modifier
-                .padding(vertical = 16.dp, horizontal = 24. dp),
+                .padding(vertical = 16.dp, horizontal = 24.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
