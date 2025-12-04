@@ -23,9 +23,9 @@ object ButtonDefaults {
     fun brushColors() =
         ButtonBrushColor(
             startColor = AppTheme.color.primary,
-            endColor = AppTheme.color.primaryEnd,
+            endColor = AppTheme.color.secondary,
             secondaryColor = AppTheme.color.primaryVariant,
-            negativeColor = AppTheme.color.redVariant,
+            negativeColor = AppTheme.color.redAccent,
             disableColor = AppTheme.color.disable,
         )
 
