@@ -175,7 +175,7 @@ private fun RegisterScreenContent(
                     text = state.email,
                     onValueChange = interactionListener::onEmailUpdated,
                     hintText = stringResource(R.string.email_hint),
-                    leadingIcon = R.drawable.ic_person,
+                    leadingIcon = R.drawable.ic_mail,
                     keyboardType = KeyboardType.Email,
                     modifier = Modifier
                         .fillMaxWidth()

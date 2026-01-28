@@ -6,10 +6,8 @@ sealed interface Route {
     sealed interface Tab : Route {
         @Serializable
         data object Home : Tab
-
         @Serializable
         data object Generate : Tab
-
         @Serializable
         data object Community : Tab
         @Serializable
