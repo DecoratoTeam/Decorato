@@ -16,16 +16,16 @@ enum class BottomBarItems(
         route = Route.Tab.Home
     ),
 
-    Generate(
+    GENERATE(
         icon = R.drawable.ic_nav_generate,
-        label = R.string.home,
-        route = Route.Tab.Home
+        label = R.string.generate,
+        route = Route.Tab.Generate
     ),
 
-    Community(
+    COMMUNITY(
         icon = R.drawable.ic_nav_community,
-        label = R.string.home,
-        route = Route.Tab.Home
+        label = R.string.community,
+        route = Route.Tab.Community
     ),
 
     PROFILE(
