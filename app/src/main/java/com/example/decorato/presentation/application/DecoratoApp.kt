@@ -35,7 +35,7 @@ fun getStartDestination(startDestination: ApplicationUiState.StartDestinations?)
         ApplicationUiState.StartDestinations.ON_BOARDING -> Route.Onboarding
         ApplicationUiState.StartDestinations.LOGIN -> Route.Login
         ApplicationUiState.StartDestinations.REGISTER -> Route.Register
-        ApplicationUiState.StartDestinations.HOME -> null
+        ApplicationUiState.StartDestinations.HOME -> Route.Tab.Home
         null -> null
     }
 }
@@ -68,16 +68,20 @@ fun DecoratoApp(
                 // --- Onboarding ---
                 is OnboardingEffect.NavigateToRegisterScreen -> navigationManager.toRegister()
                 is OnboardingEffect.NavigateToLoginScreen -> navigationManager.toLogin()
-                is OnboardingEffect.NavigateAsGuest -> activity?.finish()
+                is OnboardingEffect.NavigateAsGuest -> navigationManager.toHome(clearBackStack = true)
 
                 // --- Register ---
-                is RegisterEffect.NavigateToHome -> activity?.finish()
+                is RegisterEffect.NavigateToHome -> navigationManager.toHome(clearBackStack = true)
                 is RegisterEffect.NavigateToLogin -> navigationManager.toLogin()
-                is RegisterEffect.RegistrationSuccess -> activity?.finish()
+                is RegisterEffect.RegistrationSuccess -> {
+
+                }
 
                 // --- Login ---
-                is LoginEffect.LoginSuccess -> activity?.finish()
-                is LoginEffect.NavigateToHome -> activity?.finish()
+                is LoginEffect.LoginSuccess -> {
+
+                }
+                is LoginEffect.NavigateToHome -> navigationManager.toHome(clearBackStack = true)
                 is LoginEffect.NavigateToRegister -> navigationManager.toRegister()
             }
         }
