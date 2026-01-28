@@ -1,0 +1,11 @@
+package com.example.decorato.presentation.screens.generate
+
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.compose.composable
+import com.example.decorato.presentation.navigation.Route
+
+fun NavGraphBuilder.generateScreenRoute() {
+    composable<Route.Tab.Generate> {
+        GenerateScreen()
+    }
+}
