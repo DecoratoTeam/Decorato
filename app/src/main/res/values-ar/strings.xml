@@ -46,6 +46,28 @@
     <string name="weak_password_error">كلمة المرور ضعيفة. يرجى استخدام كلمة مرور أقوى</string>
     <string name="verification_required">يرجى التحقق من بريدك الإلكتروني</string>
 
+    <!-- Login Screen -->
+    <string name="welcome_back">مرحباً بعودتك!</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="continue_as_guest">المتابعة كضيف</string>
+    <string name="login_success">تم تسجيل الدخول بنجاح</string>
+    <string name="forgot_password">هل نسيت كلمة المرور؟</string>
+    <string name="dont_have_account_l">ليس لديك حساب؟</string>
+    <string name="create_account_l">إنشاء حساب</string>
+
+
+
+
+    <!-- Login Errors -->
+    <string name="invalid_credentials_error">اسم المستخدم أو كلمة المرور غير صحيحة</string>
+    <string name="account_disabled_error">تم تعطيل حسابك</string>
+    <string name="invalid_session_error">انتهت صلاحية جلستك. يرجى تسجيل الدخول مرة أخرى</string>
+    <string name="access_denied_error">تم رفض الوصول</string>
+    <string name="access_restricted_error">الوصول مقيد</string>
+    <string name="no_internet_error">لا يوجد اتصال بالإنترنت. يرجى التحقق من شبكتك</string>
+
+
+
     <!-- Network Errors -->
     <string name="no_internet_connection">لا يوجد اتصال بالإنترنت. يرجى التحقق من شبكتك</string>
     <string name="server_error">خطأ في الخادم. يرجى المحاولة لاحقاً</string>

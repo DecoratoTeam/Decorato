@@ -40,14 +40,26 @@ class OnboardingViewModel @Inject constructor(
         }
     }
 
-    override fun onSkipClicked() {
-        sendNewNavigationEffect(OnboardingEffect.NavigateToRegisterScreen)
+    override fun onGetStartedClicked() {
+        tryToExecute(
+            { setOnboardingCompletedUseCase(true) },
+            onSuccess = {
+                sendNewNavigationEffect(OnboardingEffect.NavigateToRegisterScreen)
+            }
+        )
     }
 
-    override fun onGetStartedClicked() {
-        sendNewNavigationEffect(OnboardingEffect.NavigateToRegisterScreen)
+    override fun onSkipClicked() {
+        tryToExecute(
+            { setOnboardingCompletedUseCase(true) },
+            onSuccess = {
+                sendNewNavigationEffect(OnboardingEffect.NavigateToRegisterScreen)
+            }
+        )
     }
-    
+
+
+
     fun setCurrentPage(newIndex: Int) {
         updateState {
             it.copy(
@@ -57,4 +69,3 @@ class OnboardingViewModel @Inject constructor(
         }
     }
 }
-

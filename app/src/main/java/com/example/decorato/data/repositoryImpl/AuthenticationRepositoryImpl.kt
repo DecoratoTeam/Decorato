@@ -2,6 +2,7 @@ package com.example.decorato.data.repositoryImpl
 
 import android.util.Log
 import com.example.decorato.data.remote.api.AuthApi
+import com.example.decorato.data.remote.dto.LoginRequestDto
 import com.example.decorato.data.remote.dto.RegisterRequestDto
 import com.example.decorato.domain.entity.User
 import com.example.decorato.domain.repository.AuthenticationRepository
@@ -44,12 +45,12 @@ class AuthenticationRepositoryImpl @Inject constructor(
                     }
 
                     val user = User(
-                        id = userData?.userId ?: "",
-                        name = userData?.userName ?: name,
-                        email = userData?. email ?: email,
-                        fullName = name,
+                        id = userData?.id ?: "",
+                        name = userData?.userName ?: "",
+                        email = userData?.email ?: email,
+                        fullName = "",
                         token = userData?.token,
-                        refreshToken = userData?. refreshToken
+                        refreshToken = userData?.refreshToken
                     )
 
                     Result.success(user)
@@ -67,6 +68,39 @@ class AuthenticationRepositoryImpl @Inject constructor(
             }
         } catch (e: Exception) {
             Log.e("AuthRepo", "Exception during registration", e)
+            Result.failure(Exception("Network error: ${e.localizedMessage}"))
+        }
+    }
+
+
+    override suspend fun login(email: String, password: String): Result<User> {
+        return try {
+            val request = LoginRequestDto(email = email, password = password)
+            val response = authApi.login(request)
+
+            if (response.isSuccessful) {
+                val body = response.body()
+                if (body?.isSuccess == true) {
+                    val userData = body.data
+                    userData?.token?.let { token ->
+                        setSessionType(SessionType.USER)
+                    }
+                    val user = User(
+                        id = userData?.id ?: "",
+                        name = userData?.userName ?: "",
+                        email = userData?.email ?: email,
+                        fullName = "",
+                        token = userData?.token,
+                        refreshToken = userData?.refreshToken
+                    )
+                    Result.success(user)
+                } else {
+                    Result.failure(Exception(body?.message ?: "Login failed"))
+                }
+            } else {
+                Result.failure(Exception("HTTP Error: ${response.code()}"))
+            }
+        } catch (e: Exception) {
             Result.failure(Exception("Network error: ${e.localizedMessage}"))
         }
     }

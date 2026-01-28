@@ -1,0 +1,9 @@
+# ملفات البناء
+/build/
+/app/build/
+/.gradle/
+/local.properties
+
+# إعدادات Android Studio
+/.idea/
+*.iml

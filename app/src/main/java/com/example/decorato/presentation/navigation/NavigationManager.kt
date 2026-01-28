@@ -55,6 +55,8 @@ class NavigationManager(
         }
     }
 
+
+
     fun toRegister() {
         navController.navigate(Route.Register)
     }
@@ -62,10 +64,6 @@ class NavigationManager(
     fun toResetPassword() {
         navController.navigate(Route.ResetPassword)
     }
-
-
-
-
 
 
 

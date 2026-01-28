@@ -7,7 +7,10 @@ data class ApplicationUiState(
 ){
     enum class StartDestinations{
         HOME,
+        LOGIN,
         REGISTER,
-        ON_BOARDING
+        ON_BOARDING,
+
+
     }
 }

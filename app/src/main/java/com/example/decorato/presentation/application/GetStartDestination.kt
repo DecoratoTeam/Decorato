@@ -8,6 +8,7 @@ fun getStartDestination(startDestinations: ApplicationUiState.StartDestinations?
         ApplicationUiState.StartDestinations.HOME -> Route.Tab.Home
         ApplicationUiState.StartDestinations.REGISTER -> Route.Register
         ApplicationUiState.StartDestinations.ON_BOARDING -> Route.Onboarding
+        ApplicationUiState.StartDestinations.LOGIN -> Route.Login
         null -> null
     }
 }

@@ -20,8 +20,8 @@ data class RegisterResponseDto(
 
 @Serializable
 data class RegisterDataDto(
-    @SerialName("userId")
-    val userId: String? = null,
+    @SerialName("id")
+    val id: String? = null,
 
     @SerialName("userName")
     val userName: String? = null,

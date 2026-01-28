@@ -26,27 +26,29 @@ class ApplicationViewModel @Inject constructor(
             val isOnboardingCompleted = getOnboardingStatusUseCase()
 
             if (!isOnboardingCompleted) {
+// First launch → onboarding
                 updateState {
                     it.copy(
-                        startDestination = ApplicationUiState.StartDestinations.ON_BOARDING,
+                        startDestination = ApplicationUiState.StartDestinations.ON_BOARDING ,
                         isDestinationLoaded = true
+
                     )
                 }
             } else {
-                setNonOnboardingStartDestination()
+                setReturningUserStartDestination()
             }
         }
     }
 
 
-
-    private suspend fun setNonOnboardingStartDestination(){
+    private suspend fun setReturningUserStartDestination() {
         val sessionType = getsSessionType()
+
         val destination = when (sessionType) {
             SessionType.LOGGED_IN -> ApplicationUiState.StartDestinations.HOME
-            SessionType.GUEST -> ApplicationUiState.StartDestinations.HOME
-            else  -> ApplicationUiState.StartDestinations.REGISTER
+            else -> ApplicationUiState.StartDestinations.LOGIN
         }
+
         updateState {
             it.copy(
                 startDestination = destination,
@@ -54,5 +56,4 @@ class ApplicationViewModel @Inject constructor(
             )
         }
     }
-
 }
