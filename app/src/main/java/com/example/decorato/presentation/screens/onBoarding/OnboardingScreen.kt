@@ -48,15 +48,24 @@ fun OnboardingScreen(
         initialPage = state.currentPageIndex,
         pageCount = { OnboardingData.screens.size })
 
+
+
     LaunchedEffect(Unit) {
         onboardingViewModel.effect.collectLatest { effect ->
             when (effect) {
                 is OnboardingEffect.NavigateToRegisterScreen -> {
                     navigationManager.toRegister()
                 }
+                is OnboardingEffect.NavigateToLoginScreen -> {
+                    navigationManager.toLogin()
+                }
+                is OnboardingEffect.NavigateAsGuest -> {
+                    navigationManager.toHome(clearBackStack = true)
+                }
             }
         }
     }
+
 
     LaunchedEffect(pagerState.currentPage) {
         if (state.currentPageIndex != pagerState.currentPage) {
