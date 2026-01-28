@@ -45,6 +45,26 @@
     <string name="weak_password_error">Password is too weak.  Please use a stronger password</string>
     <string name="verification_required">Please verify your email address</string>
 
+    <!-- Login Screen -->
+    <string name="welcome_back">Welcome back to Decòrato</string>
+    <string name="login">Login</string>
+    <string name="continue_as_guest">Continue as Guest</string>
+    <string name="login_success">Login successful</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="dont_have_account_l">Don’t have an account?</string>
+    <string name="create_account_l">Create Account</string>
+
+
+    <!-- Login Errors -->
+    <string name="invalid_credentials_error">Incorrect username or password. Please try again.</string>
+    <string name="account_disabled_error">Your account has been disabled</string>
+    <string name="invalid_session_error">Your session has expired. Please login again</string>
+    <string name="access_denied_error">Access denied</string>
+    <string name="access_restricted_error">Access restricted</string>
+    <string name="no_internet_error">No internet connection. Please check your network</string>
+
+
+
     <!-- Network Errors -->
     <string name="no_internet_connection">No internet connection. Please check your network</string>
     <string name="server_error">Server error. Please try again later</string>

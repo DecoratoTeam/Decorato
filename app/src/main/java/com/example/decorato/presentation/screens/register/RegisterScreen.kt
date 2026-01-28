@@ -100,7 +100,6 @@ fun RegisterScreen(
         interactionListener = viewModel
     )
 }
-
 @Composable
 private fun RegisterScreenContent(
     modifier: Modifier = Modifier,
@@ -271,6 +270,7 @@ private fun RegisterScreenContent(
         }
     }
 }
+
 
 @ThemeAndLocalePreviews
 @PreviewScreenSizes
