@@ -12,6 +12,11 @@ interface AuthenticationRepository {
         email: String,
         password: String
     ): Result<User>
+
+    suspend fun login(
+        email: String,
+        password: String
+    ): Result<User>
     suspend fun getSessionId(): String
     suspend fun setSessionType(sessionType: SessionType)
     suspend fun getSessionType(): SessionType?
