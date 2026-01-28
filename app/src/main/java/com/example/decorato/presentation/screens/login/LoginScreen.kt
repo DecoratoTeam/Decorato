@@ -62,11 +62,11 @@ fun LoginScreen(
         viewModel.effect.collect { effect ->
             when (effect) {
 
-                LoginEffect.NavigateToHome -> navigationManager.toHome()
+                LoginEffect.NavigateToHome -> navigationManager.toHome(clearBackStack = true)
 
                 LoginEffect.NavigateToRegister -> navigationManager.toRegister()
 
-                LoginEffect.NavigateToContinueAsGuest -> navigationManager.toHome()
+                LoginEffect.NavigateToContinueAsGuest -> navigationManager.toHome(clearBackStack = true)
 
                 LoginEffect.NavigateToResetPassword -> navigationManager.toResetPassword()
 
