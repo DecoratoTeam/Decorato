@@ -7,6 +7,8 @@ data class DecoratoTextStyle(
     val title: SizedTextStyle,
     val body: SizedTextStyle,
     val label: SizedTextStyle,
+    val appName: SizedTextStyle,
+    val appLogo: SizedTextStyle,
 )
 
 data class SizedTextStyle(
