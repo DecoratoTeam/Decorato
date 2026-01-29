@@ -50,7 +50,6 @@ class LoginViewModel @Inject constructor(
             },
             onSuccess = { result ->
                 result.onSuccess {
-                    sendNewNavigationEffect(LoginEffect.LoginSuccess)
                     sendNewNavigationEffect(LoginEffect.NavigateToHome)
                 }.onFailure { err ->
                     updateState { it.copy(error = err.message) }
