@@ -1,3 +1,5 @@
+package com.example.decorato.presentation.screens.login
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -38,13 +40,13 @@ import com.example.decorato.presentation.components.TextField
 import com.example.decorato.presentation.components.TextWithClickablePart
 import com.example.decorato.presentation.components.buttons.ButtonDefaults
 import com.example.decorato.presentation.components.buttons.ConfirmButton
+import com.example.decorato.presentation.screens.login.component.GuestButton
 import com.example.decorato.presentation.screens.login.component.getLoginErrorStateMessage
 import com.example.decorato.presentation.screens.register.component.getPasswordTextFieldIcon
 import com.example.decorato.presentation.theme.AppTheme
 import com.example.decorato.presentation.theme.DecoratoTheme
 import com.example.decorato.presentation.viewModel.login.LoginInteractionListener
 import com.example.decorato.presentation.viewModel.login.LoginUiState
-import com.example.decorato.presentation.theme.colors.DecoratoAppColors
 import com.example.decorato.presentation.utils.ThemeAndLocalePreviews
 
 

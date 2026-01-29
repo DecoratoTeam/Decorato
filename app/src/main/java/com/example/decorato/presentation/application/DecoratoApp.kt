@@ -69,17 +69,6 @@ fun DecoratoApp(
                 is OnboardingEffect.NavigateToLoginScreen -> navigationManager.toLogin()
                 is OnboardingEffect.NavigateAsGuest -> navigationManager.toHome(clearBackStack = true)
 
-                // --- Register ---
-                is RegisterEffect.NavigateToHome -> navigationManager.toHome(clearBackStack = true)
-                is RegisterEffect.NavigateToLogin -> navigationManager.toLogin()
-                is RegisterEffect.RegistrationSuccess -> {}
-
-                // --- Login ---
-                is LoginEffect.LoginSuccess -> {}
-                is LoginEffect.NavigateToHome -> navigationManager.toHome(clearBackStack = true)
-                is LoginEffect.NavigateToRegister -> navigationManager.toRegister()
-                is LoginEffect.NavigateToResetPassword -> navigationManager.toResetPassword()
-                is LoginEffect.NavigateToContinueAsGuest -> navigationManager.toHome(clearBackStack = true)
             }
         }
     }
