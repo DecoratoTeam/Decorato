@@ -3,8 +3,10 @@ package com.example.decorato.di
 
 import com.example.decorato.data.repositoryImpl.AppPreferencesRepositoryImpl
 import com.example.decorato.data.repositoryImpl.AuthenticationRepositoryImpl
+import com.example.decorato.data.repositoryImpl.DesignRepositoryImpl
 import com.example.decorato.domain.repository.AppPreferencesRepository
 import com.example.decorato.domain.repository.AuthenticationRepository
+import com.example.decorato.domain.repository.DesignRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -15,6 +17,11 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
 
+    @Binds
+    @Singleton
+    abstract fun bindDesignRepository(
+        designRepositoryImpl: DesignRepositoryImpl
+    ): DesignRepository
 
     @Binds
     @Singleton
