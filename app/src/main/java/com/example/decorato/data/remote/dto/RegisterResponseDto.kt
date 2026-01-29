@@ -14,6 +14,9 @@ data class RegisterResponseDto(
     @SerialName("data")
     val data: RegisterDataDto? = null,
 
+    @SerialName("error")
+    val errorCode: Int? = null,
+
     @SerialName("errors")
     val errors: List<String>? = null
 )
