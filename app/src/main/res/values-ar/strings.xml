@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ديكوروتو</string>
+    <string name="decorato_description">قم بإنشاء منزل أحلامك</string>
+
+    <!-- - Offline messages  -->
+    <string name="offline_message">عذراً! لا يوجد إنترنت</string>
+    <string name="offline_description">يبدو أنك غير متصل بالإنترنت. دعنا نعيد الاتصال حتى لا تفوتك أي فرصة!</string>
+    <string name="try_again">حاول ثانية</string>
+    <!-- -   -->
 
     <!-- - OnBoarding messages  -->
     <string name="skip">تخطي</string>
