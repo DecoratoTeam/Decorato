@@ -3,6 +3,7 @@ package com.example.decorato.presentation.viewModel.home
 
 import com.example.decorato.domain.useCase.GetPopularDesignsUseCase
 import com.example.decorato.domain.useCase.GetRecentlyWatchedDesignsUseCase
+import com.example.decorato.domain.useCase.GetStylesUseCase
 import com.example.decorato.presentation.viewModel.shared.BaseViewModel
 import com.example.decorato.presentation.viewModel.utils.dispatcher.DispatcherProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,6 +13,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val getPopularDesignsUseCase: GetPopularDesignsUseCase,
     private val getRecentlyWatchedDesignsUseCase: GetRecentlyWatchedDesignsUseCase,
+    private val getStylesUseCase: GetStylesUseCase,
     private val homeUiStateMapper: HomeUiStateMapper,
     dispatcherProvider: DispatcherProvider
 ) : BaseViewModel<HomeUiState, HomeEffect>(
@@ -124,4 +126,46 @@ class HomeViewModel @Inject constructor(
         resetErrorStateToNull()
         loadHomeData()
     }
+
+    private fun loadStyles() {
+        updateState { currentState ->
+            currentState.copy(
+                styleSectionUiState = currentState.styleSectionUiState.copy(
+                    isLoading = true
+                )
+            )
+        }
+
+        tryToExecute(
+            action = { getStylesUseCase() },
+            onSuccess = { styles ->
+                updateState { currentState ->
+                    currentState.copy(
+                        styleSectionUiState = homeUiStateMapper.toStyleSectionUiState(
+                            styles = styles,
+                            isLoading = false
+                        ),
+                        isLoading = false
+                    )
+                }
+            },
+            onError = { exception ->
+                updateState { currentState ->
+                    currentState.copy(
+                        styleSectionUiState = currentState.styleSectionUiState.copy(
+                            isLoading = false
+                        ),
+                        isLoading = false
+                    )
+                }
+                sendNewEffect(HomeEffect.ShowErrorSnackBar("Failed to load styles"))
+            },
+            withAutoUpdateErrorState = true
+        )
+    }
+
+    override fun onClickStyleItem(styleId: String) {
+        sendNewEffect(HomeEffect.NavigateToStyleDetails(styleId))
+    }
+
 }

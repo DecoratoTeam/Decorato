@@ -56,6 +56,10 @@ class NavigationManager(
         navController.navigate("recently_watched")
     }
 
+    fun toStyleDetails(styleId: String) {
+        navController.navigate("style_details/$styleId")
+    }
+
     fun navigateBack() {
         navController.navigateUp()
     }

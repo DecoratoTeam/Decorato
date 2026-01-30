@@ -37,6 +37,8 @@ import com.example.decorato.presentation.components.NoNetworkContainer
 import com.example.decorato.presentation.screens.home.component.HomeAppBar
 import com.example.decorato.presentation.screens.home.sections.popularSection
 import com.example.decorato.presentation.screens.home.sections.recentlyWatchedSection
+import com.example.decorato.presentation.screens.home.sections.styleSection
+import com.example.decorato.presentation.theme.AppTheme
 import com.example.decorato.presentation.theme.DecoratoTheme
 import com.example.decorato.presentation.utils.ThemeAndLocalePreviews
 import com.example.decorato.presentation.viewModel.home.HomeEffect
@@ -64,6 +66,9 @@ fun HomeScreen(
                 }
                 is HomeEffect.NavigateToAllRecentlyWatched -> {
                     navigationManager.toAllRecentlyWatched()
+                }
+                is HomeEffect.NavigateToStyleDetails -> {
+                    navigationManager.toStyleDetails(effect.styleId)
                 }
                 is HomeEffect.NavigateToTab -> {
                     // Handle tab navigation
@@ -103,7 +108,7 @@ private fun HomeScreenContent(
     }
 
     val appBarColor by animateColorAsState(
-        targetValue = if (scrollOffset > 8) Color.White else Color.Transparent,
+        targetValue = if (scrollOffset > 8) AppTheme.color.surface else Color.Transparent,
         animationSpec = tween(800),
         label = "AppBarScrollColor"
     )
@@ -141,19 +146,23 @@ private fun HomeScreenContent(
                 modifier = modifier.fillMaxSize(),
                 state = lazyListState,
             ) {
-                // Popular Section
                 popularSection(
                     state = state.popularSectionUiState,
                     onClickDesignItem = interactionListener::onClickPopularItem,
                     isVisible = errorState.isNull()
                 )
 
-                // Recently Watched Section
                 recentlyWatchedSection(
                     state = state.recentlyWatchedSectionUiState,
                     isVisible = state.recentlyWatchedSectionUiState.items.isNotEmpty(),
                     onClickDesignItem = interactionListener::onClickRecentlyWatchedItem,
                     onClickShowAll = interactionListener::onClickShowAllRecentlyWatched
+                )
+
+                styleSection(
+                    state = state.styleSectionUiState,
+                    isVisible = errorState.isNull() && state.styleSectionUiState.items.isNotEmpty(),
+                    onClickStyleItem = interactionListener::onClickStyleItem
                 )
             }
 
@@ -164,7 +173,7 @@ private fun HomeScreenContent(
                     }
                     .background(appBarColor)
                     .statusBarsPadding()
-                    .padding(horizontal = 16.dp, vertical = 24.dp)
+                    .padding(horizontal = 16.dp, vertical = 16.dp)
             )
         }
     }
@@ -181,6 +190,7 @@ private fun HomeScreenPreview() {
                 override fun onClickRetryLoading() {}
                 override fun onClickPopularItem(designId: String) {}
                 override fun onClickRecentlyWatchedItem(designId: String) {}
+                override fun onClickStyleItem(styleId: String) {}
                 override fun onClickShowAllRecentlyWatched() {}
                 override fun onTabSelected(tabIndex: Int) {}
             }

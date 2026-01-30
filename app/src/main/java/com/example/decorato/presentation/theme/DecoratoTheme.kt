@@ -30,7 +30,7 @@ fun DecoratoTheme(
     val view = LocalView.current
 
     if (activity != null) {
-        activity.window.navigationBarColor = theme.surface.toArgb()
+        activity.window.navigationBarColor = theme.blurOverly.toArgb()
         WindowCompat.getInsetsController(activity.window, view).isAppearanceLightStatusBars =
             !isDarkTheme
     }

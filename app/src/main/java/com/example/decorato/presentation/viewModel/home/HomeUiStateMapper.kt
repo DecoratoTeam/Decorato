@@ -2,10 +2,13 @@ package com.example.decorato.presentation.viewModel.home
 
 import com.example.decorato.domain.entity.Design
 import com.example.decorato.domain.entity.RecentlyWatchedDesign
+import com.example.decorato.domain.entity.Style
 import com.example.decorato.presentation.viewModel.home.section.PopularItemUiState
 import com.example.decorato.presentation.viewModel.home.section.PopularSectionUiState
 import com.example.decorato.presentation.viewModel.home.section.RecentlyWatchedItemUiState
 import com.example.decorato.presentation.viewModel.home.section.RecentlyWatchedSectionUiState
+import com.example.decorato.presentation.viewModel.home.section.StyleItemUiState
+import com.example.decorato.presentation.viewModel.home.section.StyleSectionUiState
 import javax.inject.Inject
 
 class HomeUiStateMapper @Inject constructor() {
@@ -47,6 +50,24 @@ class HomeUiStateMapper @Inject constructor() {
             location = design.location,
             imageUrl = design.imageUrl,
             category = design.category
+        )
+    }
+
+    fun toStyleSectionUiState(
+        styles: List<Style>,
+        isLoading: Boolean = false
+    ): StyleSectionUiState {
+        return StyleSectionUiState(
+            items = styles.map { toStyleItemUiState(it) },
+            isLoading = isLoading
+        )
+    }
+
+    fun toStyleItemUiState(style: Style): StyleItemUiState {
+        return StyleItemUiState(
+            id = style.id,
+            name = style.name,
+            imageUrl = style.imageUrl
         )
     }
 }
