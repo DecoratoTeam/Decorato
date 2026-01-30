@@ -112,6 +112,55 @@ internal val defaultTextStyle =
                         lineHeight = 16.sp,
                     ),
             ),
+        appName =
+            SizedTextStyle(
+                large =
+                    TextStyle(
+                        fontFamily = poppins,
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 14.sp,
+                        letterSpacing = 0.25.sp,
+                        lineHeight = 20.sp,
+                    ),
+                medium =
+                    TextStyle(
+                        fontFamily = poppins,
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 14.sp,
+                        lineHeight = 20.sp,
+                    ),
+                small =
+                    TextStyle(
+                        fontFamily = poppins,
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 14.sp,
+                        lineHeight = 30.sp,
+                    ),
+            ),
+        appLogo =
+            SizedTextStyle(
+                large =
+                    TextStyle(
+                        fontFamily = poppins,
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 24.sp,
+                        lineHeight = 20.sp,
+                    ),
+                medium =
+                    TextStyle(
+                        fontFamily = poppins,
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 24.sp,
+                        lineHeight = 20.sp,
+                    ),
+                small =
+                    TextStyle(
+                        fontFamily = poppins,
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 24.sp,
+                        lineHeight = 20.sp,
+                    ),
+            ),
     )
 
 

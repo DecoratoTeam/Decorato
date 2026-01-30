@@ -77,6 +77,7 @@ dependencies {
     androidxRuntimeDependencies()
     roomDependencies()
     networkDependencies()
+    imageLoadingDependencies()
 }
 
 private fun DependencyHandlerScope.navigationDependencies() {
@@ -157,4 +158,8 @@ private fun DependencyHandlerScope.networkDependencies() {
     implementation(libs.retrofit.kotlinx.serialization)
     implementation(libs.okhttp)
     implementation(libs.okhttp.logging.interceptor)
+}
+
+private fun DependencyHandlerScope.imageLoadingDependencies() {
+    implementation(libs.coil.compose)
 }

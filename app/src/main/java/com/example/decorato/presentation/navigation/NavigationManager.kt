@@ -48,6 +48,22 @@ class NavigationManager(
         }
     }
 
+    fun toDesignDetails(designId: String) {
+        navController.navigate("design_details/$designId")
+    }
+
+    fun toAllRecentlyWatched() {
+        navController.navigate("recently_watched")
+    }
+
+    fun navigateBack() {
+        navController.navigateUp()
+    }
+
+    fun popBackStack() {
+        navController.popBackStack()
+    }
+
     // --- Auth & Onboarding ---
     fun toLogin(clearBackStack: Boolean = true) {
         navController.navigate(Route.Login) {

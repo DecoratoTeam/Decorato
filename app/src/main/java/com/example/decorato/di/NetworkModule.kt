@@ -1,6 +1,7 @@
 package com.example.decorato.di
 
 import com.example.decorato.data.remote.api.AuthApi
+import com.example.decorato.data.remote.api.DesignApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -75,5 +76,12 @@ object NetworkModule {
     @Singleton
     fun provideAuthApi(retrofit: Retrofit): AuthApi {
         return retrofit.create(AuthApi::class.java)
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideDesignApiService(retrofit: Retrofit): DesignApiService {
+        return retrofit.create(DesignApiService::class.java)
     }
 }

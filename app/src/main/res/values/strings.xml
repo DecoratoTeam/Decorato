@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">Decorato</string>
+    <string name="decorato_description">Create your dream home</string>
+
+    <!-- - Offline messages  -->
+    <string name="offline_message">Oops! No Internet</string>
+    <string name="offline_description">Looks like you are offline. Let is reconnect so you do not miss out!</string>
+    <string name="try_again">Try Again</string>
+    <!-- -   -->
 
     <!-- - OnBoarding messages  -->
     <string name="skip">Skip</string>
@@ -87,4 +94,8 @@
     <string name="registration_failed">Registration failed. Please try again. </string>
     <!-- -   -->
 
+
+    <!-- Home Screen -->
+    <string name="popular">Popular</string>
+    <!-- -   -->
 </resources>
