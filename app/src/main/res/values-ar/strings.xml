@@ -100,6 +100,7 @@
     <!-- Home Screen -->
     <string name="popular">الأكثر شهرة</string>
     <string name="recentlyWatched">شاهدته مؤخراً</string>
+    <string name="style">الأنماط</string>
     <!-- -   -->
 
 </resources>

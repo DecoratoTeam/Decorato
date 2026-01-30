@@ -67,7 +67,8 @@ class HomeUiStateMapper @Inject constructor() {
         return StyleItemUiState(
             id = style.id,
             name = style.name,
-            imageUrl = style.imageUrl
+            imageUrl = style.imageUrl,
+            imageRes = style.imageRes
         )
     }
 }
