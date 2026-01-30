@@ -22,7 +22,7 @@ import com.example.decorato.presentation.components.RoundedShimmerPlaceholder
 import kotlin.math.absoluteValue
 
 @SuppressLint("RestrictedApi", "UnusedBoxWithConstraintsScope")
-fun LazyListScope.popularSectionPlaceholder() {
+fun LazyListScope.popularPlaceholder() {
     item {
         Row(
             modifier = Modifier

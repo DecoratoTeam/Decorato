@@ -1,14 +1,12 @@
 package com.example.decorato.presentation.screens.home.sections
 
 import android.annotation.SuppressLint
-import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.interaction.DragInteraction
 import androidx.compose.foundation.interaction.PressInteraction
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -18,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
@@ -32,8 +31,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -41,7 +40,11 @@ import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.unit.sp
 import com.example.decorato.R
 import com.example.decorato.presentation.screens.home.component.PopularDesignCard
-import com.example.decorato.presentation.screens.home.sections.placeHolder.popularSectionPlaceholder
+import com.example.decorato.presentation.screens.home.sections.placeHolder.popularPlaceholder
+import com.example.decorato.presentation.theme.AppTheme
+import com.example.decorato.presentation.theme.DecoratoTheme
+import com.example.decorato.presentation.utils.ThemeAndLocalePreviews
+import com.example.decorato.presentation.viewModel.home.section.PopularItemUiState
 import com.example.decorato.presentation.viewModel.home.section.PopularSectionUiState
 import kotlinx.coroutines.delay
 import kotlin.math.absoluteValue
@@ -54,45 +57,33 @@ fun LazyListScope.popularSection(
 ) {
     if (isVisible) {
         if (state.isLoading) {
-            popularSectionPlaceholder()
+            popularPlaceholder()
         } else if (state.items.isEmpty()) {
             return
         } else {
             item {
-                Box {
-                    val pagerState = rememberPagerState(
-                        initialPage = Int.MAX_VALUE / 2,
-                        pageCount = { Int.MAX_VALUE }
-                    )
+                val pagerState = rememberPagerState(
+                    initialPage = Int.MAX_VALUE / 2,
+                    pageCount = { Int.MAX_VALUE }
+                )
 
-                    Crossfade(
-                        targetState = pagerState.currentPage,
-                        animationSpec = tween(500, easing = FastOutSlowInEasing),
-                        label = "background_crossfade"
-                    ) { page ->
-                        BlurredDesignBackground(
-                            imageUrl = state.items[page % state.items.size].imageUrl,
-                            modifier = Modifier
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 16.dp)
+                ) {
+                    PopularSectionTitle()
+
+                    AutoScrollingPager(pagerState)
+
+                    BoxWithConstraints {
+                        val screenWidth = maxWidth
+                        PopularDesignPager(
+                            pagerState = pagerState,
+                            state = state,
+                            screenWidth = screenWidth,
+                            onClickDesignItem = onClickDesignItem
                         )
-                    }
-
-                    Column(
-                        modifier = Modifier
-                            .padding(top = 16.dp)
-                    ) {
-                        PopularSectionTitle()
-
-                        AutoScrollingPager(pagerState)
-
-                        BoxWithConstraints {
-                            val screenWidth = maxWidth
-                            PopularDesignPager(
-                                pagerState = pagerState,
-                                state = state,
-                                screenWidth = screenWidth,
-                                onClickDesignItem = onClickDesignItem
-                            )
-                        }
                     }
                 }
             }
@@ -110,16 +101,16 @@ private fun PopularSectionTitle(modifier: Modifier = Modifier) {
             .padding(bottom = 12.dp)
     ) {
         Text(
-            text = "Popular",
+            text = stringResource(R.string.popular),
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
-            color = Color(0xFF1A1A1A)
+            color = AppTheme.color.titleL
         )
         Spacer(modifier = Modifier.width(8.dp))
         Icon(
             painter = painterResource(id = R.drawable.ic_fire),
             contentDescription = "Popular",
-            tint = Color(0xFF00CDB8),
+            tint = AppTheme.color.primary,
             modifier = Modifier.size(24.dp)
         )
     }
@@ -212,16 +203,54 @@ private fun PopularDesignPager(
     }
 }
 
+// ==================== PREVIEW ====================
+
+@ThemeAndLocalePreviews
 @Composable
-private fun BlurredDesignBackground(
-    imageUrl: String,
-    modifier: Modifier = Modifier
-) {
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .size(300.dp)
-    ) {
-        // TODO: Add blurred background image
+private fun PopularSectionPreview() {
+    val dummyDesigns = List(3) {
+        PopularItemUiState(
+            id = "${it + 1}",
+            title = when(it) {
+                0 -> "Modern Kitchen"
+                1 -> "Cozy Living Room"
+                else -> "Minimalist Bedroom"
+            },
+            description = when(it) {
+                0 -> "Design that inspires your everyday moments"
+                1 -> "Comfort meets style in perfect harmony"
+                else -> "Simplicity and elegance combined"
+            },
+            imageUrl = "https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=500",
+            category = when(it) {
+                0 -> "Kitchen"
+                1 -> "Living Room"
+                else -> "Bedroom"
+            }
+        )
+    }
+
+    DecoratoTheme {
+        LazyColumn {
+            popularSection(
+                state = PopularSectionUiState(items = dummyDesigns, isLoading = false),
+                onClickDesignItem = {},
+                isVisible = true
+            )
+        }
+    }
+}
+
+@ThemeAndLocalePreviews
+@Composable
+private fun PopularSectionLoadingPreview() {
+    DecoratoTheme {
+        LazyColumn {
+            popularSection(
+                state = PopularSectionUiState(items = emptyList(), isLoading = true),
+                onClickDesignItem = {},
+                isVisible = true
+            )
+        }
     }
 }

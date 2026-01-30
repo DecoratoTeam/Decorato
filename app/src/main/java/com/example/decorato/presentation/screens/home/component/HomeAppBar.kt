@@ -28,7 +28,7 @@ fun HomeAppBar(
         title = {
             Text(
                 text = stringResource(R.string.app_name),
-                color = AppTheme.color.titleL,
+                color = AppTheme.color.secondary,
                 style = AppTheme.textStyle.appName.large,
             )
         },
