@@ -97,5 +97,6 @@
 
     <!-- Home Screen -->
     <string name="popular">Popular</string>
+    <string name="recentlyWatched">Recently Watched</string>
     <!-- -   -->
 </resources>

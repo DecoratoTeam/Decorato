@@ -37,6 +37,7 @@ import com.example.decorato.presentation.components.NoNetworkContainer
 import com.example.decorato.presentation.screens.home.component.HomeAppBar
 import com.example.decorato.presentation.screens.home.sections.popularSection
 import com.example.decorato.presentation.screens.home.sections.recentlyWatchedSection
+import com.example.decorato.presentation.theme.AppTheme
 import com.example.decorato.presentation.theme.DecoratoTheme
 import com.example.decorato.presentation.utils.ThemeAndLocalePreviews
 import com.example.decorato.presentation.viewModel.home.HomeEffect
@@ -103,7 +104,7 @@ private fun HomeScreenContent(
     }
 
     val appBarColor by animateColorAsState(
-        targetValue = if (scrollOffset > 8) Color.White else Color.Transparent,
+        targetValue = if (scrollOffset > 8) AppTheme.color.surface else Color.Transparent,
         animationSpec = tween(800),
         label = "AppBarScrollColor"
     )
@@ -164,7 +165,7 @@ private fun HomeScreenContent(
                     }
                     .background(appBarColor)
                     .statusBarsPadding()
-                    .padding(horizontal = 16.dp, vertical = 24.dp)
+                    .padding(horizontal = 16.dp, vertical = 16.dp)
             )
         }
     }
