@@ -97,5 +97,8 @@
     <string name="registration_failed">فشل التسجيل. يرجى المحاولة مرة أخرى</string>
     <!-- -   -->
 
+    <!-- Home Screen -->
+    <string name="popular">Popular</string>
+    <!-- -   -->
 
 </resources>
