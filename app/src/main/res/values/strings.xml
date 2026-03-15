@@ -99,5 +99,6 @@
     <string name="popular">Popular</string>
     <string name="recentlyWatched">Recently Watched</string>
     <string name="style">Style</string>
+    <string name="roomType">Room Type</string>
     <!-- -   -->
 </resources>

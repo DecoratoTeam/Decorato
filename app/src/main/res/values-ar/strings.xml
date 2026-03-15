@@ -101,6 +101,7 @@
     <string name="popular">الأكثر شهرة</string>
     <string name="recentlyWatched">شاهدته مؤخراً</string>
     <string name="style">الأنماط</string>
+    <string name="roomType">نوع الغرفه</string>
     <!-- -   -->
 
 </resources>
