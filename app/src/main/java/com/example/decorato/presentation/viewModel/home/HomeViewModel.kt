@@ -1,9 +1,10 @@
 package com.example.decorato.presentation.viewModel.home
 
-
 import com.example.decorato.domain.useCase.GetPopularDesignsUseCase
 import com.example.decorato.domain.useCase.GetRecentlyWatchedDesignsUseCase
 import com.example.decorato.domain.useCase.GetStylesUseCase
+import com.example.decorato.domain.useCase.GetRoomTypesUseCase
+import com.example.decorato.domain.useCase.GetRoomDesignsByTypeUseCase
 import com.example.decorato.presentation.viewModel.shared.BaseViewModel
 import com.example.decorato.presentation.viewModel.utils.dispatcher.DispatcherProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,6 +15,8 @@ class HomeViewModel @Inject constructor(
     private val getPopularDesignsUseCase: GetPopularDesignsUseCase,
     private val getRecentlyWatchedDesignsUseCase: GetRecentlyWatchedDesignsUseCase,
     private val getStylesUseCase: GetStylesUseCase,
+    private val getRoomTypesUseCase: GetRoomTypesUseCase,
+    private val getRoomDesignsByTypeUseCase: GetRoomDesignsByTypeUseCase,
     private val homeUiStateMapper: HomeUiStateMapper,
     dispatcherProvider: DispatcherProvider
 ) : BaseViewModel<HomeUiState, HomeEffect>(
@@ -29,6 +32,8 @@ class HomeViewModel @Inject constructor(
         updateState { it.copy(isLoading = true) }
         loadPopularDesigns()
         loadRecentlyWatchedDesigns()
+        loadStyles()
+        loadRoomTypes()
     }
 
     private fun loadPopularDesigns() {
@@ -105,28 +110,6 @@ class HomeViewModel @Inject constructor(
         )
     }
 
-    override fun onClickPopularItem(designId: String) {
-        sendNewNavigationEffect(HomeEffect.NavigateToDesignDetails(designId))
-    }
-
-    override fun onClickRecentlyWatchedItem(designId: String) {
-        sendNewNavigationEffect(HomeEffect.NavigateToDesignDetails(designId))
-    }
-
-    override fun onClickShowAllRecentlyWatched() {
-        sendNewNavigationEffect(HomeEffect.NavigateToAllRecentlyWatched)
-    }
-
-    override fun onTabSelected(tabIndex: Int) {
-        updateState { it.copy(selectedBottomNavTab = tabIndex) }
-        sendNewNavigationEffect(HomeEffect.NavigateToTab(tabIndex))
-    }
-
-    override fun onClickRetryLoading() {
-        resetErrorStateToNull()
-        loadHomeData()
-    }
-
     private fun loadStyles() {
         updateState { currentState ->
             currentState.copy(
@@ -164,8 +147,120 @@ class HomeViewModel @Inject constructor(
         )
     }
 
-    override fun onClickStyleItem(styleId: String) {
-        sendNewEffect(HomeEffect.NavigateToStyleDetails(styleId))
+    private fun loadRoomTypes() {
+        updateState { currentState ->
+            currentState.copy(
+                roomTypeSectionUiState = currentState.roomTypeSectionUiState.copy(
+                    isLoading = true
+                )
+            )
+        }
+
+        tryToExecute(
+            action = { getRoomTypesUseCase() },
+            onSuccess = { roomTypes ->
+                updateState { currentState ->
+                    currentState.copy(
+                        roomTypeSectionUiState = homeUiStateMapper.toRoomTypeSectionUiState(
+                            roomTypes = roomTypes,
+                            isLoading = false
+                        ),
+                        isLoading = false
+                    )
+                }
+                loadRoomDesignsByType(roomTypes.firstOrNull()?.id ?: "1")
+            },
+            onError = { exception ->
+                updateState { currentState ->
+                    currentState.copy(
+                        roomTypeSectionUiState = currentState.roomTypeSectionUiState.copy(
+                            isLoading = false
+                        ),
+                        isLoading = false
+                    )
+                }
+                sendNewEffect(HomeEffect.ShowErrorSnackBar("Failed to load room types"))
+            },
+            withAutoUpdateErrorState = true
+        )
     }
 
+    private fun loadRoomDesignsByType(roomTypeId: String) {
+        updateState { currentState ->
+            currentState.copy(
+                roomDesignsSectionUiState = currentState.roomDesignsSectionUiState.copy(
+                    isLoading = true
+                )
+            )
+        }
+
+        tryToExecute(
+            action = { getRoomDesignsByTypeUseCase(roomTypeId) },
+            onSuccess = { designs ->
+                updateState { currentState ->
+                    currentState.copy(
+                        roomDesignsSectionUiState = homeUiStateMapper.toRoomDesignsSectionUiState(
+                            roomDesigns = designs,
+                            isLoading = false
+                        )
+                    )
+                }
+            },
+            onError = { exception ->
+                updateState { currentState ->
+                    currentState.copy(
+                        roomDesignsSectionUiState = currentState.roomDesignsSectionUiState.copy(
+                            isLoading = false
+                        )
+                    )
+                }
+                sendNewEffect(HomeEffect.ShowErrorSnackBar("Failed to load room designs"))
+            },
+            withAutoUpdateErrorState = true
+        )
+    }
+
+    override fun onClickPopularItem(designId: String) {
+        sendNewNavigationEffect(HomeEffect.NavigateToDesignDetails(designId))
+    }
+
+    override fun onClickRecentlyWatchedItem(designId: String) {
+        sendNewNavigationEffect(HomeEffect.NavigateToDesignDetails(designId))
+    }
+
+    override fun onClickStyleItem(styleId: String) {
+        sendNewNavigationEffect(HomeEffect.NavigateToStyleDetails(styleId))
+    }
+
+    override fun onClickShowAllRecentlyWatched() {
+        sendNewNavigationEffect(HomeEffect.NavigateToAllRecentlyWatched)
+    }
+
+    override fun onTabSelected(tabIndex: Int) {
+        updateState { it.copy(selectedBottomNavTab = tabIndex) }
+        sendNewNavigationEffect(HomeEffect.NavigateToTab(tabIndex))
+    }
+
+    override fun onClickRetryLoading() {
+        resetErrorStateToNull()
+        loadHomeData()
+    }
+
+    override fun onRoomTypeSelected(roomTypeId: String) {
+        updateState { currentState ->
+            currentState.copy(
+                roomTypeSectionUiState = currentState.roomTypeSectionUiState.copy(
+                    selectedRoomTypeId = roomTypeId,
+                    items = currentState.roomTypeSectionUiState.items.map { item ->
+                        item.copy(isSelected = item.id == roomTypeId)
+                    }
+                )
+            )
+        }
+        loadRoomDesignsByType(roomTypeId)
+    }
+
+    override fun onClickRoomDesign(designId: String) {
+        sendNewNavigationEffect(HomeEffect.NavigateToDesignDetails(designId))
+    }
 }

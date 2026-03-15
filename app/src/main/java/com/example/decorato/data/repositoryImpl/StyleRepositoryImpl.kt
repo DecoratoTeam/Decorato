@@ -9,7 +9,6 @@ import javax.inject.Inject
 class StyleRepositoryImpl @Inject constructor() : StyleRepository {
 
     override suspend fun getStyles(): List<Style> {
-        delay(800) // Simulate network delay
         return listOf(
             Style(
                 id = "1",
