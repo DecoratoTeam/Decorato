@@ -100,5 +100,6 @@
     <string name="recentlyWatched">Recently Watched</string>
     <string name="style">Style</string>
     <string name="roomType">Room Type</string>
+    <string name="back_to_menu">Back to menu</string>
     <!-- -   -->
 </resources>
