@@ -5,11 +5,13 @@ import com.example.decorato.data.repositoryImpl.AppPreferencesRepositoryImpl
 import com.example.decorato.data.repositoryImpl.AuthenticationRepositoryImpl
 import com.example.decorato.data.repositoryImpl.DesignRepositoryImpl
 import com.example.decorato.data.repositoryImpl.RoomTypeRepositoryImpl
+import com.example.decorato.data.repositoryImpl.StyleDetailsRepositoryImpl
 import com.example.decorato.data.repositoryImpl.StyleRepositoryImpl
 import com.example.decorato.domain.repository.AppPreferencesRepository
 import com.example.decorato.domain.repository.AuthenticationRepository
 import com.example.decorato.domain.repository.DesignRepository
 import com.example.decorato.domain.repository.RoomTypeRepository
+import com.example.decorato.domain.repository.StyleDetailsRepository
 import com.example.decorato.domain.repository.StyleRepository
 import dagger.Binds
 import dagger.Module
@@ -51,4 +53,12 @@ abstract class RepositoryModule {
     abstract fun provideRoomTypeRepository(
         impl: RoomTypeRepositoryImpl
     ): RoomTypeRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindStyleDetailsRepository(
+        impl: StyleDetailsRepositoryImpl
+    ): StyleDetailsRepository
+
+
 }
