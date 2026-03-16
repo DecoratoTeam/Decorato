@@ -102,6 +102,7 @@
     <string name="recentlyWatched">شاهدته مؤخراً</string>
     <string name="style">الأنماط</string>
     <string name="roomType">نوع الغرفه</string>
+    <string name="back_to_menu">العوده الي الصفحه الاساسية</string>
     <!-- -   -->
 
 </resources>

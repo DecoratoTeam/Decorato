@@ -5,6 +5,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.example.decorato.presentation.screens.community.communityScreenRoute
 import com.example.decorato.presentation.screens.generate.generateScreenRoute
+import com.example.decorato.presentation.screens.home.detailsScreen.designDetailsScreenRoute
+import com.example.decorato.presentation.screens.home.detailsScreen.styleDetailsScreenRoute
 import com.example.decorato.presentation.screens.home.homeScreenRoute
 import com.example.decorato.presentation.screens.login.loginScreenRoute
 import com.example.decorato.presentation.screens.onBoarding.onboardingScreenRoute
@@ -27,5 +29,8 @@ fun NavGraph(
         generateScreenRoute()
         communityScreenRoute()
         profileScreenRoute()
+
+        styleDetailsScreenRoute()
+        designDetailsScreenRoute()
     }
 }

@@ -5,6 +5,7 @@ import com.example.decorato.data.remote.dto.DesignDto
 import com.example.decorato.data.remote.dto.RecentlyWatchedDesignDto
 import com.example.decorato.domain.entity.Design
 import com.example.decorato.domain.entity.RecentlyWatchedDesign
+import com.example.decorato.domain.entity.RoomDesign
 import javax.inject.Inject
 
 class DesignMapper @Inject constructor() {
@@ -28,6 +29,15 @@ class DesignMapper @Inject constructor() {
             imageUrl = dto.imageUrl,
             category = dto.category,
             watchedAt = dto.watchedAt
+        )
+    }
+
+    fun mapToRoomDesign(dto: DesignDto): RoomDesign {
+        return RoomDesign(
+            id = dto.id,
+            title = dto.title,
+            imageUrl = dto.imageUrl,
+            category = dto.category
         )
     }
 }
