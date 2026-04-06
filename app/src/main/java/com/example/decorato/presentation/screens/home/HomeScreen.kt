@@ -186,7 +186,7 @@ private fun HomeScreenContent(
                 roomDesignsSection(
                     state = state.roomDesignsSectionUiState,
                     onClickRoomDesign = { designId ->
-                        interactionListener.onClickPopularItem(designId)
+                        interactionListener.onClickRoomDesign(designId)
                     },
                     isVisible = state.roomDesignsSectionUiState.items.isNotEmpty() && errorState.isNull()
                 )
