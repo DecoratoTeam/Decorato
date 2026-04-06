@@ -1,4 +1,4 @@
-package com.example.decorato.data.repository.mock
+package com.example.decorato.domain.repository
 
 import com.example.decorato.R
 import com.example.decorato.domain.entity.Design
@@ -282,7 +282,7 @@ object MockDesignRepository {
     )
 
     fun getRoomDesignsByType(roomTypeId: String): List<RoomDesign> = when (roomTypeId) {
-        "1" -> listOf(  // All 
+        "1" -> listOf(  // All
             RoomDesign(
                 id = "lr1",
                 title = "Modern Living Room",

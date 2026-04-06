@@ -101,5 +101,6 @@
     <string name="style">Style</string>
     <string name="roomType">Room Type</string>
     <string name="back_to_menu">Back to menu</string>
+    <string name="show_all">Show All</string>
     <!-- -   -->
 </resources>

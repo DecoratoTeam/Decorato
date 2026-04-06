@@ -103,6 +103,7 @@
     <string name="style">الأنماط</string>
     <string name="roomType">نوع الغرفه</string>
     <string name="back_to_menu">العوده الي الصفحه الاساسية</string>
+    <string name="show_all">أظهر الكل</string>
     <!-- -   -->
 
 </resources>

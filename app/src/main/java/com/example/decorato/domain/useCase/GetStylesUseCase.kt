@@ -1,6 +1,6 @@
 package com.example.decorato.domain.useCase
 
-import com.example.decorato.data.repository.mock.MockDesignRepository
+import com.example.decorato.domain.repository.MockDesignRepository
 import com.example.decorato.domain.entity.Style
 import javax.inject.Inject
 
