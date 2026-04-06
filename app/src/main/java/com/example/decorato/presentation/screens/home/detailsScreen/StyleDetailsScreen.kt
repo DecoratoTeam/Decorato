@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -121,6 +122,7 @@ private fun StyleDetailsScreenContent(
                         designCategory = design.category,
                         modifier = Modifier
                             .fillMaxWidth()
+                            .height(250.dp)
                             .background(AppTheme.color.surface),
                         onClick = { onDesignClick(design.id) }
                     )
