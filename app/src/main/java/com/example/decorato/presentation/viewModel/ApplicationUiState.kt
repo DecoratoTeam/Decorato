@@ -10,8 +10,7 @@ data class ApplicationUiState(
     val isDarkTheme: Boolean = true,
     val isThemeLoaded: Boolean = false,
     val isDestinationLoaded: Boolean = false,
-    val language: ManageLocaleLanguageUseCase.Language = ManageLocaleLanguageUseCase.Language.ENGLISH
-
+    val language: com.example.decorato.domain.model.AppLanguage = com.example.decorato.domain.model.AppLanguage.ENGLISH
 ){
     enum class StartDestinations{
         HOME,

@@ -32,6 +32,8 @@ retrofitKotlinxSerialization = "1.0.0"
 gson = "2.10.1"
 runtime = "1.9.5"
 coil = "2.5.0"
+remoteCreationCore = "1.0.0-alpha06"
+room3Runtime = "3.0.0-alpha01"
 
 
 [libraries]
@@ -79,6 +81,8 @@ gson = { module = "com.google. code.gson:gson", version. ref = "gson" }
 retrofit-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "runtime" }
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+androidx-compose-remote-creation-core = { group = "androidx.compose.remote", name = "remote-creation-core", version.ref = "remoteCreationCore" }
+androidx-room3-runtime = { group = "androidx.room3", name = "room3-runtime", version.ref = "room3Runtime" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

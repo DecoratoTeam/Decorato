@@ -100,4 +100,31 @@
     <string name="recentlyWatched">Recently Watched</string>
     <string name="style">Style</string>
     <!-- -   -->
+
+    <!-- Profile Screen -->
+    <string name="myPosts">My Posts</string>
+    <string name="myRating">My Rating</string>
+
+    <string name="language">Language</string>
+    <string name="darkMode">Dark Mode</string>
+    <string name="logout">Logout</string>
+
+    <string name="logoutConfirmMsg">Are you sure you want to logout?</string>
+    <string name="logoutDesc">You can always sign back in with your account.</string>
+    <string name="cancel">Cancel</string>
+    <string name="selectLanguage">Select Language</string>
+    <string name="confirm">Confirm</string>
+
+    <string name="loginMsg">Login to see your profile</string>
+    <string name="loginDesc">You need to be logged in to access your posts and settings.</string>
+    <string name="loginBtn">Login</string>
+    <string name="retry">Login</string>
+    <string name="restriction_title">Content Restricted</string>
+    <string name="restriction_desc">You do not have the necessary permissions to view this content.</string>
+    <string name="ok">OK</string>
+
+    <string name="logout_confirm_msg">Are you sure you want to logout? You can always sign back in.</string>
+
+    <!-- -   -->
+
 </resources>

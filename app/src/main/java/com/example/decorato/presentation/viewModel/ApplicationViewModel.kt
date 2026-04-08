@@ -65,7 +65,25 @@ class ApplicationViewModel @Inject constructor(
             )
         }
     }
+    // جوه ApplicationViewModel
+    fun onChangeLanguage(language: com.example.decorato.domain.model.AppLanguage) {
+        viewModelScope.launch(dispatcherProvider.IO) {
+            // 1. تحويل النوع للـ UseCase عشان يسيف في الـ Preferences
+            val useCaseLang = if (language == com.example.decorato.domain.model.AppLanguage.ARABIC) {
+                ManageLocaleLanguageUseCase.Language.ARABIC
+            } else {
+                ManageLocaleLanguageUseCase.Language.ENGLISH
+            }
 
+            // 2. مناداة الدالة الصح اللي شفناها في الملف (setAppLanguage)
+            manageLocaleLanguageUseCase.setAppLanguage(useCaseLang)
+
+            // 3. تحديث الـ UI State بالنوع بتاع الـ UI
+            updateState {
+                it.copy(language = language)
+            }
+        }
+    }
     private fun listenToAppSettings() {
         viewModelScope.launch(dispatcherProvider.IO) {
             manageAppThemeUseCase.getAppTheme().collect { isDarkTheme ->

@@ -74,8 +74,13 @@ class NavigationManager(
             if (clearBackStack) popUpTo(0)
         }
     }
-
-
+    // جوه NavigationManager.kt
+    fun toProfile() {
+        navController.navigate(Route.Tab.Profile)
+    }
+    fun toEditProfile() {navController.navigate("edit_profile_route")}
+    fun toMyPosts() { navController.navigate("my_posts_route") }
+    fun toMyRating() { navController.navigate("my_rating_route") }
 
     fun toRegister() {
         navController.navigate(Route.Register)

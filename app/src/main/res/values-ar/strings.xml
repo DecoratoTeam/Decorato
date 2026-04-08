@@ -23,7 +23,6 @@
     <string name="home">الرئيسية</string>
     <string name="generate">تصميم</string>
     <string name="community">المجتمع</string>
-    <string name="profile">الملف الشخصي</string>
     <!-- -   -->
 
     <!-- - Loading  -->
@@ -101,6 +100,33 @@
     <string name="popular">الأكثر شهرة</string>
     <string name="recentlyWatched">شاهدته مؤخراً</string>
     <string name="style">الأنماط</string>
+    <!-- -   -->
+
+    <!-- Profile Screen -->
+    <string name="profile">الملف الشخصي</string>
+    <string name="myPosts">منشوراتي</string>
+    <string name="myRating">تقييمي</string>
+
+    <string name="language">اللغة</string>
+    <string name="darkMode">الوضع الليلي</string>
+    <string name="logout">تسجيل الخروج</string>
+
+    <string name="logoutConfirmMsg">هل أنت متأكد من تسجيل الخروج؟</string>
+    <string name="logoutDesc">يمكنك دائماً تسجيل الدخول مرة أخرى إلى حسابك.</string>
+    <string name="cancel">إلغاء</string>
+    <string name="selectLanguage">اختر اللغة</string>
+    <string name="confirm">تأكيد</string>
+
+    <string name="loginMsg">سجل دخولك لرؤية ملفك الشخصي</string>
+    <string name="loginDesc">يجب تسجيل الدخول للوصول إلى منشوراتك وإعداداتك.</string>
+    <string name="loginBtn">تسجيل الدخول</string>
+    <string name="retry">إعادة المحاولة</string>
+
+    <string name="restriction_title">محتوى مقيد</string>
+    <string name="restriction_desc">ليس لديك الصلاحيات الكافية لعرض هذا المحتوى.</string>
+    <string name="ok">حسناً</string>
+
+    <string name="logout_confirm_msg">هل أنت متأكد من تسجيل الخروج؟ يمكنك العودة في أي وقت.</string>
     <!-- -   -->
 
 </resources>
