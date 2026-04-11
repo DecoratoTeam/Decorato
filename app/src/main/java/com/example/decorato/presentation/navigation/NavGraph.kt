@@ -1,7 +1,5 @@
 package com.example.decorato.presentation.navigation
 
-import EditProfileScreen
-import ProfileScreenRoute
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -11,6 +9,7 @@ import com.example.decorato.presentation.screens.generate.generateScreenRoute
 import com.example.decorato.presentation.screens.home.homeScreenRoute
 import com.example.decorato.presentation.screens.login.loginScreenRoute
 import com.example.decorato.presentation.screens.onBoarding.onboardingScreenRoute
+import com.example.decorato.presentation.screens.profile.EditProfileScreen
 import com.example.decorato.presentation.screens.profile.MyPostsScreen
 import com.example.decorato.presentation.screens.profile.MyRatingScreen
 import com.example.decorato.presentation.screens.register.registerScreenRoute
@@ -43,9 +42,12 @@ fun NavGraph(
             )
         }
 
-        // ضيفي ده جوه الـ NavHost
         composable(route = "my_rating_route") {
             MyRatingScreen(
+                onBackClick = {
+                    navController.popBackStack()
+                    // أو navigationManager.navigateBack() لو بتستخدمي المانيجر
+                }
             )
         }
 

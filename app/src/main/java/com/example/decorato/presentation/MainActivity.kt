@@ -8,8 +8,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.decorato.domain.model.AppLanguage
 import com.example.decorato.presentation.application.DecoratoApp
+import com.example.decorato.presentation.theme.DecoratoTheme
 import com.example.decorato.presentation.viewModel.ApplicationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,7 +35,26 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            DecoratoApp()
+            val appViewModel: ApplicationViewModel = hiltViewModel()
+            val state by appViewModel.state.collectAsState()
+
+            LaunchedEffect(state.language) {
+                val languageCode = if (state.language == AppLanguage.ARABIC) "ar" else "en"
+                val locale = java.util.Locale(languageCode)
+                java.util.Locale.setDefault(locale)
+
+                val config = resources.configuration
+                config.setLocale(locale)
+                resources.updateConfiguration(config, resources.displayMetrics)
+            }
+
+
+            DecoratoTheme(
+                isDarkTheme = state.isDarkTheme,
+                language = state.language
+            ) {
+                DecoratoApp()
+            }
         }
     }
 

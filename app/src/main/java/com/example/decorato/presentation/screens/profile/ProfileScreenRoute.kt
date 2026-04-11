@@ -1,3 +1,7 @@
+package com.example.decorato.presentation.navigation
+
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.LocalActivity
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -6,12 +10,23 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.decorato.presentation.navigation.NavigationManager
 import com.example.decorato.presentation.screens.profile.ProfileScreen
 import com.example.decorato.presentation.screens.profile.ProfileViewModel
+import com.example.decorato.presentation.viewModel.ApplicationViewModel
 
 @Composable
 fun ProfileScreenRoute(
     navigationManager: NavigationManager,
     viewModel: ProfileViewModel = hiltViewModel()
 ) {
+    // الزيتونة: استخدام LocalActivity بدل الكاستينج اليدوي لضمان الوصول للـ Activity الصح
+    val activity = LocalActivity.current as? ComponentActivity
+
+    // بنمرر الـ activity كـ owner للـ ViewModel عشان نضمن إنها نفس النسخة (Shared ViewModel)
+    val appViewModel: ApplicationViewModel = if (activity != null) {
+        hiltViewModel(activity)
+    } else {
+        hiltViewModel()
+    }
+
     val state by viewModel.uiState.collectAsState()
 
     LaunchedEffect(Unit) {
@@ -29,15 +44,16 @@ fun ProfileScreenRoute(
                 is ProfileEffect.NavigationToMyRating -> {
                     navigationManager.toMyRating()
                 }
-                is ProfileEffect.ShowMessage -> {
-                    // هندلة الرسائل
+
+                is ProfileEffect.ChangeLanguage -> {
+                    appViewModel.onChangeLanguage(effect.language)
                 }
 
-                // الزيتونة: ضيفي الحالة دي عشان الكومبيلر يسكت
-                is ProfileEffect.ChangeLanguage -> {
-                    // عادةً تغيير اللغة بنهندله في الـ Activity أو ApplicationViewModel
-                    // فممكن تسيبيها فاضية هنا لو مش محتاجة أكشن معين في الشاشة دي
+                is ProfileEffect.ChangeTheme -> {
+                    appViewModel.onChangeTheme(effect.isDark)
                 }
+
+                else -> {}
             }
         }
     }

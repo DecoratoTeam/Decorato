@@ -1,3 +1,5 @@
+package com.example.decorato.presentation.screens.profile
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -5,30 +7,44 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import com.example.decorato.presentation.screens.profile.components.EditProfileFields
-import com.example.decorato.presentation.screens.profile.components.EditProfileHeader
+import com.example.decorato.presentation.screens.profile.components.ProfileHeader
+import com.example.decorato.presentation.theme.AppTheme
 import com.example.decorato.presentation.viewModel.profile.InteractionListener.EditProfileInteractionListener
 import com.example.decorato.presentation.viewModel.profile.UiState.EditProfileUiState
 
 @Composable
-private fun EditProfileContent(
+ fun EditProfileContent(
     state: EditProfileUiState,
-    listener: EditProfileInteractionListener
+    listener: EditProfileInteractionListener,
+    onBackClick: () -> Unit
 ) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(AppTheme.color.surface)
             .verticalScroll(rememberScrollState())
     ) {
-        EditProfileHeader(
+
+        // 🔥 Header (Edit Mode)
+        ProfileHeader(
+            userName = null,
             userImage = state.userImage,
-            onBackClick = listener::onBackClick,
-            onUpdateImageClick = listener::onUpdateImageClick
+            isEdit = true,
+
+            // 🔙 ده أهم سطر (السهم)
+            onBackClick = onBackClick,
+
+            onUpdateImageClick = {
+                listener.onUpdateImageClick()
+            },
+
+            onClickEdit = {
+                listener.onClickEditProfile()
+            }
         )
 
-        // التعديل هنا: غيرنا اسم الباراميتر لـ interactionListener عشان يطابق الـ Component
+        // 📝 Fields
         EditProfileFields(
             state = state,
             interactionListener = listener

@@ -21,12 +21,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.example.decorato.R
-import com.example.decorato.presentation.components.Text
 import com.example.decorato.presentation.theme.colors.LocalDecoratoAppColors
 import com.example.decorato.presentation.theme.textStyle.LocalDecoratoTextStyle
 
@@ -36,6 +36,8 @@ fun ProfileImageSection(
     userImage: String,
     onClickEdit: () -> Unit
 ) {
+    val colors = LocalDecoratoAppColors.current
+    val typography = LocalDecoratoTextStyle.current
     Box(
         modifier = Modifier.fillMaxWidth().height(260.dp)
     ) {
@@ -47,13 +49,13 @@ fun ProfileImageSection(
             contentScale = ContentScale.FillBounds
         )
 
-        // كلمة My Profile (أخضر غامق، محاذاة للشمال)
+         //كلمة My Profile (أخضر غامق، محاذاة للشمال)
         androidx.compose.material3.Text(
-            text = "My Profile",
+            text = stringResource(id = R.string.my_profile),
             style = androidx.compose.ui.text.TextStyle(
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF003D33) // اللون الأخضر من الفيجما
+                color = colors.secondary // اللون الأخضر من الفيجما
             ),
             modifier = Modifier.padding(top = 50.dp, start = 20.dp)
         )
@@ -85,3 +87,4 @@ fun ProfileImageSection(
         }
     }
 }
+

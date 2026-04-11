@@ -26,11 +26,12 @@ import com.example.decorato.presentation.screens.profile.components.my_posts.Pos
 import com.example.decorato.presentation.theme.colors.LocalDecoratoAppColors
 import com.example.decorato.presentation.viewModel.profile.MyPostsViewModel
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.res.stringResource
 
 @Composable
 fun MyPostsScreen(
     viewModel: MyPostsViewModel = hiltViewModel(),
-    onBackClick: () -> Unit // استلمنا الأكشن هنا مباشرة
+    onBackClick: () -> Unit
 ) {
     val state by viewModel.state.collectAsState()
     val colors = LocalDecoratoAppColors.current
@@ -38,41 +39,48 @@ fun MyPostsScreen(
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
-            Row(
+            // الزتونة: نستخدم Column مع statusBarsPadding عشان نزيح الـ Row كله لتحت الساعة
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(0xFFF8F8F8))
-                    .padding(top = 22.dp, bottom = 10.dp, start = 15.dp, end = 15.dp)
-                    .height(40.dp),
-                verticalAlignment = Alignment.CenterVertically
+                    .background(Color(0xFFF8F8F8)) // نفس لون الخلفية عشان التوحيد
+                    .statusBarsPadding() // دي اللي هتعمل حساب الـ 54px بتاعة الساعة والبطارية
             ) {
-                Card(
+                Row(
                     modifier = Modifier
-                        .size(40.dp)
-                        .clickable { onBackClick() }, // السهم هينفذ الأكشن اللي جاي من النفيجيشن
-                    shape = RoundedCornerShape(12.dp),
-                    colors = CardDefaults.cardColors(containerColor = Color.White),
-                    elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+                        .fillMaxWidth()
+                        .padding(top = 10.dp, bottom = 10.dp, start = 15.dp, end = 15.dp) // قللنا الـ top padding شوية لأن الـ statusBarsPadding قامت بالواجب
+                        .height(40.dp),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_back),
-                            contentDescription = "Back",
-                            modifier = Modifier.size(16.dp),
-                            tint = Color(0xFF003326)
-                        )
+                    Card(
+                        modifier = Modifier
+                            .size(40.dp)
+                            .clickable { onBackClick() },
+                        shape = RoundedCornerShape(12.dp),
+                        colors = CardDefaults.cardColors(containerColor = Color.White),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+                    ) {
+                        Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_back),
+                                contentDescription = "Back",
+                                modifier = Modifier.size(16.dp),
+                                tint = Color(0xFF003326)
+                            )
+                        }
                     }
+
+                    Spacer(modifier = Modifier.width(8.dp))
+
+                    Text(
+                        text = stringResource(id = R.string.myPosts),
+                        fontSize = 20.sp,
+                        fontFamily = FontFamily(Font(R.font.poppins_semibold)),
+                        fontWeight = FontWeight.SemiBold,
+                        color = colors.secondary
+                    )
                 }
-
-                Spacer(modifier = Modifier.width(8.dp))
-
-                Text(
-                    text = "My Posts",
-                    fontSize = 20.sp,
-                    fontFamily = FontFamily(Font(R.font.poppins_semibold)),
-                    fontWeight = FontWeight.SemiBold,
-                    color = Color(0xFF003326)
-                )
             }
         }
     ) { paddingValues ->

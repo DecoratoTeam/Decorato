@@ -8,4 +8,5 @@ interface EditProfileInteractionListener {
     fun onBackClick()
     fun onUpdateImageClick()
     fun onPasswordVisibilityClick() // ضيفي السطر ده
+    fun onClickEditProfile()
 }

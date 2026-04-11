@@ -6,8 +6,12 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.paint
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource // استدعاء مكتبة النصوص
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.example.decorato.R
 import com.example.decorato.domain.model.AppLanguage
@@ -25,12 +29,19 @@ fun LanguageSelectionItem(
         painter = painterResource(id = R.drawable.ic_language),
         onClick = onClick,
         trailingContent = {
-            // الزيتونة: استبدلنا النص بالسهم اللي في الفيجما
+            // 1. نادي على اتجاه الشاشة الحالي
+            val layoutDirection = LocalLayoutDirection.current
+
             Icon(
                 painter = painterResource(id = R.drawable.ic_arrow_right),
                 contentDescription = null,
-                modifier = Modifier.size(16.dp),
-                tint = colors.hint // أو Color.LightGray حسب الفيجما
+                modifier = Modifier
+                    .size(16.dp)
+                    .graphicsLayer {
+                        // 2. الزتونة: لو اللغة عربي (Rtl)، اعكسي الأيقونة 180 درجة على محور Y
+                        rotationY = if (layoutDirection == LayoutDirection.Rtl) 180f else 0f
+                    },
+                tint = colors.hint
             )
         }
     )

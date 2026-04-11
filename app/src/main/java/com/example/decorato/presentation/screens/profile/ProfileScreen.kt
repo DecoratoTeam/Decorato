@@ -8,20 +8,22 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.decorato.domain.model.AppLanguage
-import com.example.decorato.presentation.screens.profile.components.* // ده هيجيب الـ LogoutBottomSheet والـ LanguageBottomSheet
+import com.example.decorato.presentation.screens.profile.components.*
 
 @Composable
 fun ProfileScreen(
     state: ProfileUiState,
     listener: ProfileInteractionListener
 ) {
+    val context = androidx.compose.ui.platform.LocalContext.current
+
     Scaffold(
         modifier = Modifier.fillMaxSize()
     ) { paddingValues ->
+        // الزتونة: شيلنا الـ padding(paddingValues) من هنا تماماً
+        // عشان الـ Box يبدأ من أول بكسل في الشاشة (نقطة الصفر)
         Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
+            modifier = Modifier.fillMaxSize()
         ) {
             if (state.isLoggedIN) {
                 LoggedInContent(
@@ -36,20 +38,26 @@ fun ProfileScreen(
                     onRatingClick = { listener.onClickMyRating() },
                     onDarkModeChange = { listener.onToggleDarkMode(it) },
                     onLanguageClick = { listener.onClickLanguage() },
-                    onLogoutClick = { listener.onClickLogout() }
-
+                    onLogoutClick = { listener.onClickLogout() },
+                    // الزتونة 2: بنمرر الـ bottom padding فقط عشان نحمي العناصر اللي تحت من الـ Navigation Bar
+                    modifier = Modifier.padding(bottom = paddingValues.calculateBottomPadding())
                 )
             } else {
-                NotLoggedInContent(onLoginClick = { listener.onClickLogin() })
+                NotLoggedInContent(
+                    onLoginClick = { listener.onClickLogin() },
+                    // هنا ممكن نسيب الـ paddingValues كاملة لأن مفيش Header محتاج يسيح ورا الساعة
+                    modifier = Modifier.padding(paddingValues)
+                )
             }
 
-            // --- 1. Language Bottom Sheet (Floating كما في الفيجما) ---
+            // --- 1. Language Bottom Sheet ---
             if (state.settingsState.showLanguageDialog) {
                 LanguageBottomSheet(
                     selectedLanguage = state.settingsState.selectedLanguage,
                     onLanguageSelected = { selectedLang ->
                         listener.onSelectLanguage(selectedLang)
-                        listener.onConfirmLanguage() // بيقفل الشيت ويطبق التغيير
+                        listener.onConfirmLanguage()
+                        (context as? android.app.Activity)?.recreate()
                     },
                     onDismiss = {
                         listener.onDismissLanguageDialog()
@@ -57,16 +65,11 @@ fun ProfileScreen(
                 )
             }
 
-            // --- 2. Logout Bottom Sheet (Floating كما في الفيجما) ---
+            // --- 2. Logout Bottom Sheet ---
             if (state.settingsState.showLogoutDialog) {
-                // تأكدي إننا سميناه LogoutBottomSheet عشان يطابق ملف الـ component الجديد
                 LogoutBottomSheet(
-                    onConfirm = {
-                        listener.onConfirmLogout()
-                    },
-                    onDismiss = {
-                        listener.onDismissLogoutDialog()
-                    }
+                    onConfirm = { listener.onConfirmLogout() },
+                    onDismiss = { listener.onDismissLogoutDialog() }
                 )
             }
         }

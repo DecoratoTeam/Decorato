@@ -7,6 +7,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -14,11 +16,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
-// Import الصحيح لمشروعك
 import com.example.decorato.R
 
 @Composable
@@ -30,9 +32,9 @@ fun EditProfileHeader(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(260.dp)
+            .height(250.dp)
+            .background(Color(0xFFF9F9F9))
     ) {
-        // 1. الخلفية المستقيمة (Height 212)
         Image(
             painter = painterResource(id = R.drawable.profile_header_placeholder),
             contentDescription = null,
@@ -42,10 +44,10 @@ fun EditProfileHeader(
             contentScale = ContentScale.FillBounds
         )
 
-        // 2. سهم الرجوع وكلمة Edit Profile (Top: 62px, Left: 14px)
         Row(
             modifier = Modifier
                 .padding(top = 62.dp, start = 14.dp)
+                .fillMaxWidth()
                 .height(40.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -56,59 +58,55 @@ fun EditProfileHeader(
                     .clickable { onBackClick() },
                 contentAlignment = Alignment.Center
             ) {
-                Image(
+                Icon(
                     painter = painterResource(id = R.drawable.ic_back),
                     contentDescription = null,
-                    modifier = Modifier.size(16.dp)
+                    modifier = Modifier.size(16.dp),
+                    tint = Color.Black
                 )
             }
 
             Spacer(modifier = Modifier.width(8.dp))
 
-            androidx.compose.material3.Text(
-                text = "Edit Profile",
-                style = androidx.compose.ui.text.TextStyle(
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    color = Color(0xFF003D33)
-                )
+            Text(
+                text = stringResource(id = R.string.edit_profile),
+                fontSize = 20.sp,
+                fontWeight = FontWeight.SemiBold,
+                color = Color(0xFF003D33)
             )
         }
 
-        // 3. صورة البروفايل مع الكاميرا
         Box(
             modifier = Modifier
-                .align(Alignment.TopCenter)
-                .padding(top = 164.dp)
-                .size(width = 114.dp, height = 96.dp)
+                .padding(top = 142.dp)
+                .fillMaxWidth()
+                .height(96.dp)
         ) {
             Image(
                 painter = rememberAsyncImagePainter(userImage),
                 contentDescription = null,
                 modifier = Modifier
-                    .size(96.dp)
                     .align(Alignment.TopCenter)
+                    .size(96.dp)
                     .clip(CircleShape)
-                    .border(4.dp, Color.White, CircleShape),
+                    .border(2.dp, Color.White, CircleShape),
                 contentScale = ContentScale.Crop
             )
 
             Box(
                 modifier = Modifier
+                    .align(Alignment.TopCenter)
+                    .offset(x = 32.dp, y = 63.dp)
                     .size(32.dp)
-                    .align(Alignment.BottomEnd)
-                    .offset(x = (-4).dp, y = (-4).dp)
                     .clip(CircleShape)
-                    .background(Color(0xFF00A78E))
-                    .border(2.dp, Color.White, CircleShape)
-                    .clickable { onUpdateImageClick() }
-                    .padding(6.dp),
+                    .background(Color(0xFFF9F9F9))
+                    .clickable { onUpdateImageClick() },
                 contentAlignment = Alignment.Center
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.ic_camera),
                     contentDescription = null,
-                    modifier = Modifier.size(16.dp)
+                    modifier = Modifier.size(18.dp)
                 )
             }
         }

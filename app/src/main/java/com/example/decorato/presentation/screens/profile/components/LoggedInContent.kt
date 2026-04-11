@@ -27,19 +27,23 @@ fun LoggedInContent(
     onRatingClick: () -> Unit,
     onDarkModeChange: (Boolean) -> Unit,
     onLanguageClick: () -> Unit,
-    onLogoutClick: () -> Unit
+    onLogoutClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val scrollState = rememberScrollState()
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(Color(0xFFF9F9F9))
             .verticalScroll(scrollState)
     ) {
-        ProfileImageSection(
+
+        // 🔥 هنا التعديل الأساسي
+        ProfileHeader(
             userName = userName,
             userImage = userImage,
+            isEdit = false,
             onClickEdit = onEditClick
         )
 
@@ -54,8 +58,6 @@ fun LoggedInContent(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // الزيتونة: شيلنا الـ Card من هنا خالص!
-        // الـ SettingsSection هي اللي شايلة الـ Card بتاعها جواه
         SettingsSection(
             isDarkMode = isDarkMode,
             onDarkModeChange = onDarkModeChange,

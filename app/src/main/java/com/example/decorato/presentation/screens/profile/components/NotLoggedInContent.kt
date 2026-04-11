@@ -19,7 +19,8 @@ import com.example.decorato.presentation.theme.textStyle.LocalDecoratoTextStyle
 
 @Composable
 fun NotLoggedInContent(
-    onLoginClick: () -> Unit
+    onLoginClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val colors = LocalDecoratoAppColors.current
     val typography = LocalDecoratoTextStyle.current

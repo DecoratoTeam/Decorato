@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.sp
 import com.example.decorato.R
 import com.example.decorato.presentation.components.TextField
 import com.example.decorato.presentation.components.buttons.ConfirmButton
+import com.example.decorato.presentation.screens.login.component.PrimaryVariantButton
 import com.example.decorato.presentation.screens.register.component.getPasswordTextFieldIcon
 import com.example.decorato.presentation.theme.AppTheme
 import com.example.decorato.presentation.viewModel.profile.InteractionListener.EditProfileInteractionListener
@@ -25,7 +26,8 @@ fun EditProfileFields(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp)
-            .padding(top = 24.dp)
+            // الزتونة: قللنا الـ padding هنا لأن الهيدر الجديد نزل تحت شوية
+            .padding(top = 16.dp)
     ) {
         // --- Name Field ---
         Text(
@@ -42,7 +44,7 @@ fun EditProfileFields(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 16.dp),
-            isError = false, // لغينا المتغير اللي عامل مشكلة
+            isError = false,
             errorMessage = ""
         )
 
@@ -91,17 +93,12 @@ fun EditProfileFields(
         )
 
         // --- Save Button ---
-        ConfirmButton(
+        PrimaryVariantButton(
             title = "Save",
-            onClick = interactionListener::onSaveClick,
-            isEnabled = true, // خليناها true عشان يشتغل فوراً
-            isLoading = state.isLoading,
-            isNegative = false,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(56.dp)
+            textColor = AppTheme.color.primary, // 👈 بعتنا الـ Primary هنا
+            onClick = interactionListener::onSaveClick
         )
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(32.dp))
     }
 }
