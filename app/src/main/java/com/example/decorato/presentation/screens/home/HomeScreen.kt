@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -37,6 +38,8 @@ import com.example.decorato.presentation.components.NoNetworkContainer
 import com.example.decorato.presentation.screens.home.component.HomeAppBar
 import com.example.decorato.presentation.screens.home.sections.popularSection
 import com.example.decorato.presentation.screens.home.sections.recentlyWatchedSection
+import com.example.decorato.presentation.screens.home.sections.roomDesignsSection
+import com.example.decorato.presentation.screens.home.sections.roomTypeSection
 import com.example.decorato.presentation.screens.home.sections.styleSection
 import com.example.decorato.presentation.theme.AppTheme
 import com.example.decorato.presentation.theme.DecoratoTheme
@@ -116,6 +119,7 @@ private fun HomeScreenContent(
     Box(
         modifier = Modifier
             .fillMaxSize()
+            .background(AppTheme.color.surface)
             .navigationBarsPadding()
             .windowInsetsPadding(WindowInsets(bottom = LocalScaffoldBottomPadding.current))
     ) {
@@ -146,10 +150,16 @@ private fun HomeScreenContent(
                 modifier = modifier.fillMaxSize(),
                 state = lazyListState,
             ) {
+                item {
+                    androidx.compose.foundation.layout.Spacer(
+                        modifier = Modifier.height(appBarHeight - 16.dp)
+                    )
+                }
+
                 popularSection(
                     state = state.popularSectionUiState,
                     onClickDesignItem = interactionListener::onClickPopularItem,
-                    isVisible = errorState.isNull()
+                    isVisible = state.popularSectionUiState.items.isNotEmpty() && errorState.isNull()
                 )
 
                 recentlyWatchedSection(
@@ -161,8 +171,24 @@ private fun HomeScreenContent(
 
                 styleSection(
                     state = state.styleSectionUiState,
-                    isVisible = errorState.isNull() && state.styleSectionUiState.items.isNotEmpty(),
+                    isVisible = state.styleSectionUiState.items.isNotEmpty() && errorState.isNull(),
                     onClickStyleItem = interactionListener::onClickStyleItem
+                )
+
+                roomTypeSection(
+                    state = state.roomTypeSectionUiState,
+                    onClickRoomType = { roomTypeId ->
+                        interactionListener.onRoomTypeSelected(roomTypeId)
+                    },
+                    isVisible = state.roomTypeSectionUiState.items.isNotEmpty() && errorState.isNull()
+                )
+
+                roomDesignsSection(
+                    state = state.roomDesignsSectionUiState,
+                    onClickRoomDesign = { designId ->
+                        interactionListener.onClickRoomDesign(designId)
+                    },
+                    isVisible = state.roomDesignsSectionUiState.items.isNotEmpty() && errorState.isNull()
                 )
             }
 
@@ -193,6 +219,8 @@ private fun HomeScreenPreview() {
                 override fun onClickStyleItem(styleId: String) {}
                 override fun onClickShowAllRecentlyWatched() {}
                 override fun onTabSelected(tabIndex: Int) {}
+                override fun onRoomTypeSelected(roomTypeId: String) {}
+                override fun onClickRoomDesign(designId: String) {}
             }
         )
     }

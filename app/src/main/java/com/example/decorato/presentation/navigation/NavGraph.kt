@@ -29,7 +29,7 @@ fun NavGraph(
         registerScreenRoute()
         loginScreenRoute()
 
-        // 2. شاشات التطبيق الأساسية (Extension Functions)
+        // Main App Screens with Bottom Navigation
         homeScreenRoute()
         generateScreenRoute()
         communityScreenRoute()

@@ -57,7 +57,7 @@ class NavigationManager(
     }
 
     fun toStyleDetails(styleId: String) {
-        navController.navigate("style_details/$styleId")
+        navController.navigate(Route.StyleDetails(styleId))
     }
 
     fun navigateBack() {

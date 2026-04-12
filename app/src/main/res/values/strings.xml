@@ -99,6 +99,9 @@
     <string name="popular">Popular</string>
     <string name="recentlyWatched">Recently Watched</string>
     <string name="style">Style</string>
+    <string name="roomType">Room Type</string>
+    <string name="back_to_menu">Back to menu</string>
+    <string name="show_all">Show All</string>
     <!-- -   -->
 
     <!-- Profile Screen -->

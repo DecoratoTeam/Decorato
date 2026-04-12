@@ -27,9 +27,11 @@ sealed interface Route {
     data object Onboarding : Route
 
     @Serializable
-    data class DesignDetails(val designId: String) : Route
-
-    @Serializable
     data object RecentlyWatched : Route
 
+    @Serializable
+    data class StyleDetails(val styleId: String) : Route
+
+    @Serializable
+    data class DesignDetails(val designId: String) : Route
 }

@@ -7,4 +7,6 @@ interface HomeInteractionListener {
     fun onClickStyleItem(styleId: String)
     fun onTabSelected(tabIndex: Int)
     fun onClickRetryLoading()
+    fun onRoomTypeSelected(roomTypeId: String)
+    fun onClickRoomDesign(designId: String)
 }
