@@ -23,7 +23,6 @@
     <string name="home">الرئيسية</string>
     <string name="generate">تصميم</string>
     <string name="community">المجتمع</string>
-    <string name="profile">الملف الشخصي</string>
     <!-- -   -->
 
     <!-- - Loading  -->
@@ -104,6 +103,37 @@
     <string name="roomType">نوع الغرفه</string>
     <string name="back_to_menu">العوده الي الصفحه الاساسية</string>
     <string name="show_all">أظهر الكل</string>
+    <!-- -   -->
+
+    <!-- Profile Screen -->
+    <string name="profile">الملف الشخصي</string>
+    <string name="myPosts">منشوراتي</string>
+    <string name="myRating">تقييمي</string>
+
+    <string name="language">اللغة</string>
+    <string name="darkMode">الوضع الليلي</string>
+    <string name="logout">تسجيل الخروج</string>
+
+    <string name="logoutConfirmMsg">هل أنت متأكد من تسجيل الخروج؟</string>
+    <string name="logoutDesc">يمكنك دائماً تسجيل الدخول مرة أخرى إلى حسابك.</string>
+    <string name="cancel">إلغاء</string>
+    <string name="selectLanguage">اختر اللغة</string>
+    <string name="confirm">تأكيد</string>
+
+    <string name="loginMsg">سجل دخولك لرؤية ملفك الشخصي</string>
+    <string name="loginDesc">يجب تسجيل الدخول للوصول إلى منشوراتك وإعداداتك.</string>
+    <string name="loginBtn">تسجيل الدخول</string>
+    <string name="retry">إعادة المحاولة</string>
+
+    <string name="restriction_title">محتوى مقيد</string>
+    <string name="restriction_desc">ليس لديك الصلاحيات الكافية لعرض هذا المحتوى.</string>
+    <string name="ok">حسناً</string>
+
+    <string name="logout_confirm_msg">هل أنت متأكد من تسجيل الخروج؟ يمكنك العودة في أي وقت.</string>
+    <string name="settings">الإعدادات</string>
+    <string name="version">الإصدار</string>
+    <string name="my_profile">حسابي</string>
+    <string name="edit_profile">تعديل الملف الشخصي</string>
     <!-- -   -->
 
 </resources>
