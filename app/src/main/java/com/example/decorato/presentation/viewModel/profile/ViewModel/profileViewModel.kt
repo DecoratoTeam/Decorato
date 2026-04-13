@@ -39,7 +39,7 @@ class ProfileViewModel @Inject constructor(
                 it.copy(
                     isLoggedIN = true,
                     userInfo = UserInfoUiState(
-                        userName = "Eng. Decorato", // هنا هينزل user.name لما يجهز
+                        userName = "Ali Hassan ", // هنا هينزل user.name لما يجهز
                         userPostCount = 0,
                         userRating = 0.0
                     )
@@ -96,12 +96,10 @@ class ProfileViewModel @Inject constructor(
     }
 
     override fun onToggleDarkMode(isDark: Boolean) {
-        // 1. نحدث الحالة جوه شاشة البروفايل فوراً عشان الزرار يقلب
         _uiState.update {
             it.copy(settingsState = it.settingsState.copy(isDarkTheme = isDark))
         }
 
-        // 2. "الزيتونة": نبعت Effect عشان التطبيق كله يقلب دارك مود
         viewModelScope.launch {
             _effect.emit(ProfileEffect.ChangeTheme(isDark))
         }

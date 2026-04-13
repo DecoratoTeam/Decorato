@@ -131,6 +131,12 @@
     <string name="version">Version</string>
     <string name="my_profile">My Profile</string>
     <string name="edit_profile">Edit Profile</string>
+    <string name="save">Save</string>
+    <string name="no_ratings_yet">No Ratings Yet</string>
+    <string name="no_ratings_description">You haven\'t rated any designs or rooms so far. Start exploring the designs you like</string>
+    <string name="change_language">Change Language</string>
+    <string name="english">English</string>
+    <string name="arabic">Arabic</string>
     <!-- -   -->
 
 </resources>

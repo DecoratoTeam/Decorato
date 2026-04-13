@@ -26,7 +26,6 @@ fun EditProfileFields(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp)
-            // الزتونة: قللنا الـ padding هنا لأن الهيدر الجديد نزل تحت شوية
             .padding(top = 16.dp)
     ) {
         // --- Name Field ---
@@ -36,6 +35,7 @@ fun EditProfileFields(
             color = AppTheme.color.body,
             modifier = Modifier.padding(bottom = 8.dp)
         )
+
         TextField(
             text = state.userName,
             onValueChange = interactionListener::onNameChange,
@@ -47,7 +47,6 @@ fun EditProfileFields(
             isError = false,
             errorMessage = ""
         )
-
         // --- Email Field ---
         Text(
             text = stringResource(R.string.email_label),
@@ -55,6 +54,8 @@ fun EditProfileFields(
             color = AppTheme.color.body,
             modifier = Modifier.padding(bottom = 8.dp)
         )
+
+
         TextField(
             text = state.email,
             onValueChange = interactionListener::onEmailChange,
@@ -94,8 +95,9 @@ fun EditProfileFields(
 
         // --- Save Button ---
         PrimaryVariantButton(
-            title = "Save",
-            textColor = AppTheme.color.primary, // 👈 بعتنا الـ Primary هنا
+            title = stringResource(R.string.save), // ✅ حولناها لـ stringResource
+            textColor = AppTheme.color.primary,
+                 // ✅ الارتفاع من الفيجما 56px (Hug)
             onClick = interactionListener::onSaveClick
         )
 

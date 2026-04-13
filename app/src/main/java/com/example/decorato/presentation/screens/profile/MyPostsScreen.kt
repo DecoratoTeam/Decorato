@@ -38,12 +38,12 @@ fun MyPostsScreen(
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
+        containerColor = colors.surface,
         topBar = {
             // الزتونة: نستخدم Column مع statusBarsPadding عشان نزيح الـ Row كله لتحت الساعة
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(0xFFF8F8F8)) // نفس لون الخلفية عشان التوحيد
                     .statusBarsPadding() // دي اللي هتعمل حساب الـ 54px بتاعة الساعة والبطارية
             ) {
                 Row(
@@ -58,7 +58,7 @@ fun MyPostsScreen(
                             .size(40.dp)
                             .clickable { onBackClick() },
                         shape = RoundedCornerShape(12.dp),
-                        colors = CardDefaults.cardColors(containerColor = Color.White),
+                        colors = CardDefaults.cardColors(containerColor = colors.surfaceHigh),
                         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
                     ) {
                         Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
@@ -66,7 +66,7 @@ fun MyPostsScreen(
                                 painter = painterResource(id = R.drawable.ic_back),
                                 contentDescription = "Back",
                                 modifier = Modifier.size(16.dp),
-                                tint = Color(0xFF003326)
+                                tint = colors.secondary
                             )
                         }
                     }
@@ -87,8 +87,7 @@ fun MyPostsScreen(
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(paddingValues)
-                .background(Color(0xFFF8F8F8)),
+                .padding(paddingValues),
             contentPadding = PaddingValues(top = 10.dp, bottom = 24.dp)
         ) {
             items(state.posts) { post ->

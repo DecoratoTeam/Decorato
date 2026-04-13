@@ -34,7 +34,7 @@ fun PostItem(
             // المسافة الخارجية بين الكروت (Horizontal 20dp زي الفيجما)
             .padding(horizontal = 20.dp, vertical = 10.dp),
         shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = colors.surfaceHigh),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {

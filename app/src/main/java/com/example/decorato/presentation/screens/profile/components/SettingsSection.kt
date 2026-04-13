@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
@@ -44,19 +45,20 @@ fun SettingsSection(
         Text(
             text = stringResource(R.string.settings),
             style = typography.title.small,
-            color = colors.titleL,
+            color = colors.titleL, // ✅ مستخدم صح (بيقلب مع الثيم)
             modifier = Modifier.padding(bottom = 12.dp)
         )
 
-        // 2. الحاوية البيضاء للإعدادات
+        // 2. الحاوية الأساسية للإعدادات
         Card(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(168.dp),
             shape = RoundedCornerShape(12.dp),
-            colors = CardDefaults.cardColors(containerColor = Color.White),
-            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
-            border = BorderStroke(1.dp, Color(0xFFF5F5F5))
+            // ✅ تم التغيير: استخدمنا surface عشان في الدارك يقلب رمادي غامق بدل الأبيض
+            colors = CardDefaults.cardColors(containerColor = colors.surfaceHigh),
+            elevation = CardDefaults.cardElevation(defaultElevation = 0.dp), // خليته 0 عشان الـ border يبان أشيك
+            border = BorderStroke(1.dp, colors.stroke.copy(alpha = 0.1f))
         ) {
             Column(modifier = Modifier.fillMaxSize()) {
 
@@ -68,7 +70,11 @@ fun SettingsSection(
                         Switch(
                             checked = isDarkMode,
                             onCheckedChange = onDarkModeChange,
-                            colors = SwitchDefaults.colors(checkedTrackColor = colors.primary)
+                            colors = SwitchDefaults.colors(
+                                checkedTrackColor = colors.primary,
+                                uncheckedTrackColor = colors.stroke.copy(alpha = 0.1f),
+                                checkedThumbColor = Color.White
+                        )
                         )
                     }
                 )
@@ -84,9 +90,7 @@ fun SettingsSection(
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_arrow_right),
                                 contentDescription = null,
-                                modifier = Modifier.size(16.dp).graphicsLayer {
-                                    rotationY = if (layoutDirection == LayoutDirection.Rtl) 180f else 0f
-                                },
+                                modifier = Modifier.size(16.dp),
                                 tint = colors.hint
                             )
                         }
@@ -103,10 +107,8 @@ fun SettingsSection(
                         Icon(
                             painter = painterResource(id = R.drawable.ic_arrow_right),
                             contentDescription = null,
-                            modifier = Modifier.size(16.dp).graphicsLayer {
-                                rotationY = if (layoutDirection == LayoutDirection.Rtl) 180f else 0f
-                            },
-                            tint = Color(0xFFE57373) // لون أحمر متناسق مع كلمة Logout
+                            modifier = Modifier.size(16.dp),
+                            tint = colors.red
                         )
                     },
                     onClick = onLogoutClick
@@ -118,7 +120,7 @@ fun SettingsSection(
         Text(
             "${stringResource(R.string.version)} $version",
             style = typography.body.small,
-            color = colors.hint.copy(alpha = 0.5f),
+            color = colors.hint,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 24.dp),
@@ -136,9 +138,9 @@ fun SettingRow(
     trailing: @Composable (() -> Unit)? = null
 ) {
     val colors = LocalDecoratoAppColors.current
-    // "الزيتونة": بنلون الخروج بالأحمر بناءً على الأيقونة عشان نتفادى مشاكل الترجمة
     val isLogout = icon == R.drawable.ic_logout
-    val contentColor = if (isLogout) Color(0xFFE57373) else Color.Black
+
+    val contentColor = if (isLogout) colors.red else colors.titleL
 
     Box(
         modifier = Modifier
@@ -156,15 +158,18 @@ fun SettingRow(
                 painter = painterResource(icon),
                 contentDescription = null,
                 modifier = Modifier.size(24.dp),
+                // ✅ لو أيقونة عادية بنسيبها Unspecified عشان تاخد لونها الأصلي، لو خروج بنلونها أحمر
                 tint = if (isLogout) contentColor else Color.Unspecified
             )
 
             Text(
                 text = title,
                 modifier = Modifier.weight(1f),
+                // ✅ استخدمنا style يدوي بس ربطنا اللون بالثيم عشان الـ Unresolved reference
                 style = androidx.compose.ui.text.TextStyle(
                     fontSize = 14.sp,
-                    color = contentColor
+                    color = contentColor,
+                    fontWeight = FontWeight.Medium
                 )
             )
 
@@ -175,7 +180,7 @@ fun SettingRow(
             HorizontalDivider(
                 modifier = Modifier.align(Alignment.BottomCenter),
                 thickness = 0.5.dp,
-                color = colors.stroke
+                color = colors.stroke.copy(alpha = 0.1f)
             )
         }
     }

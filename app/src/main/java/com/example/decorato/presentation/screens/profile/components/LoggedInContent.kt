@@ -13,6 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.decorato.presentation.theme.AppTheme
+import com.example.decorato.presentation.theme.colors.LocalDecoratoAppColors
 
 @Composable
 fun LoggedInContent(
@@ -31,15 +33,15 @@ fun LoggedInContent(
     modifier: Modifier = Modifier
 ) {
     val scrollState = rememberScrollState()
+    val colors = LocalDecoratoAppColors.current
 
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(Color(0xFFF9F9F9))
+            .background(colors.surface)
             .verticalScroll(scrollState)
     ) {
 
-        // 🔥 هنا التعديل الأساسي
         ProfileHeader(
             userName = userName,
             userImage = userImage,

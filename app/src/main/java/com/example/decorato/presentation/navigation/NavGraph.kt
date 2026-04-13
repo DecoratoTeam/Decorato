@@ -14,6 +14,7 @@ import com.example.decorato.presentation.screens.profile.MyPostsScreen
 import com.example.decorato.presentation.screens.profile.MyRatingScreen
 import com.example.decorato.presentation.screens.register.registerScreenRoute
 
+
 @Composable
 fun NavGraph(
     navController: NavHostController,
@@ -51,17 +52,9 @@ fun NavGraph(
             )
         }
 
-        composable(route = "my_posts_route") {
-            MyPostsScreen(onBackClick = {
-                navigationManager.navigateBack() // ده اللي هيخلي السهم يشتغل ويرجعك
-            })
-
-        }
-
-        composable(route = "edit_profile_route") {
-            EditProfileScreen(
-                onBackClick = { navigationManager.navigateBack() }
-            )
-        }
+        profileScreenRoute(navigationManager)
+        myRatingScreenRoute(navController)
+        myPostsScreenRoute(navigationManager)
+        editProfileScreenRoute(navigationManager)
     }
 }

@@ -66,7 +66,8 @@ fun MyRatingContent(
     val colors = LocalDecoratoAppColors.current
 
     Scaffold(
-        containerColor = Color(0xFFF9F9F9),
+        containerColor = colors.surface,
+
         topBar = {
             Row(
                 modifier = Modifier
@@ -80,7 +81,7 @@ fun MyRatingContent(
                         .size(40.dp)
                         .clickable { listener.onBackClick() },
                     shape = RoundedCornerShape(12.dp),
-                    color = Color.White,
+                    color = colors.surfaceHigh,
                     shadowElevation = 2.dp
                 ) {
                     Box(contentAlignment = Alignment.Center) {
@@ -88,7 +89,7 @@ fun MyRatingContent(
                             painter = painterResource(id = R.drawable.ic_back),
                             contentDescription = null,
                             modifier = Modifier.size(16.dp),
-                            tint = Color.Unspecified
+                            tint = colors.secondary
                         )
                     }
                 }

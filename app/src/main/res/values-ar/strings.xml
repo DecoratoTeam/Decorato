@@ -134,6 +134,12 @@
     <string name="version">الإصدار</string>
     <string name="my_profile">حسابي</string>
     <string name="edit_profile">تعديل الملف الشخصي</string>
+    <string name="save">حفظ</string>
+    <string name="no_ratings_yet">لا توجد تقييمات بعد</string>
+    <string name="no_ratings_description">لم تقم بتقييم أي تصاميم أو غرف حتى الآن. ابدأ في استكشاف التصاميم التي تعجبك</string>
+    <string name="change_language">تغيير اللغة</string>
+    <string name="english">الإنجليزية</string>
+    <string name="arabic">العربية</string>
     <!-- -   -->
 
 </resources>
