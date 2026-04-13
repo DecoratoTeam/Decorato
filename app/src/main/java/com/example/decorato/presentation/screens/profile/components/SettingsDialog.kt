@@ -25,7 +25,7 @@ fun SettingsDialog(
                 .padding(16.dp),
             shape = RoundedCornerShape(24.dp),
             colors = CardDefaults.cardColors(
-                containerColor = colors.surface
+                containerColor = colors.surfaceHigh
             )
         ) {
             Column(

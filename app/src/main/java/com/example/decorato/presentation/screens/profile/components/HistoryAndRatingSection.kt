@@ -17,6 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.decorato.R
+import com.example.decorato.presentation.theme.colors.LocalDecoratoAppColors
 import com.example.decorato.presentation.theme.textStyle.LocalDecoratoTextStyle
 
 @Composable
@@ -26,7 +27,6 @@ fun HistoryAndRatingSection(
     onClickPosts: () -> Unit,
     onClickRating: () -> Unit
 ) {
-
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -61,6 +61,8 @@ fun StatCard(
     modifier: Modifier = Modifier
 ) {
     val typography = LocalDecoratoTextStyle.current
+    val colors = LocalDecoratoAppColors.current
+
 
     // استخدمنا Box خارجي عشان الأيقونة لما تطلع بره الكارد متتقصش
     Box(
@@ -76,9 +78,9 @@ fun StatCard(
                 .height(71.dp) // ارتفاع الكارد الثابت من الفيجما
                 .align(Alignment.BottomCenter), // الكارد يقعد تحت والنجمة تبرز فوقه
             shape = RoundedCornerShape(16.dp),
-            colors = CardDefaults.cardColors(containerColor = Color.White),
-            border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFFEEEEEE)),
-            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+            colors = CardDefaults.cardColors(containerColor = colors.blurOverly),
+            border = androidx.compose.foundation.BorderStroke(1.dp, colors.stroke.copy(alpha = 0.08f)),
+            elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
         ) {
             // نصوص الكارد
             Column(
@@ -87,12 +89,12 @@ fun StatCard(
                 Text(
                     text = title,
                     style = typography.body.small.copy(fontSize = 12.sp),
-                    color = Color.Gray
+                    color = colors.hint
                 )
                 Text(
                     text = value,
                     style = typography.title.large.copy(fontSize = 18.sp, fontWeight = FontWeight.Bold),
-                    color = Color.Black
+                    color = colors.titleL
                 )
             }
         }

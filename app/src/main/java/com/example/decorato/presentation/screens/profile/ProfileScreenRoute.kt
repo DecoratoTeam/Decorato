@@ -7,7 +7,13 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.composable
 import com.example.decorato.presentation.navigation.NavigationManager
+import com.example.decorato.presentation.screens.profile.EditProfileScreen
+import com.example.decorato.presentation.screens.profile.MyPostsScreen
+import com.example.decorato.presentation.screens.profile.MyRatingScreen
 import com.example.decorato.presentation.screens.profile.ProfileScreen
 import com.example.decorato.presentation.screens.profile.ProfileViewModel
 import com.example.decorato.presentation.viewModel.ApplicationViewModel
@@ -63,3 +69,31 @@ fun ProfileScreenRoute(
         listener = viewModel
     )
 }
+// 1. دي لتعريف شاشة البروفايل الأساسية
+fun NavGraphBuilder.profileScreenRoute(navigationManager: NavigationManager) {
+    composable<Route.Tab.Profile> {
+        ProfileScreenRoute(navigationManager = navigationManager)
+    }
+}
+
+// 2. دي لتعريف شاشة تقييماتي
+fun NavGraphBuilder.myRatingScreenRoute(navController: NavHostController) {
+    composable(route = "my_rating_route") {
+        MyRatingScreen(onBackClick = { navController.popBackStack() })
+    }
+}
+
+// 3. دي لتعريف شاشة منشوراتي
+fun NavGraphBuilder.myPostsScreenRoute(navigationManager: NavigationManager) {
+    composable(route = "my_posts_route") {
+        MyPostsScreen(onBackClick = { navigationManager.navigateBack() })
+    }
+}
+
+// 4. دي لتعريف شاشة تعديل البروفايل
+fun NavGraphBuilder.editProfileScreenRoute(navigationManager: NavigationManager) {
+    composable(route = "edit_profile_route") {
+        EditProfileScreen(onBackClick = { navigationManager.navigateBack() })
+    }
+}
+

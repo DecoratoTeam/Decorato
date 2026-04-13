@@ -15,9 +15,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.decorato.R
+import com.example.decorato.presentation.theme.colors.LocalDecoratoAppColors
 
 @Composable
 fun EmptyRatingContent() {
+    val colors = LocalDecoratoAppColors.current
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -36,10 +38,10 @@ fun EmptyRatingContent() {
 
         // 2. العنوان الرئيسي (No Ratings Yet)
         Text(
-            text = "No Ratings Yet",
+            text = stringResource(R.string.no_ratings_yet),
             fontSize = 18.sp,
             fontFamily = FontFamily(Font(R.font.poppins_medium)),
-            color = Color(0xFF1F1F1F),
+            color = colors.titleL,
             textAlign = TextAlign.Center
         )
 
@@ -47,10 +49,10 @@ fun EmptyRatingContent() {
 
         // 3. النص الفرعي (الوصف)
         Text(
-            text = "You haven't rated any designs or rooms so far. Start exploring the designs you like",
+            text = stringResource(R.string.no_ratings_description),
             fontSize = 14.sp,
             fontFamily = FontFamily(Font(R.font.poppins_regular)),
-            color = Color(0xFF7C7C7C), // لون رمادي خفيف
+            color = colors.body, // لون رمادي خفيف
             textAlign = TextAlign.Center,
             lineHeight = 20.sp
         )

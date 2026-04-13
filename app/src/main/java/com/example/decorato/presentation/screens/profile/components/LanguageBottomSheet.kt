@@ -17,6 +17,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -46,7 +47,7 @@ fun LanguageBottomSheet(
                 .fillMaxWidth()
                 .padding(start = 12.dp, end = 12.dp, bottom = 12.dp),
             shape = RoundedCornerShape(24.dp),
-            colors = CardDefaults.cardColors(containerColor = colors.surface)
+            colors = CardDefaults.cardColors(containerColor = colors.surfaceHigh)
         ) {
             Column(
                 modifier = Modifier
@@ -58,7 +59,7 @@ fun LanguageBottomSheet(
                         .align(Alignment.CenterHorizontally)
                         .width(40.dp)
                         .height(4.dp)
-                        .background(colors.body.copy(alpha = 0.1f), CircleShape)
+                        .background(colors.hint.copy(alpha = 0.2f), CircleShape)
                 )
 
                 Row(
@@ -68,7 +69,7 @@ fun LanguageBottomSheet(
                 ) {
                     Spacer(modifier = Modifier.size(24.dp))
                     Text(
-                        text = "Change Language",
+                        text = stringResource(R.string.change_language),
                         style = LocalDecoratoTextStyle.current.title.medium,
                         color = colors.titleL
                     )
@@ -85,7 +86,7 @@ fun LanguageBottomSheet(
                 ) {
                     // مناداة الـ LanguageCard للأنجليزية
                     LanguageCard(
-                        title = "English",
+                        title = stringResource(R.string.english),
                         flagIcon = R.drawable.ic_flag_uk,
                         isSelected = selectedLanguage == AppLanguage.ENGLISH,
                         modifier = Modifier.weight(1f),
@@ -93,7 +94,7 @@ fun LanguageBottomSheet(
                     )
                     // مناداة الـ LanguageCard للعربية
                     LanguageCard(
-                        title = "Arabic",
+                        title = stringResource(R.string.arabic),
                         flagIcon = R.drawable.ic_flag_arabic,
                         isSelected = selectedLanguage == AppLanguage.ARABIC,
                         modifier = Modifier.weight(1f),
@@ -115,8 +116,8 @@ fun LanguageCard(
     onClick: () -> Unit
 ) {
     val colors = LocalDecoratoAppColors.current
-    val borderColor = if (isSelected) colors.primary else colors.stroke
-    val bgColor = if (isSelected) colors.primary.copy(alpha = 0.05f) else colors.surface
+    val borderColor = if (isSelected) colors.primary else colors.stroke.copy(alpha = 0.08f)
+    val bgColor = if (isSelected) colors.primaryVariant else colors.surface
 
     Card(
         modifier = modifier
@@ -145,7 +146,7 @@ fun LanguageCard(
                     fontSize = 14.sp,
                     textAlign = TextAlign.Center
                 ),
-                color = if (isSelected) colors.primary else colors.titleL
+                color = colors.titleL
             )
         }
     }

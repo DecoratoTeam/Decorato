@@ -16,6 +16,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
@@ -39,7 +40,7 @@ fun ProfileHeader(
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
-            .background(Color(0xFFF9F9F9))
+            .background(colors.surface)
     ) {
 
         /* ---------------- BACKGROUND (الهيدر الأخضر) ---------------- */
@@ -79,7 +80,7 @@ fun ProfileHeader(
             }
 
             Text(
-                text = if (isEdit) "Edit Profile" else "My Profile",
+                text = if (isEdit) stringResource(R.string.edit_profile) else stringResource(R.string.my_profile),
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
                 color = colors.secondary
@@ -118,7 +119,7 @@ fun ProfileHeader(
                                 .align(Alignment.BottomEnd)
                                 .size(32.dp)
                                 .clip(CircleShape)
-                                .background(Color(0xFFF9F9F9))
+                                .background(colors.surface)
                                 .clickable { onUpdateImageClick() },
                             contentAlignment = Alignment.Center
                         ) {
@@ -138,7 +139,7 @@ fun ProfileHeader(
                         text = userName,
                         fontSize = 16.sp,
                         fontWeight = FontWeight.SemiBold,
-                        color = Color.Black
+                        color = colors.titleL
                     )
                 }
             }

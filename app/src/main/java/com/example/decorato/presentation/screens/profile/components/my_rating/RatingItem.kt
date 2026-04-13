@@ -22,6 +22,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.decorato.R
+import com.example.decorato.presentation.theme.AppTheme
+import com.example.decorato.presentation.theme.colors.LocalDecoratoAppColors
 import com.example.decorato.presentation.viewModel.profile.InteractionListener.MyRatingInteractionListener
 import com.example.decorato.presentation.viewModel.profile.UiState.RatingItemUiState
 
@@ -30,13 +32,14 @@ fun RatingItem(
     state: RatingItemUiState, // تأكدي إن ده الـ Item الصغير مش الـ MyRatingUiState الكبير
     listener: MyRatingInteractionListener
 ) {
+    val colors = LocalDecoratoAppColors.current
     Card(
         modifier = Modifier
             .width(167.dp)
             .height(222.dp)
             .clickable { listener.onRatingItemClick(state.id) },
         shape = RoundedCornerShape(16.dp),
-        border = BorderStroke(1.dp, Color(0x141F1F1F))
+        border = BorderStroke(1.dp, colors.stroke)
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
             // 1. الصورة الأساسية (الخلفية)
@@ -54,14 +57,14 @@ fun RatingItem(
                     .align(Alignment.TopEnd)
                     .width(41.dp)
                     .height(28.dp),
-                color = Color.White.copy(alpha = 0.9f),
+                color = colors.surfaceHigh.copy(alpha = 0.9f),
                 shape = RoundedCornerShape(
                     topStart = 4.dp,
                     topEnd = 12.dp,
                     bottomEnd = 4.dp,
                     bottomStart = 12.dp
                 ),
-                border = BorderStroke(1.dp, Color(0x141F1F1F))
+                border = BorderStroke(1.dp, colors.stroke)
             ) {
                 Row(
                     modifier = Modifier.fillMaxSize(),
@@ -72,7 +75,7 @@ fun RatingItem(
                         painter = painterResource(id = R.drawable.ic_star),
                         contentDescription = null,
                         modifier = Modifier.size(13.dp),
-                        tint = Color(0xFFFFD700)
+                        tint = colors.yellowAccent
                     )
                     Spacer(modifier = Modifier.width(2.dp))
                     Text(
@@ -80,7 +83,7 @@ fun RatingItem(
                         fontSize = 10.sp,
                         fontFamily = FontFamily(Font(R.font.poppins_medium)),
                         lineHeight = 16.sp,
-                        color = Color(0xFF1F1F1F)
+                        color = colors.titleL
                     )
                 }
             }
@@ -93,7 +96,11 @@ fun RatingItem(
                     .height(88.dp)
                     .background(
                         Brush.verticalGradient(
-                            colors = listOf(Color.Transparent, Color.Black.copy(alpha = 0.8f))
+                            colors = listOf(
+                                Color.Transparent,            // ✅ شفاف تماماً فوق
+                                colors.titleL.copy(alpha = 0.8f) // ✅ استخدمت titleL لأنه بيمثل الأسود/الداكن في الثيم بتاعك
+                            )
+
                         )
                     )
                     .padding(8.dp),
