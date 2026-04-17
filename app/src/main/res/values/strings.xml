@@ -103,4 +103,18 @@
     <string name="back_to_menu">Back to menu</string>
     <string name="show_all">Show All</string>
     <!-- -   -->
+
+    <!-- Generate Screen -->
+    <string name="generate_welcome_to">Welcome to</string>
+    <string name="generate_bot_name">DecoBot</string>
+    <string name="generate_welcome_subtitle">Start chatting with DecoBot now\nYou can design your home</string>
+    <string name="start_chat">Start Chat</string>
+
+    <string name="generate_title">Generate</string>
+    <string name="generate_type_here">Typing here ...</string>
+    <string name="voice_input">Voice input</string>
+    <string name="send">Send</string>
+    <string name="attachment">Attachment</string>
+    <string name="back">Back</string>
+    <!-- -   -->
 </resources>

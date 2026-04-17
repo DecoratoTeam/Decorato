@@ -106,4 +106,18 @@
     <string name="show_all">أظهر الكل</string>
     <!-- -   -->
 
+    <!-- Generate Screen -->
+    <string name="generate_welcome_to">مرحبًا بك في</string>
+    <string name="generate_bot_name">ديكوبوت</string>
+    <string name="generate_welcome_subtitle">ابدأ الدردشة مع ديكوبوت الآن\nيمكنك تصميم منزلك</string>
+    <string name="start_chat">ابدأ الدردشة</string>
+
+    <string name="generate_title">إنشاء</string>
+    <string name="generate_type_here">اكتب هنا ...</string>
+    <string name="voice_input">إدخال صوتي</string>
+    <string name="send">إرسال</string>
+    <string name="attachment">مرفق</string>
+    <string name="back">رجوع</string>
+    <!-- -   -->
+
 </resources>
