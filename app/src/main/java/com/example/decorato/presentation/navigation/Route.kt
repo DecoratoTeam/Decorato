@@ -34,4 +34,7 @@ sealed interface Route {
 
     @Serializable
     data class DesignDetails(val designId: String) : Route
+
+    @Serializable
+    data object GenerateChat : Route
 }

@@ -139,4 +139,24 @@
     <string name="arabic">Arabic</string>
     <!-- -   -->
 
+
+    <!-- Generate Screen -->
+    <string name="generate_welcome_to">Welcome to</string>
+    <string name="generate_bot_name">DecoBot</string>
+    <string name="generate_welcome_subtitle">Start chatting with DecoBot now\nYou can design your home</string>
+    <string name="start_chat">Start Chat</string>
+
+    <string name="generate_title">Generate</string>
+    <string name="generate_hint_card_text">Type a description like modern bedroom or upload a photo to turn into a design!</string>
+    <string name="generate_result_card_text">Designs will appear here! Click to edit or save your design.</string>
+    <string name="generate_type_here">Typing here ...</string>
+    <string name="voice_input">Voice input</string>
+    <string name="send">Send</string>
+    <string name="attachment">Attachment</string>
+    <string name="back">Back</string>
+
+    <string name="add_attachment">Add attachment</string>
+    <string name="take_photograph">Take photograph</string>
+    <string name="add_from_album">Add from album</string>
+    <!-- -   -->
 </resources>
