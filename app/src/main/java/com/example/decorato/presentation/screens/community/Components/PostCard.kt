@@ -52,7 +52,6 @@ fun PostCard(
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp),
         shape = RoundedCornerShape(16.dp),
-        // الزتونة: تأكدي إن surfaceHigh متعرف في الدارك ثيم بلون غامق
         colors = CardDefaults.cardColors(containerColor = colors.surfaceHigh),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
@@ -144,12 +143,14 @@ fun PostCard(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
+                    val containerColor = if (post.isLiked) colors.primary else colors.primaryVariant
+                    val iconTint = if (post.isLiked) Color.White else colors.primary
                     // Like button
                     Box(
                         modifier = Modifier
                             .size(40.dp)
                             .clip(CircleShape)
-                            .background(colors.primary) // تأكدي إن الـ primary درجته مريحة في الدارك
+                            .background(containerColor)
                             .clickable { listener.onClickLike(post.id) },
                         contentAlignment = Alignment.Center
                     ) {
@@ -157,7 +158,7 @@ fun PostCard(
                             painter = painterResource(id = R.drawable.ic_like_outline),
                             contentDescription = "Like",
                             modifier = Modifier.size(20.dp),
-                            tint = Color.Unspecified
+                            tint = iconTint
                         )
                     }
 
