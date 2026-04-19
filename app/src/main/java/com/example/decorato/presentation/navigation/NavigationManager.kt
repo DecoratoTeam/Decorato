@@ -85,7 +85,9 @@ class NavigationManager(
         navController.navigate(Route.ResetPassword)
     }
 
-
+    fun toGenerateChat() {
+        navController.navigate(Route.GenerateChat)
+    }
 
     @Composable
     fun getCurrentBackStackEntryAsState(): State<NavBackStackEntry?> {
