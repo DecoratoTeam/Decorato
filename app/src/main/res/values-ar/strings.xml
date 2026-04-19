@@ -162,4 +162,19 @@
     <string name="add_from_album">إضافة من المعرض</string>
     <!-- -   -->
 
+    <!-- community -->
+
+        <string name="share_your_design">شارك تصميمك</string>
+        <string name="community_title">المجتمع</string>
+        <string name="likes">إعجاب</string>
+        <string name="user_profile_image">صورة الحساب الشخصي</string>
+        <string name="post_image">صورة المنشور</string>
+        <string name="back">رجوع</string>
+        <string name="create_a_post">إنشاء منشور</string>
+        <string name="publish">نشر</string>
+        <string name="what_are_you_thinking">بماذا تفكر؟</string>
+        <string name="image">صورة</string>
+        <string name="add_more">إضافة المزيد</string>
+    <!-- - -->
+
 </resources>

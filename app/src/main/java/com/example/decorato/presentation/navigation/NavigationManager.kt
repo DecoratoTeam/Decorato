@@ -93,6 +93,11 @@ class NavigationManager(
     fun toGenerateChat() {
         navController.navigate(Route.GenerateChat)
     }
+    fun toCreatePost() {
+        navController.navigate(Route.CreatePost)
+    }
+
+
 
     @Composable
     fun getCurrentBackStackEntryAsState(): State<NavBackStackEntry?> {

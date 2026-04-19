@@ -35,10 +35,15 @@ fun NavGraph(
         // Main App Screens with Bottom Navigation
         homeScreenRoute()
         generateScreenRoute()
-        communityScreenRoute()
-        profileScreenRoute()
+        communityScreenRoute(navigationManager)
 
-        styleDetailsScreenRoute()
-        designDetailsScreenRoute()
+
+        profileScreenRoute(navigationManager)
+        myRatingScreenRoute(navController)
+        myPostsScreenRoute(navigationManager)
+        editProfileScreenRoute(navigationManager)
+
+
+        createPostScreenRoute(navigationManager)
     }
 }
