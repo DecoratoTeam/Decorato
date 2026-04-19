@@ -18,6 +18,6 @@ fun EditProfileScreen(
     EditProfileContent(
         state = state,
         listener = viewModel,
-        onBackClick = onBackClick // 🔥 استخدميه مباشرة
+        onBackClick = onBackClick
     )
 }

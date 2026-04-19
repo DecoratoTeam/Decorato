@@ -3,6 +3,8 @@ package com.example.decorato.presentation.navigation
 import kotlinx.serialization.Serializable
 
 sealed interface Route {
+    @Serializable
+    data object CreatePost : Route
     sealed interface Tab : Route {
         @Serializable
         data object Home : Tab
@@ -10,6 +12,7 @@ sealed interface Route {
         data object Generate : Tab
         @Serializable
         data object Community : Tab
+
         @Serializable
         data object Profile : Tab
     }

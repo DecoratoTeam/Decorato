@@ -90,6 +90,10 @@ class NavigationManager(
         navController.navigate(Route.ResetPassword)
     }
 
+    fun toCreatePost() {
+        navController.navigate(Route.CreatePost)
+    }
+
 
 
     @Composable

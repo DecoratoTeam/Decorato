@@ -100,7 +100,7 @@ class ApplicationViewModel @Inject constructor(
     private val getOnboardingStatusUseCase: GetOnboardingStatusUseCase,
     private val getsSessionType: GetsSessionTypeUseCase,
     private val manageLocaleLanguageUseCase: ManageLocaleLanguageUseCase,
-    private val manageAppThemeUseCase: ManageAppThemeUseCase // ✅ 2. لازم يتحقن هنا
+    private val manageAppThemeUseCase: ManageAppThemeUseCase
 ) : BaseViewModel<ApplicationUiState, Unit>(ApplicationUiState(), dispatcherProvider) {
 
     init {
@@ -108,30 +108,28 @@ class ApplicationViewModel @Inject constructor(
 
     }
 
-    // ✅ 3. دالة الدارك مود كاملة
-    fun onToggleDarkMode(isDark: Boolean) {
-        viewModelScope.launch(dispatcherProvider.IO) {
-            manageAppThemeUseCase.setAppTheme(isDark)
-            updateState {
-                it.copy(isDarkTheme = isDark)
-            }
-        }
-    }
-
-    // ✅ 4. دالة اللغة كاملة
-    fun onChangeLanguage(language: AppLanguage) {
-        viewModelScope.launch(dispatcherProvider.IO) {
-            val useCaseLang = if (language == AppLanguage.ARABIC) {
-                ManageLocaleLanguageUseCase.Language.ARABIC
-            } else {
-                ManageLocaleLanguageUseCase.Language.ENGLISH
-            }
-            manageLocaleLanguageUseCase.setAppLanguage(useCaseLang)
-            updateState {
-                it.copy(language = language)
-            }
-        }
-    }
+//    fun onToggleDarkMode(isDark: Boolean) {
+//        viewModelScope.launch(dispatcherProvider.IO) {
+//            manageAppThemeUseCase.setAppTheme(isDark)
+//            updateState {
+//                it.copy(isDarkTheme = isDark)
+//            }
+//        }
+//    }
+//
+//    fun onChangeLanguage(language: AppLanguage) {
+//        viewModelScope.launch(dispatcherProvider.IO) {
+//            val useCaseLang = if (language == AppLanguage.ARABIC) {
+//                ManageLocaleLanguageUseCase.Language.ARABIC
+//            } else {
+//                ManageLocaleLanguageUseCase.Language.ENGLISH
+//            }
+//            manageLocaleLanguageUseCase.setAppLanguage(useCaseLang)
+//            updateState {
+//                it.copy(language = language)
+//            }
+//        }
+//    }
 
     private fun setStartDestination() {
         viewModelScope.launch(dispatcherProvider.IO) {

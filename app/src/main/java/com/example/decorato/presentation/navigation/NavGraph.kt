@@ -15,6 +15,7 @@ import com.example.decorato.presentation.screens.profile.EditProfileScreen
 import com.example.decorato.presentation.screens.profile.MyPostsScreen
 import com.example.decorato.presentation.screens.profile.MyRatingScreen
 import com.example.decorato.presentation.screens.register.registerScreenRoute
+import com.example.decorato.presentation.screens.community.createPostScreenRoute
 
 @Composable
 fun NavGraph(
@@ -34,7 +35,15 @@ fun NavGraph(
         // Main App Screens with Bottom Navigation
         homeScreenRoute()
         generateScreenRoute()
-        communityScreenRoute()
-        profileScreenRoute()
+        communityScreenRoute(navigationManager)
+
+
+        profileScreenRoute(navigationManager)
+        myRatingScreenRoute(navController)
+        myPostsScreenRoute(navigationManager)
+        editProfileScreenRoute(navigationManager)
+
+
+        createPostScreenRoute(navigationManager)
     }
 }
