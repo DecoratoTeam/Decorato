@@ -89,6 +89,24 @@ class GenerateChatViewModel @Inject constructor(
         sendNewEffect(GenerateChatEffect.OpenCamera)
     }
 
+    fun onCameraImageCaptured(uri: String) {
+        updateState {
+            it.copy(
+                selectedAttachmentName = "Image.jpg",
+                selectedAttachmentUri = uri
+            )
+        }
+    }
+
+    override fun onRemoveAttachmentClick() {
+        updateState {
+            it.copy(
+                selectedAttachmentName = null,
+                selectedAttachmentUri = null
+            )
+        }
+    }
+
     override fun onAddFromAlbumClick() {
         updateState { it.copy(showAttachmentSheet = false) }
         // TODO: open gallery

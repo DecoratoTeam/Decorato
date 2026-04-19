@@ -6,6 +6,7 @@ interface GenerateChatInteractionListener {
     fun onMicClick()
     fun onDismissAttachmentSheet()
     fun onTakePhotographClick()
+    fun onRemoveAttachmentClick()
     fun onAddFromAlbumClick()
     fun onBackClick()
 }
