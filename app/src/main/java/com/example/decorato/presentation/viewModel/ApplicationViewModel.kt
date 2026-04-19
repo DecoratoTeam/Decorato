@@ -23,9 +23,13 @@ class ApplicationViewModel @Inject constructor(
 ) : BaseViewModel<ApplicationUiState, Unit>(ApplicationUiState(), dispatcherProvider) {
 
     init {
+        // "الزيتونة": ربط كافة الإعدادات عند تشغيل التطبيق
         listenToAppSettings()
+        listenToLanguageSettings()
         setStartDestination()
     }
+
+    // --- إدارة الوجهة الافتتاحية (Navigation) ---
 
     private fun setStartDestination() {
         viewModelScope.launch(dispatcherProvider.IO) {
@@ -44,19 +48,13 @@ class ApplicationViewModel @Inject constructor(
         }
     }
 
-    fun initAppSettings(locale: Locale) {
-        viewModelScope.launch(dispatcherProvider.IO) {
-            manageLocaleLanguageUseCase.initAppLanguage(locale.language)
-        }
-    }
-
     private suspend fun setNonOnboardingStartDestination() {
         val sessionType = getsSessionTypeUseCase()
         val destination = when (sessionType) {
             SessionType.USER,
             SessionType.LOGGED_IN,
-            SessionType. GUEST -> ApplicationUiState.StartDestinations.HOME
-            null -> ApplicationUiState.StartDestinations.REGISTER
+            SessionType.GUEST -> ApplicationUiState.StartDestinations.HOME
+            else -> ApplicationUiState.StartDestinations.REGISTER
         }
         updateState {
             it.copy(
@@ -66,20 +64,63 @@ class ApplicationViewModel @Inject constructor(
         }
     }
 
+    // --- إدارة اللغة (Language) ---
+
+    fun initAppSettings(locale: Locale) {
+        viewModelScope.launch(dispatcherProvider.IO) {
+            manageLocaleLanguageUseCase.initAppLanguage(locale.language)
+        }
+    }
+
+    // --- إدارة اللغة ---
+    fun onChangeLanguage(language: com.example.decorato.domain.model.AppLanguage) {
+        android.util.Log.d("DECORATO_TEST", "وصلت إشارة تغيير اللغة: $language")
+        updateState { it.copy(language = language) }
+        viewModelScope.launch(dispatcherProvider.IO) {
+            val useCaseLang = if (language == com.example.decorato.domain.model.AppLanguage.ARABIC) {
+                ManageLocaleLanguageUseCase.Language.ARABIC
+            } else {
+                ManageLocaleLanguageUseCase.Language.ENGLISH
+            }
+            manageLocaleLanguageUseCase.setAppLanguage(useCaseLang)
+        }
+    }
+
+    // --- إدارة الثيم ---
+    fun onChangeTheme(isDark: Boolean) {
+        android.util.Log.d("DECORATO_TEST", "وصلت إشارة الدارك مود: $isDark")
+        updateState { it.copy(isDarkTheme = isDark) }
+        viewModelScope.launch(dispatcherProvider.IO) {
+            manageAppThemeUseCase.setAppTheme(isDark)
+        }
+    }
+
+    // 1. حل مشكلة الـ Operator في اللغة
+    private fun listenToLanguageSettings() {
+        viewModelScope.launch(dispatcherProvider.IO) {
+            manageLocaleLanguageUseCase.getAppLanguage().collect { languageEnum ->
+                // الزيتونة: languageEnum هنا نوعه ManageLocaleLanguageUseCase.Language
+                val currentLang = if (languageEnum == ManageLocaleLanguageUseCase.Language.ARABIC) {
+                    com.example.decorato.domain.model.AppLanguage.ARABIC
+                } else {
+                    com.example.decorato.domain.model.AppLanguage.ENGLISH
+                }
+                updateState { it.copy(language = currentLang) }
+            }
+        }
+    }
+
+
     private fun listenToAppSettings() {
         viewModelScope.launch(dispatcherProvider.IO) {
             manageAppThemeUseCase.getAppTheme().collect { isDarkTheme ->
-
-                updateState { state ->
-                    state.copy(
-                        isDarkTheme = isDarkTheme,
+                updateState {
+                    it.copy(
+                        isDarkTheme = false,
                         isThemeLoaded = true
                     )
                 }
             }
         }
-
-
     }
-
 }

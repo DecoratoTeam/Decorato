@@ -178,7 +178,46 @@ class AuthenticationRepositoryImpl @Inject constructor(
         return null
     }
 
+// ... داخل كلاس AuthenticationRepositoryImpl
+
     override suspend fun logout() {
+        // الزيتونة: بنمسح السيشن ونرجع اليوزر للـ Login
+        setSessionType(SessionType.GUEST)
+        // لو فيه Token محفوظ في الـ SharedPrefs لازم يتمسح هنا
     }
 
+    override suspend fun getUserProfile(): Result<User> {
+        return try {
+            // هنا بننده الـ API اللي بيجيب بيانات البروفايل
+            val response = authApi.getProfile() // تأكدي إن authApi فيها الفانكشن دي
+            if (response.isSuccessful && response.body()?.isSuccess == true) {
+                val userData = response.body()?.data
+                val user = User(
+                    id = userData?.id ?: "",
+                    name = userData?.userName ?: "",
+                    email = userData?.email ?: "",
+                    profileImage = null
+                )
+                Result.success(user)
+            } else {
+                Result.failure(Exception("Failed to load profile"))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    override suspend fun updateUserProfile(name: String, email: String): Result<Boolean> {
+        return try {
+            // بنبعت الداتا الجديدة للباك إند
+            val response = authApi.updateProfile(name, email)
+            if (response.isSuccessful && response.body()?.isSuccess == true) {
+                Result.success(true)
+            } else {
+                Result.failure(Exception("Update failed"))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
 }

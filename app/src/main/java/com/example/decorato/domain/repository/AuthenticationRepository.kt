@@ -22,4 +22,6 @@ interface AuthenticationRepository {
     suspend fun getSessionType(): SessionType?
 
     suspend fun logout()
+    suspend fun getUserProfile(): Result<User>
+    suspend fun updateUserProfile(name: String, email: String): Result<Boolean>
 }

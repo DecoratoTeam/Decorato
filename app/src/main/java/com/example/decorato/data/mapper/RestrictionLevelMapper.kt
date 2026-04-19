@@ -9,6 +9,7 @@ fun RestrictionLevel.toLocalDto(): String {
         RestrictionLevel.STRICT -> "STRICT"
         RestrictionLevel.MODERATE -> "MODERATE"
         RestrictionLevel.OFF -> "OFF"
+        RestrictionLevel.GUEST -> "GUEST" // ✅ ضيفي السطر ده هنا
     }
 }
 
@@ -19,7 +20,9 @@ fun stringToRestrictionLevelEntity(restrictionLevel: Flow<String>): Flow<Restric
                 when (it) {
                     "STRICT" -> RestrictionLevel.STRICT
                     "MODERATE" -> RestrictionLevel.MODERATE
+                    "GUEST" -> RestrictionLevel.GUEST // ✅ ضيفي السطر ده هنا
                     else -> RestrictionLevel.OFF
+
                 }
             )
         }

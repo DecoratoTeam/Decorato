@@ -104,6 +104,42 @@
     <string name="show_all">Show All</string>
     <!-- -   -->
 
+    <!-- Profile Screen -->
+    <string name="myPosts">My Posts</string>
+    <string name="myRating">My Rating</string>
+
+    <string name="language">Language</string>
+    <string name="darkMode">Dark Mode</string>
+    <string name="logout">Logout</string>
+
+    <string name="logoutConfirmMsg">Are you sure you want to logout?</string>
+    <string name="logoutDesc">You can always sign back in with your account.</string>
+    <string name="cancel">Cancel</string>
+    <string name="selectLanguage">Select Language</string>
+    <string name="confirm">Confirm</string>
+
+    <string name="loginMsg">Login to see your profile</string>
+    <string name="loginDesc">You need to be logged in to access your posts and settings.</string>
+    <string name="loginBtn">Login</string>
+    <string name="retry">Login</string>
+    <string name="restriction_title">Content Restricted</string>
+    <string name="restriction_desc">You do not have the necessary permissions to view this content.</string>
+    <string name="ok">OK</string>
+
+    <string name="logout_confirm_msg">Are you sure you want to logout? You can always sign back in.</string>
+    <string name="settings">Settings</string>
+    <string name="version">Version</string>
+    <string name="my_profile">My Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="save">Save</string>
+    <string name="no_ratings_yet">No Ratings Yet</string>
+    <string name="no_ratings_description">You haven\'t rated any designs or rooms so far. Start exploring the designs you like</string>
+    <string name="change_language">Change Language</string>
+    <string name="english">English</string>
+    <string name="arabic">Arabic</string>
+    <!-- -   -->
+
+
     <!-- Generate Screen -->
     <string name="generate_welcome_to">Welcome to</string>
     <string name="generate_bot_name">DecoBot</string>
@@ -123,4 +159,19 @@
     <string name="take_photograph">Take photograph</string>
     <string name="add_from_album">Add from album</string>
     <!-- -   -->
+    <!-- community -->
+
+        <string name="share_your_design">Share Your Design</string>
+        <string name="community_title">Community</string>
+        <string name="likes">likes</string>
+        <string name="user_profile_image">User Profile Image</string>
+        <string name="post_image">Post Image</string>
+        <string name="back">Back</string>
+        <string name="create_a_post">Create a post</string>
+        <string name="publish">publish</string>
+        <string name="what_are_you_thinking">What are you thinking?</string>
+        <string name="image">Image</string>
+        <string name="add_more">Add more</string>
+    <!-- -   -->
+
 </resources>

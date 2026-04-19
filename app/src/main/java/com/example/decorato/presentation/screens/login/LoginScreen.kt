@@ -40,7 +40,7 @@ import com.example.decorato.presentation.components.TextField
 import com.example.decorato.presentation.components.TextWithClickablePart
 import com.example.decorato.presentation.components.buttons.ButtonDefaults
 import com.example.decorato.presentation.components.buttons.ConfirmButton
-import com.example.decorato.presentation.screens.login.component.GuestButton
+  import com.example.decorato.presentation.screens.login.component.PrimaryVariantButton
 import com.example.decorato.presentation.screens.login.component.getLoginErrorStateMessage
 import com.example.decorato.presentation.screens.register.component.getPasswordTextFieldIcon
 import com.example.decorato.presentation.theme.AppTheme
@@ -222,7 +222,10 @@ private fun LoginScreenContent(
 
             //Continue as guest
 
-            GuestButton(
+            // الجديد (الموحد)
+            PrimaryVariantButton(
+                title = stringResource(R.string.continue_as_guest),
+                // هنا مش لازم تبعتي textColor لأنه واخد الـ Body كقيمة افتراضية (default)
                 onClick = interactionListener::onContinueAsGuestClicked
             )
 
