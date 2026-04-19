@@ -1,7 +1,8 @@
 package com.example.decorato.presentation.screens.generate.chat
 
 import android.Manifest
-import android.graphics.Bitmap
+import android.content.Context
+import android.net.Uri
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -35,6 +36,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -44,6 +48,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.core.content.FileProvider
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
@@ -57,6 +62,7 @@ import com.example.decorato.presentation.viewModel.generate.chat.GenerateChatMes
 import com.example.decorato.presentation.viewModel.generate.chat.GenerateChatUiState
 import com.example.decorato.presentation.viewModel.generate.chat.GenerateChatViewModel
 import kotlinx.coroutines.flow.collectLatest
+import java.io.File
 
 @Composable
 fun GenerateChatScreen(
@@ -66,11 +72,13 @@ fun GenerateChatScreen(
     val state by viewModel.state.collectAsStateWithLifecycle()
     val context = LocalContext.current
 
-    val cameraLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.TakePicturePreview()
-    ) { bitmap: Bitmap? ->
-        if (bitmap != null) {
-            viewModel.onCameraImageCaptured("captured://image")
+    var tempCameraUri by remember { mutableStateOf<Uri?>(null) }
+
+    val takePictureLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.TakePicture()
+    ) { success ->
+        if (success && tempCameraUri != null) {
+            viewModel.onCameraImageCaptured(tempCameraUri.toString())
         } else {
             Toast.makeText(context, "No image captured", Toast.LENGTH_SHORT).show()
         }
@@ -80,9 +88,25 @@ fun GenerateChatScreen(
         contract = ActivityResultContracts.RequestPermission()
     ) { granted ->
         if (granted) {
-            cameraLauncher.launch(null)
+            val uri = createTempImageUri(context)
+            tempCameraUri = uri
+            if (uri != null) {
+                takePictureLauncher.launch(uri)
+            } else {
+                Toast.makeText(context, "Failed to create image file", Toast.LENGTH_SHORT).show()
+            }
         } else {
             Toast.makeText(context, "Camera permission denied", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    val galleryLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        if (uri != null) {
+            viewModel.onGalleryImagePicked(uri.toString())
+        } else {
+            Toast.makeText(context, "No image selected", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -91,6 +115,7 @@ fun GenerateChatScreen(
             when (effect) {
                 GenerateChatEffect.NavigateBack -> navManager.navigateBack()
                 GenerateChatEffect.OpenCamera -> cameraPermissionLauncher.launch(Manifest.permission.CAMERA)
+                GenerateChatEffect.OpenGallery -> galleryLauncher.launch("image/*") // ✅ جديد
             }
         }
     }
@@ -99,6 +124,23 @@ fun GenerateChatScreen(
         state = state,
         listener = viewModel
     )
+}
+
+private fun createTempImageUri(context: Context): Uri? {
+    return try {
+        val imageFile = File.createTempFile(
+            "camera_${System.currentTimeMillis()}",
+            ".jpg",
+            context.cacheDir
+        )
+        FileProvider.getUriForFile(
+            context,
+            "${context.packageName}.provider",
+            imageFile
+        )
+    } catch (_: Exception) {
+        null
+    }
 }
 
 @Composable
@@ -123,7 +165,6 @@ private fun GenerateChatScreenContent(
             .padding(horizontal = 12.dp, vertical = 8.dp)
     ) {
         Column(modifier = Modifier.fillMaxSize()) {
-
             DefaultAppBar(
                 title = stringResource(R.string.generate_title),
                 showNavigateBackButton = true,
@@ -147,7 +188,7 @@ private fun GenerateChatScreenContent(
                     ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_decobot),
-                            contentDescription = "DecoBot Icon",
+                            contentDescription = null,
                             tint = AppTheme.color.primary,
                             modifier = Modifier.size(100.dp)
                         )
@@ -199,6 +240,37 @@ private fun GenerateChatScreenContent(
 
                 items(state.messages, key = { it.id }) { item ->
                     when (item.type) {
+                        GenerateChatMessageType.USER_IMAGE -> {
+                            Box(
+                                modifier = Modifier.fillMaxWidth(),
+                                contentAlignment = Alignment.CenterEnd
+                            ) {
+                                Card(
+                                    shape = RoundedCornerShape(12.dp),
+                                    colors = CardDefaults.cardColors(containerColor = AppTheme.color.onPrimary),
+                                    modifier = Modifier.fillMaxWidth(0.52f)
+                                ) {
+                                    AsyncImage(
+                                        model = item.localImageUri,
+                                        contentDescription = item.fileName,
+                                        contentScale = ContentScale.Crop,
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .height(110.dp)
+                                            .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
+                                    )
+                                    Text(
+                                        text = item.fileName.ifBlank { "Image.jpeg" },
+                                        color = AppTheme.color.hint,
+                                        style = AppTheme.textStyle.body.small,
+                                        modifier = Modifier
+                                            .align(Alignment.End)
+                                            .padding(horizontal = 10.dp, vertical = 8.dp)
+                                    )
+                                }
+                            }
+                        }
+
                         GenerateChatMessageType.USER_TEXT -> {
                             Box(
                                 modifier = Modifier.fillMaxWidth(),
@@ -259,7 +331,6 @@ private fun GenerateChatScreenContent(
                 }
             }
 
-            // Bottom input
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -275,8 +346,6 @@ private fun GenerateChatScreenContent(
                     )
                     .padding(horizontal = 12.dp, vertical = 10.dp)
             ) {
-
-                // Attachment pill (image icon + filename + x)
                 state.selectedAttachmentName?.let { fileName ->
                     Card(
                         shape = RoundedCornerShape(20.dp),
@@ -298,26 +367,23 @@ private fun GenerateChatScreenContent(
                                 tint = AppTheme.color.hint,
                                 modifier = Modifier.size(14.dp)
                             )
-
                             Text(
                                 text = fileName,
                                 style = AppTheme.textStyle.body.small,
                                 color = AppTheme.color.body
                             )
-
                             IconButton(
                                 onClick = listener::onRemoveAttachmentClick,
                                 modifier = Modifier.size(16.dp)
                             ) {
                                 Text(
-                                    text = "X",
+                                    text = "×",
                                     color = AppTheme.color.hint,
                                     style = AppTheme.textStyle.body.small
                                 )
                             }
                         }
                     }
-
                     Spacer(modifier = Modifier.height(8.dp))
                 }
 
@@ -351,7 +417,7 @@ private fun GenerateChatScreenContent(
                     )
 
                     IconButton(
-                        onClick = listener::onMicClick,
+                        onClick = listener::onAttachmentClick,
                         modifier = Modifier
                             .size(44.dp)
                             .background(AppTheme.color.greenVariant, RoundedCornerShape(10.dp))
@@ -369,11 +435,7 @@ private fun GenerateChatScreenContent(
                         modifier = Modifier
                             .size(44.dp)
                             .background(
-                                if (isMessageNotEmpty || state.selectedAttachmentUri != null) {
-                                    AppTheme.color.primary
-                                } else {
-                                    AppTheme.color.hint
-                                },
+                                if (isMessageNotEmpty || state.selectedAttachmentUri != null) AppTheme.color.primary else AppTheme.color.hint,
                                 RoundedCornerShape(10.dp)
                             )
                     ) {
