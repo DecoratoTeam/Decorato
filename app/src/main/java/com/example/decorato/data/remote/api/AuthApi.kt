@@ -13,7 +13,7 @@ import retrofit2.http.Query
 
 interface AuthApi {
 
-    @POST("Auth")
+    @POST("Auth/Login")
     suspend fun login(
         @Body request: LoginRequestDto
     ): Response<LoginResponseDto>
