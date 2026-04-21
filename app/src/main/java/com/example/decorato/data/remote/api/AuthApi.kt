@@ -25,7 +25,7 @@ interface AuthApi {
     ): Response<RegisterResponseDto>
 
 
-    @GET("Auth/Profile") // تأكدي من المسار مع بتاع الباك إند
+    @GET("Auth/Profile")
     suspend fun getProfile(): Response<LoginResponseDto>
 
     @PUT("Auth/Update")

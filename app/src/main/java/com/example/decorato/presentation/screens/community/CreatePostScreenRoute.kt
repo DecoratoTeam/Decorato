@@ -1,4 +1,4 @@
-package com.example.decorato.presentation.screens.community // ده المسار اللي باين في الصور عندك
+package com.example.decorato.presentation.screens.community
 
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -16,7 +16,6 @@ import com.example.decorato.presentation.viewmodel.community.create_post.CreateP
 
 
 fun NavGraphBuilder.createPostScreenRoute(navigationManager: NavigationManager) {
-    // استخدمنا Route.CreatePost النوع الجديد
     composable<Route.CreatePost> {
         CreatePostScreenRoute(navigationManager = navigationManager)
     }
