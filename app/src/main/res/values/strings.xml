@@ -154,19 +154,17 @@
     <string name="send">Send</string>
     <string name="attachment">Attachment</string>
     <string name="back">Back</string>
-
     <string name="add_attachment">Add attachment</string>
     <string name="take_photograph">Take photograph</string>
     <string name="add_from_album">Add from album</string>
     <!-- -   -->
-    <!-- community -->
 
+    <!-- community -->
         <string name="share_your_design">Share Your Design</string>
         <string name="community_title">Community</string>
         <string name="likes">likes</string>
         <string name="user_profile_image">User Profile Image</string>
         <string name="post_image">Post Image</string>
-        <string name="back">Back</string>
         <string name="create_a_post">Create a post</string>
         <string name="publish">publish</string>
         <string name="what_are_you_thinking">What are you thinking?</string>

@@ -1,14 +1,12 @@
 package com.example.decorato.presentation.viewModel.login
 
 import android.util.Patterns
-import androidx.lifecycle.viewModelScope
 import com.example.decorato.domain.useCase.authentication.LoginUseCase
 import com.example.decorato.presentation.viewModel.shared.BaseViewModel
 import com.example.decorato.presentation.viewModel.utils.dispatcher.DispatcherProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -70,11 +68,9 @@ class LoginViewModel @Inject constructor(
     }
 
 
-
     override fun onForgotPasswordClicked() {
         sendNewNavigationEffect(LoginEffect.NavigateToResetPassword)
     }
-
 
 
     override fun onContinueAsGuestClicked() {

@@ -3,11 +3,11 @@ package com.example.decorato.presentation.viewModel.register
 import android.util.Patterns
 import com.example.decorato.domain.useCase.authentication.RegisterUseCase
 import com.example.decorato.presentation.viewModel.shared.BaseViewModel
-import com.example.decorato.presentation.viewModel.utils. dispatcher.DispatcherProvider
+import com.example.decorato.presentation.viewModel.utils.dispatcher.DispatcherProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow. MutableStateFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow. asStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
@@ -74,9 +74,8 @@ class RegisterViewModel @Inject constructor(
             },
             onSuccess = { result ->
                 result.onSuccess {
-                    sendNewNavigationEffect(RegisterEffect.RegistrationSuccess)
                     sendNewNavigationEffect(RegisterEffect.NavigateToHome)
-                }. onFailure { error ->
+                }.onFailure { error ->
                     updateState {
                         it.copy(error = error.message ?: "Registration failed")
                     }

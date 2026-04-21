@@ -65,8 +65,7 @@ class AuthenticationRepositoryImpl @Inject constructor(
                     Result.success(user)
                 } else {
                     val errorMessage = when {
-                        !body?.message.isNullOrEmpty() -> body?.message!!
-                        !body?.errors.isNullOrEmpty() -> body?.errors?.joinToString(", ")!!
+                        !body?.message.isNullOrEmpty() -> body.message
                         body?.errorCode != null -> mapErrorCodeToMessage(body.errorCode)
                         else -> "Registration failed"
                     }
@@ -84,9 +83,18 @@ class AuthenticationRepositoryImpl @Inject constructor(
                 Log.e("AuthRepo", "HTTP Error: ${response.code()}, Body: $errorBody")
                 Result.failure(ServerErrorException())
             }
-        } catch (e: Exception) {
-            Log.e("AuthRepo", "Exception during registration", e)
+        } catch (e: java.net.UnknownHostException) {
+            Log.e("AuthRepo", "No internet during registration", e)
             Result.failure(NoInternetException())
+        } catch (e: java.net.SocketTimeoutException) {
+            Log.e("AuthRepo", "Timeout during registration", e)
+            Result.failure(ServerErrorException())
+        } catch (e: retrofit2.HttpException) {
+            Log.e("AuthRepo", "HTTP exception during registration: ${e.code()}", e)
+            Result.failure(ServerErrorException())
+        } catch (e: Exception) {
+            Log.e("AuthRepo", "Unexpected exception during registration", e)
+            Result.failure(UnknownException())
         }
     }
 
@@ -140,30 +148,39 @@ class AuthenticationRepositoryImpl @Inject constructor(
             val request = LoginRequestDto(email = email, password = password)
             val response = authApi.login(request)
 
+            Log.d("AuthRepo", "Login code: ${response.code()}")
+            Log.d("AuthRepo", "Login body: ${response.body()}")
+
             if (response.isSuccessful) {
                 val body = response.body()
                 if (body?.isSuccess == true) {
                     val userData = body.data
-                    userData?.token?.let { token ->
+
+                    userData?.token?.let {
                         setSessionType(SessionType.USER)
                     }
-                    val user = User(
-                        id = userData?.id ?: "",
-                        name = userData?.userName ?: "",
-                        email = userData?.email ?: email,
-                        fullName = "",
-                        token = userData?.token,
-                        refreshToken = userData?.refreshToken
+
+                    Result.success(
+                        User(
+                            id = userData?.id ?: "",
+                            name = userData?.userName ?: "",
+                            email = userData?.email ?: email,
+                            fullName = "",
+                            token = userData?.token,
+                            refreshToken = null
+                        )
                     )
-                    Result.success(user)
                 } else {
                     Result.failure(Exception(body?.message ?: "Login failed"))
                 }
             } else {
-                Result.failure(Exception("HTTP Error: ${response.code()}"))
+                val errorBody = response.errorBody()?.string()
+                Log.e("AuthRepo", "Login HTTP ${response.code()} : $errorBody")
+                Result.failure(ServerErrorException())
             }
         } catch (e: Exception) {
-            Result.failure(Exception("Network error: ${e.localizedMessage}"))
+            Log.e("AuthRepo", "Login exception", e)
+            Result.failure(UnknownException())
         }
     }
 

@@ -5,33 +5,33 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class LoginResponseDto(
-    @SerialName("isSuccess")
-    val isSuccess: Boolean,
+    @SerialName("Data")
+    val data: LoginUserDataDto? = null,
 
-    @SerialName("message")
-    val message: String? = null,
+    @SerialName("IsSuccess")
+    val isSuccess: Boolean = false,
 
-    @SerialName("data")
-    val data: LoginDataDto? = null,
+    @SerialName("Error")
+    val errorCode: Int? = null,
 
-    @SerialName("errors")
-    val errors: List<String>? = null
+    @SerialName("Message")
+    val message: String? = null
 )
 
 @Serializable
-data class LoginDataDto(
-    @SerialName("id")
+data class LoginUserDataDto(
+    @SerialName("Id")
     val id: String? = null,
 
-    @SerialName("userName")
+    @SerialName("UserName")
     val userName: String? = null,
 
-    @SerialName("email")
+    @SerialName("Email")
     val email: String? = null,
 
-    @SerialName("token")
+    @SerialName("Token")
     val token: String? = null,
 
-    @SerialName("refreshToken")
-    val refreshToken: String? = null
+    @SerialName("ExpiresIn")
+    val expiresIn: Int? = null
 )

@@ -5,36 +5,36 @@ import kotlinx.serialization. Serializable
 
 @Serializable
 data class RegisterResponseDto(
-    @SerialName("isSuccess")
-    val isSuccess: Boolean,
+    @SerialName("Data")
+    val data: UserDataDto? = null,
 
-    @SerialName("message")
-    val message: String?  = null,
+    @SerialName("IsSuccess")
+    val isSuccess: Boolean = false,
 
-    @SerialName("data")
-    val data: RegisterDataDto? = null,
-
-    @SerialName("error")
+    @SerialName("Error")
     val errorCode: Int? = null,
 
-    @SerialName("errors")
-    val errors: List<String>? = null
+    @SerialName("Message")
+    val message: String? = null
 )
 
 @Serializable
-data class RegisterDataDto(
-    @SerialName("id")
+data class UserDataDto(
+    @SerialName("Id")
     val id: String? = null,
 
-    @SerialName("userName")
+    @SerialName("UserName")
     val userName: String? = null,
 
-    @SerialName("email")
+    @SerialName("Email")
     val email: String? = null,
 
-    @SerialName("token")
+    @SerialName("Name")
+    val name: String? = null,
+
+    @SerialName("Token")
     val token: String? = null,
 
-    @SerialName("refreshToken")
+    @SerialName("RefreshToken")
     val refreshToken: String? = null
 )

@@ -222,10 +222,8 @@ private fun LoginScreenContent(
 
             //Continue as guest
 
-            // الجديد (الموحد)
             PrimaryVariantButton(
                 title = stringResource(R.string.continue_as_guest),
-                // هنا مش لازم تبعتي textColor لأنه واخد الـ Body كقيمة افتراضية (default)
                 onClick = interactionListener::onContinueAsGuestClicked
             )
 

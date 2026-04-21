@@ -13,7 +13,7 @@ import retrofit2.http.Query
 
 interface AuthApi {
 
-    @POST("Auth")
+    @POST("Auth/Login")
     suspend fun login(
         @Body request: LoginRequestDto
     ): Response<LoginResponseDto>
@@ -25,7 +25,7 @@ interface AuthApi {
     ): Response<RegisterResponseDto>
 
 
-    @GET("Auth/Profile") // تأكدي من المسار مع بتاع الباك إند
+    @GET("Auth/Profile")
     suspend fun getProfile(): Response<LoginResponseDto>
 
     @PUT("Auth/Update")
