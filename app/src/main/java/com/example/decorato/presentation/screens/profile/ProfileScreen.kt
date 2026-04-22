@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.decorato.domain.model.AppLanguage
 import com.example.decorato.presentation.screens.profile.components.*
+import com.example.decorato.presentation.viewModel.profile.UiState.ProfileUiState
 
 @Composable
 fun ProfileScreen(
@@ -20,8 +21,6 @@ fun ProfileScreen(
     Scaffold(
         modifier = Modifier.fillMaxSize()
     ) { paddingValues ->
-        // الزتونة: شيلنا الـ padding(paddingValues) من هنا تماماً
-        // عشان الـ Box يبدأ من أول بكسل في الشاشة (نقطة الصفر)
         Box(
             modifier = Modifier.fillMaxSize()
         ) {
@@ -39,13 +38,11 @@ fun ProfileScreen(
                     onDarkModeChange = { listener.onToggleDarkMode(it) },
                     onLanguageClick = { listener.onClickLanguage() },
                     onLogoutClick = { listener.onClickLogout() },
-                    // الزتونة 2: بنمرر الـ bottom padding فقط عشان نحمي العناصر اللي تحت من الـ Navigation Bar
                     modifier = Modifier.padding(bottom = paddingValues.calculateBottomPadding())
                 )
             } else {
                 NotLoggedInContent(
                     onLoginClick = { listener.onClickLogin() },
-                    // هنا ممكن نسيب الـ paddingValues كاملة لأن مفيش Header محتاج يسيح ورا الساعة
                     modifier = Modifier.padding(paddingValues)
                 )
             }

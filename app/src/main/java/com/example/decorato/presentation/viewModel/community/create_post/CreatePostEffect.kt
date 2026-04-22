@@ -1,6 +1,4 @@
-package com.example.decorato.presentation.viewmodel.community.create_post
-
-import com.example.decorato.presentation.viewmodel.community.community_screen.CommunityEffect
+package com.example.decorato.presentation.viewModel.community.create_post
 
 
 sealed interface CreatePostEffect {

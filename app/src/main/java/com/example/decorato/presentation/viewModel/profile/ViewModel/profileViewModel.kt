@@ -1,4 +1,4 @@
-package com.example.decorato.presentation.screens.profile
+package com.example.decorato.presentation.viewModel.profile.ViewModel
 
 import ProfileEffect
 import ProfileInteractionListener
@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.decorato.domain.model.AppLanguage
 import com.example.decorato.domain.repository.AuthenticationRepository
+import com.example.decorato.presentation.viewModel.profile.UiState.ProfileUiState
+import com.example.decorato.presentation.viewModel.profile.UiState.UserInfoUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -27,19 +29,16 @@ class ProfileViewModel @Inject constructor(
     val effect = _effect.asSharedFlow()
 
     init {
-        // الزيتونة: بنحمل داتا اليوزر أول ما نفتح
         loadUserData()
     }
 
     private fun loadUserData() {
         viewModelScope.launch {
-            // ملاحظة: لو زميلك لسه مخلصش getUserProfile في الريبوزيتوري،
-            // هنحط داتا مؤقتة هنا بس مربوطة بالـ Entity
             _uiState.update {
                 it.copy(
                     isLoggedIN = true,
                     userInfo = UserInfoUiState(
-                        userName = "Ali Hassan ", // هنا هينزل user.name لما يجهز
+                        userName = "Sara Ashraf ",
                         userPostCount = 0,
                         userRating = 0.0
                     )
@@ -58,7 +57,7 @@ class ProfileViewModel @Inject constructor(
 
     override fun onConfirmLogout() {
         viewModelScope.launch {
-            authRepository.logout() // بننادي الـ logout الحقيقي
+            authRepository.logout()
             _effect.emit(ProfileEffect.NavigationToLogin)
         }
     }

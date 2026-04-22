@@ -1,4 +1,4 @@
-package com.example.decorato.presentation.viewmodel.community.community_screen
+package com.example.decorato.presentation.viewModel.community.community_screen
 
 sealed interface CommunityEffect {
     object NavigateToCreatePost : CommunityEffect

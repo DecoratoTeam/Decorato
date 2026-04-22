@@ -7,11 +7,11 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.decorato.presentation.screens.community.Components.CommunityTopBar
+import com.example.decorato.presentation.screens.community.components.CommunityTopBar
 import com.example.decorato.presentation.screens.community.components.PostCard
 import com.example.decorato.presentation.theme.colors.LocalDecoratoAppColors
-import com.example.decorato.presentation.viewmodel.community.community_screen.CommunityInteractionListener
-import com.example.decorato.presentation.viewmodel.community.community_screen.CommunityUiState
+import com.example.decorato.presentation.viewModel.community.community_screen.CommunityInteractionListener
+import com.example.decorato.presentation.viewModel.community.community_screen.CommunityUiState
 
 
 @Composable

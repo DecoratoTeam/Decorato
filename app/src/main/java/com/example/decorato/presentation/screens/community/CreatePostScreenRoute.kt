@@ -10,9 +10,9 @@ import androidx.navigation.compose.composable
 import com.example.decorato.presentation.navigation.NavigationManager
 import com.example.decorato.presentation.navigation.Route
 import com.example.decorato.presentation.screens.community.sections.CreatePostScreen
-import com.example.decorato.presentation.viewmodel.community.community_screen.CommunityEffect
-import com.example.decorato.presentation.viewmodel.community.create_post.CreatePostEffect
-import com.example.decorato.presentation.viewmodel.community.create_post.CreatePostViewModel
+import com.example.decorato.presentation.viewModel.community.create_post.CreatePostViewModel
+import com.example.decorato.presentation.viewModel.community.create_post.CreatePostEffect
+import com.example.decorato.presentation.viewModel.community.create_post.CreatePostUiState
 
 
 fun NavGraphBuilder.createPostScreenRoute(navigationManager: NavigationManager) {
@@ -24,16 +24,16 @@ fun NavGraphBuilder.createPostScreenRoute(navigationManager: NavigationManager) 
 @Composable
 fun CreatePostScreenRoute(
     navigationManager: NavigationManager,
-    viewModel: CreatePostViewModel = hiltViewModel()
+    createPostViewModel: CreatePostViewModel = hiltViewModel()
 ) {
-    val state by viewModel.state.collectAsState()
+    val state: CreatePostUiState by createPostViewModel.state.collectAsState()
 
     val galleryLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent()
-    ) { uri: Uri? -> uri?.let { viewModel.onImagePicked(it.toString()) } }
+    ) { uri: Uri? -> uri?.let { createPostViewModel.onImagePicked(it.toString()) } }
 
     LaunchedEffect(Unit) {
-        viewModel.effect.collect { effect ->
+        createPostViewModel.effect.collect { effect: CreatePostEffect ->
             when (effect) {
                 is CreatePostEffect.PickImageFromGallery -> galleryLauncher.launch("image/*")
                 is CreatePostEffect.NavigateBack -> navigationManager.navigateBack()
@@ -48,6 +48,6 @@ fun CreatePostScreenRoute(
     // الزتونة: هنا بعتنا الـ state والـ listener زي ما الـ Section محتاج بالظبط
     CreatePostScreen(
         state = state,      // هيبعت الـ CreatePostUiState بالكامل
-        listener = viewModel // هيبعت الـ ViewModel كـ listener
+        listener = createPostViewModel // هيبعت الـ ViewModel كـ listener
     )
 }

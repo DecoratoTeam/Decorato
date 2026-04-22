@@ -1,6 +1,6 @@
-package com.example.decorato.presentation.screens.profile
+package com.example.decorato.presentation.viewModel.profile.UiState
 
-import com.example.decorato.domain.model.AppLanguage // مهم جداً الاستيراد ده
+import com.example.decorato.domain.model.AppLanguage
 
 data class ProfileUiState(
     val isLoading: Boolean = false,
@@ -18,7 +18,7 @@ data class UserInfoUiState(
 
 data class SettingState(
     val isDarkTheme: Boolean = false,
-    val selectedLanguage: AppLanguage = AppLanguage.ENGLISH, // السطر ده كان ناقص وهو سبب المشكلة!
+    val selectedLanguage: AppLanguage = AppLanguage.ENGLISH,
     val showLogoutDialog: Boolean = false,
     val showLanguageDialog: Boolean = false,
     val isLogoutLoading: Boolean = false,

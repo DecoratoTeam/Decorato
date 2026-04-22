@@ -10,12 +10,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import com.example.decorato.presentation.navigation.NavigationManager
 import com.example.decorato.presentation.screens.profile.EditProfileScreen
 import com.example.decorato.presentation.screens.profile.MyPostsScreen
 import com.example.decorato.presentation.screens.profile.MyRatingScreen
 import com.example.decorato.presentation.screens.profile.ProfileScreen
-import com.example.decorato.presentation.screens.profile.ProfileViewModel
+import com.example.decorato.presentation.viewModel.profile.ViewModel.ProfileViewModel
 import com.example.decorato.presentation.viewModel.ApplicationViewModel
 
 @Composable

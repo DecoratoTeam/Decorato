@@ -1,4 +1,4 @@
-package com.example.decorato.presentation.viewmodel.community.create_post
+package com.example.decorato.presentation.viewModel.community.create_post
 
 interface CreatePostInteractionListener {
     fun onTextChange(newText: String)

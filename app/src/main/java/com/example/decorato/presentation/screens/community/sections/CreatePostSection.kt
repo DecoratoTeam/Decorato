@@ -1,6 +1,5 @@
 package com.example.decorato.presentation.screens.community.sections
 
-import PostInputField
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,17 +15,16 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.decorato.presentation.screens.community.components.CreatePostTopBar
 import com.example.decorato.presentation.screens.community.components.ImageAttachment
+import com.example.decorato.presentation.screens.community.components.PostInputField
 import com.example.decorato.presentation.screens.community.components.UserInfoHeader
 import com.example.decorato.presentation.theme.colors.LocalDecoratoAppColors
-import com.example.decorato.presentation.viewmodel.community.community_screen.CommunityInteractionListener
-import com.example.decorato.presentation.viewmodel.community.community_screen.CommunityUiState
-import com.example.decorato.presentation.viewmodel.community.create_post.CreatePostInteractionListener
-import com.example.decorato.presentation.viewmodel.community.create_post.CreatePostUiState
+import com.example.decorato.presentation.viewModel.community.create_post.CreatePostInteractionListener
+import com.example.decorato.presentation.viewModel.community.create_post.CreatePostUiState
 
 @Composable
 fun CreatePostScreen(
-    state: CreatePostUiState, // بنبعت الـ State كامل أسهل
-    listener: CreatePostInteractionListener, // الـ listener بيشيل كل الـ actions
+    state: CreatePostUiState,
+    listener: CreatePostInteractionListener,
 ) {
     val colors = LocalDecoratoAppColors.current
     val scrollState = rememberScrollState()
@@ -43,7 +41,7 @@ fun CreatePostScreen(
             containerColor = Color.Transparent,
             topBar = {
                 CreatePostTopBar(
-                    onBackClick = listener::onClickBack, // بننادي من الـ listener
+                    onBackClick = listener::onClickBack,
                     onPublishClick = listener::onClickPublish,
                     canPublish = state.postText.isNotBlank() || state.selectedImageUris.isNotEmpty(),
                     isPublishing = state.isPublishing
@@ -64,7 +62,6 @@ fun CreatePostScreen(
                     .padding(horizontal = 16.dp)
                     .verticalScroll(scrollState)
             ) {
-                // مسافة مريحة بعد الـ Top Bar زي الفيجما
                 Spacer(modifier = Modifier.height(24.dp))
 
                 UserInfoHeader(
@@ -73,7 +70,6 @@ fun CreatePostScreen(
                     onProfileClick = { listener.onClickUserAvatar("my_id") }
                 )
 
-                // المسافة الرأسية اللي رجعناها عشان متبقاش لزقة في اليوزر
                 Spacer(modifier = Modifier.height(24.dp))
 
                 PostInputField(
@@ -81,7 +77,6 @@ fun CreatePostScreen(
                     onValueChange = listener::onTextChange
                 )
 
-                // عرض الصور المتعددة
                 state.selectedImageUris.forEach { imageUri ->
                     Spacer(modifier = Modifier.height(16.dp))
                     AsyncImage(
