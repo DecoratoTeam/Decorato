@@ -1,4 +1,4 @@
-package com.example.decorato.presentation.viewmodel.community.community_screen
+package com.example.decorato.presentation.viewModel.community.community_screen
 
 interface CommunityInteractionListener {
     // لما يدوس على "Share your design" عشان يفتح شاشة النشر

@@ -10,14 +10,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.decorato.presentation.screens.community.sections.CommunitySection
-import com.example.decorato.presentation.viewmodel.community.community_screen.CommunityViewModel
+import com.example.decorato.presentation.viewModel.community.community_screen.CommunityViewModel
 
 @Composable
 fun CommunityScreen(
     viewModel: CommunityViewModel = hiltViewModel(),
 
     ) {
-    // مراقبة حالة الواجهة (State) من الـ ViewModel
     val state by viewModel.state.collectAsState()
 
     Scaffold(

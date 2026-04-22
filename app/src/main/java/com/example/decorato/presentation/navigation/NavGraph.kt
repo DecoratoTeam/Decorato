@@ -28,23 +28,28 @@ fun NavGraph(
         navController = navController,
         startDestination = startDestination
     ) {
-        // 1. شاشات الـ Auth & Onboarding (Extension Functions)
+        // Auth & Onboarding
         onboardingScreenRoute()
         registerScreenRoute()
         loginScreenRoute()
 
         // Main App Screens with Bottom Navigation
         homeScreenRoute()
+        styleDetailsScreenRoute()
+        designDetailsScreenRoute()
+
+        // Generate Screens
         generateScreenRoute()
+        generateChatScreenRoute()
+
+        // Community Screen
         communityScreenRoute(navigationManager)
+        createPostScreenRoute(navigationManager)
 
-
+        // Profile Screens
         profileScreenRoute(navigationManager)
         myRatingScreenRoute(navController)
         myPostsScreenRoute(navigationManager)
         editProfileScreenRoute(navigationManager)
-
-
-        createPostScreenRoute(navigationManager)
     }
 }

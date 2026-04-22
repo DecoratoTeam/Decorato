@@ -36,7 +36,7 @@ import com.example.decorato.R // تأكدي إن ده اسم الباكدج ال
 import com.example.decorato.domain.entity.Post
 import com.example.decorato.presentation.components.Text
 import com.example.decorato.presentation.theme.colors.LocalDecoratoAppColors
-import com.example.decorato.presentation.viewmodel.community.community_screen.CommunityInteractionListener
+import com.example.decorato.presentation.viewModel.community.community_screen.CommunityInteractionListener
 
 
 @Composable

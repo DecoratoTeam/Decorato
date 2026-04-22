@@ -20,20 +20,18 @@ import androidx.navigation.compose.composable
 import com.example.decorato.presentation.navigation.NavigationManager
 import com.example.decorato.presentation.navigation.Route
 import com.example.decorato.presentation.screens.community.sections.CommunitySection
-import com.example.decorato.presentation.viewmodel.community.community_screen.CommunityEffect
-import com.example.decorato.presentation.viewmodel.community.community_screen.CommunityInteractionListener
-import com.example.decorato.presentation.viewmodel.community.community_screen.CommunityUiState
-import com.example.decorato.presentation.viewmodel.community.community_screen.CommunityViewModel
+import com.example.decorato.presentation.viewModel.community.community_screen.CommunityEffect
+import com.example.decorato.presentation.viewModel.community.community_screen.CommunityInteractionListener
+import com.example.decorato.presentation.viewModel.community.community_screen.CommunityUiState
+import com.example.decorato.presentation.viewModel.community.community_screen.CommunityViewModel
 
 
-// 1. الـ Extension اللي بيتحط في الـ NavGraph
 fun NavGraphBuilder.communityScreenRoute(navigationManager: NavigationManager) {
     composable<Route.Tab.Community> {
         CommunityScreenRoute(navigationManager = navigationManager)
     }
 }
 
-// 2. الـ Wrapper اللي بيربط الـ Logic بالـ UI
 @Composable
 fun CommunityScreenRoute(
     navigationManager: NavigationManager,
@@ -69,7 +67,6 @@ fun CommunityScreenRoute(
     )
 }
 
-// 3. الشاشة الفعلية (Stateless) - حل مشكلة No parameter with name 'state'
 @Composable
 fun CommunityScreen(
     state: CommunityUiState,

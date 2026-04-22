@@ -1,16 +1,13 @@
-package com.example.decorato.presentation.viewmodel.community.create_post
+package com.example.decorato.presentation.viewModel.community.create_post
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.decorato.presentation.viewmodel.community.community_screen.CommunityEffect
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 //@HiltViewModel
 class CreatePostViewModel  : ViewModel(), CreatePostInteractionListener {
@@ -23,8 +20,8 @@ class CreatePostViewModel  : ViewModel(), CreatePostInteractionListener {
 
     init {
         _state.update { it.copy(
-            userName = "Ali Hassan",
-            profileImageUrl = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde"
+            userName = "Sara Ashraf",
+            profileImageUrl = "https://media.istockphoto.com/id/474001966/photo/female-portrait-icon-as-avatar-or-profile-picture.webp?a=1&b=1&s=612x612&w=0&k=20&c=9GKRXt0EXhESvwJgRg-__xIYom3qMwkLQA-TpGmScfc="
         )}
     }
 
